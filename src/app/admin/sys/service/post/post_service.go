@@ -9,10 +9,10 @@ package post
 import (
 	"errors"
 	"fmt"
-	"manager-gin/src/app/admin/sys/dao"
-	"manager-gin/src/app/admin/sys/model"
-	"manager-gin/src/app/admin/sys/service/post/view"
-	"manager-gin/src/common"
+	"matuto-base/src/app/admin/sys/dao"
+	"matuto-base/src/app/admin/sys/model"
+	"matuto-base/src/app/admin/sys/service/post/view"
+	"matuto-base/src/common"
 )
 
 type PostService struct {

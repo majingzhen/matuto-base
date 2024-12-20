@@ -1,4 +1,4 @@
-// Package view 自动生成模板 Notice
+// Package convert 自动生成模板 Notice
 // @description <TODO description class purpose>
 // @author matuto
 // @version 1.0.0
@@ -6,7 +6,7 @@
 package view
 
 import (
-	"manager-gin/src/common"
+	"matuto-base/src/common"
 )
 
 // NoticeView 结构体

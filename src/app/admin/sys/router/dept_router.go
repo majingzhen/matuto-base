@@ -8,8 +8,8 @@ package router
 
 import (
 	"github.com/gin-gonic/gin"
-	"manager-gin/src/app/admin/sys/api"
-	"manager-gin/src/middleware"
+	"matuto-base/src/app/admin/sys/api"
+	"matuto-base/src/middleware"
 )
 
 type DeptRouter struct {

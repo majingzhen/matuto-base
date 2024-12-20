@@ -8,11 +8,11 @@ package dao
 
 import (
 	"gorm.io/gorm"
-	"manager-gin/src/app/admin/sys/model"
-	"manager-gin/src/app/admin/sys/service/role/view"
-	"manager-gin/src/common"
-	"manager-gin/src/common/constants"
-	"manager-gin/src/global"
+	"matuto-base/src/app/admin/sys/model"
+	"matuto-base/src/app/admin/sys/service/role/view"
+	"matuto-base/src/common"
+	"matuto-base/src/common/constants"
+	"matuto-base/src/global"
 )
 
 // RoleDao 结构体

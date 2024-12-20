@@ -1,4 +1,4 @@
-// Package view 自动生成模板 Config
+// Package convert 自动生成模板 Config
 // @description <TODO description class purpose>
 // @author
 // @File: config
@@ -6,7 +6,7 @@
 // @create 2023-08-21 14:20:37
 package view
 
-import "manager-gin/src/common"
+import "matuto-base/src/common"
 
 // ConfigView 结构体
 

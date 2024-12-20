@@ -8,13 +8,13 @@ package menu
 
 import (
 	"errors"
-	"manager-gin/src/app/admin/sys/dao"
-	model2 "manager-gin/src/app/admin/sys/model"
-	"manager-gin/src/app/admin/sys/service/menu/view"
-	"manager-gin/src/app/admin/sys/service/role"
-	userView "manager-gin/src/app/admin/sys/service/user/view"
-	"manager-gin/src/common/constants"
-	"manager-gin/src/utils"
+	"matuto-base/src/app/admin/sys/dao"
+	model2 "matuto-base/src/app/admin/sys/model"
+	"matuto-base/src/app/admin/sys/service/menu/view"
+	"matuto-base/src/app/admin/sys/service/role"
+	userView "matuto-base/src/app/admin/sys/service/user/view"
+	"matuto-base/src/common/constants"
+	"matuto-base/src/utils"
 	"strings"
 )
 

@@ -8,7 +8,7 @@ package router
 import (
     "github.com/gin-gonic/gin"
     "{{.PackageName}}/api"
-    "manager-gin/src/middleware"
+    "matuto-base/src/middleware"
 )
 
 // {{.StructName}}Router 结构体

@@ -1,4 +1,4 @@
-// Package view 自动生成模板 Table
+// Package convert 自动生成模板 Table
 // @description <TODO description class purpose>
 // @author
 // @File: table
@@ -7,8 +7,8 @@
 package view
 
 import (
-	"manager-gin/src/app/admin/gen/service/table_column/view"
-	"manager-gin/src/common"
+	"matuto-base/src/app/admin/gen/service/table_column/view"
+	"matuto-base/src/common"
 )
 
 // TableView 结构体

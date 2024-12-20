@@ -2,8 +2,8 @@ package aspect
 
 import (
 	"fmt"
-	"manager-gin/src/app/admin/sys/service/user/view"
-	"manager-gin/src/common/constants"
+	"matuto-base/src/app/admin/sys/service/user/view"
+	"matuto-base/src/common/constants"
 	"strings"
 )
 

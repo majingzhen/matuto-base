@@ -1,4 +1,4 @@
-// Package view 自动生成模板 TableColumn
+// Package convert 自动生成模板 TableColumn
 // @description <TODO description class purpose>
 // @author
 // @File: table_column

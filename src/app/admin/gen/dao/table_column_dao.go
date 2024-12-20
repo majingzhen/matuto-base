@@ -8,8 +8,8 @@ package dao
 
 import (
 	"gorm.io/gorm"
-	"manager-gin/src/app/admin/gen/model"
-	"manager-gin/src/global"
+	"matuto-base/src/app/admin/gen/model"
+	"matuto-base/src/global"
 )
 
 // TableColumnDao 结构体

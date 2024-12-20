@@ -8,10 +8,10 @@ package dao
 
 import (
 	"gorm.io/gorm"
-	"manager-gin/src/app/admin/sys/model"
-	"manager-gin/src/app/admin/sys/service/user/view"
-	"manager-gin/src/common"
-	"manager-gin/src/global"
+	"matuto-base/src/app/admin/sys/model"
+	"matuto-base/src/app/admin/sys/service/user/view"
+	"matuto-base/src/common"
+	"matuto-base/src/global"
 )
 
 // UserDao 结构体

@@ -8,7 +8,7 @@ package dao
 
 import (
 	"gorm.io/gorm"
-	"manager-gin/src/app/admin/sys/model"
+	"matuto-base/src/app/admin/sys/model"
 )
 
 // RoleMenuDao 结构体

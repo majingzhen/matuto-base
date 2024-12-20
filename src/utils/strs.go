@@ -3,7 +3,7 @@ package utils
 import (
 	"github.com/gogf/gf/crypto/gmd5"
 	uuid "github.com/satori/go.uuid"
-	"manager-gin/src/common/constants"
+	"matuto-base/src/common/constants"
 	"strings"
 )
 

@@ -1,4 +1,4 @@
-// Package view 自动生成模板 DictData
+// Package convert 自动生成模板 DictData
 // @description <TODO description class purpose>
 // @author
 // @File: dict_data
@@ -6,7 +6,7 @@
 // @create 2023-08-20 19:08:42
 package view
 
-import "manager-gin/src/common"
+import "matuto-base/src/common"
 
 // DictDataView 结构体
 

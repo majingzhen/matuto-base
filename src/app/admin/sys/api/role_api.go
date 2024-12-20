@@ -9,13 +9,13 @@ package api
 import (
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
-	"manager-gin/src/app/admin/sys/service/role"
-	"manager-gin/src/app/admin/sys/service/role/view"
-	"manager-gin/src/common/basic"
-	"manager-gin/src/common/constants"
-	response "manager-gin/src/common/response"
-	"manager-gin/src/global"
-	"manager-gin/src/utils"
+	"matuto-base/src/app/admin/sys/service/role"
+	"matuto-base/src/app/admin/sys/service/role/view"
+	"matuto-base/src/common/basic"
+	"matuto-base/src/common/constants"
+	response "matuto-base/src/common/response"
+	"matuto-base/src/global"
+	"matuto-base/src/utils"
 	"strings"
 )
 

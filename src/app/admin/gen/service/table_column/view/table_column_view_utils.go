@@ -1,4 +1,4 @@
-// Package view
+// Package convert
 // @description <TODO description class purpose>
 // @author
 // @File: gen_table_column
@@ -9,10 +9,10 @@ package view
 import (
 	"fmt"
 	"go.uber.org/zap"
-	"manager-gin/src/app/admin/gen/model"
-	"manager-gin/src/common"
-	"manager-gin/src/global"
-	"manager-gin/src/utils"
+	"matuto-base/src/app/admin/gen/model"
+	"matuto-base/src/common"
+	"matuto-base/src/global"
+	"matuto-base/src/utils"
 )
 
 type TableColumnViewUtils struct{}

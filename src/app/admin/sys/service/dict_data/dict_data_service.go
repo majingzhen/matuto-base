@@ -7,9 +7,9 @@
 package dict_data
 
 import (
-	"manager-gin/src/app/admin/sys/dao"
-	"manager-gin/src/app/admin/sys/service/dict_data/view"
-	"manager-gin/src/common"
+	"matuto-base/src/app/admin/sys/dao"
+	"matuto-base/src/app/admin/sys/service/dict_data/view"
+	"matuto-base/src/common"
 )
 
 type DictDataService struct {

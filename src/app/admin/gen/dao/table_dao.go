@@ -8,10 +8,10 @@ package dao
 
 import (
 	"gorm.io/gorm"
-	"manager-gin/src/app/admin/gen/model"
-	"manager-gin/src/app/admin/gen/service/table/view"
-	"manager-gin/src/common"
-	"manager-gin/src/global"
+	"matuto-base/src/app/admin/gen/model"
+	"matuto-base/src/app/admin/gen/service/table/view"
+	"matuto-base/src/common"
+	"matuto-base/src/global"
 )
 
 // TableDao 结构体

@@ -9,9 +9,9 @@ import (
     "fmt"
     "go.uber.org/zap"
     "{{.PackageName}}/model"
-    "manager-gin/src/global"
-    "manager-gin/src/utils"
-    "manager-gin/src/common"
+    "matuto-base/src/global"
+    "matuto-base/src/utils"
+    "matuto-base/src/common"
 )
 
 type {{.StructName}}ViewUtils struct {}

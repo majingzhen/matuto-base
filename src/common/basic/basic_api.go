@@ -3,9 +3,9 @@ package basic
 import (
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
-	"manager-gin/src/app/admin/sys/service/user"
-	"manager-gin/src/app/admin/sys/service/user/view"
-	"manager-gin/src/global"
+	"matuto-base/src/app/admin/sys/service/user"
+	"matuto-base/src/app/admin/sys/service/user/view"
+	"matuto-base/src/global"
 )
 
 type BasicApi struct {

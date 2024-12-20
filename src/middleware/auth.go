@@ -2,8 +2,8 @@ package middleware
 
 import (
 	"github.com/gin-gonic/gin"
-	"manager-gin/src/common/response"
-	"manager-gin/src/framework"
+	"matuto-base/src/common/response"
+	"matuto-base/src/framework"
 	"net/http"
 	"strings"
 )

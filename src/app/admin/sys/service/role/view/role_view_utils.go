@@ -1,4 +1,4 @@
-// Package view
+// Package convert
 // @description <TODO description class purpose>
 // @author
 // @File: role
@@ -8,11 +8,12 @@ package view
 
 import (
 	"fmt"
+	"matuto-base/src/app/admin/sys/model"
+	"matuto-base/src/common"
+	"matuto-base/src/global"
+	"matuto-base/src/utils"
+
 	"go.uber.org/zap"
-	"manager-gin/src/app/admin/sys/model"
-	"manager-gin/src/common"
-	"manager-gin/src/global"
-	"manager-gin/src/utils"
 )
 
 type RoleViewUtils struct{}

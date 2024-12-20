@@ -8,8 +8,8 @@ package dao
 import (
     "{{.PackageName}}/model"
     "{{.PackageName}}/service/{{.BusinessName}}/view"
-    "manager-gin/src/common"
-    "manager-gin/src/global"
+    "matuto-base/src/common"
+    "matuto-base/src/global"
 
 )
 

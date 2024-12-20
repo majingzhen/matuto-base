@@ -2,9 +2,9 @@ package routers
 
 import (
 	"github.com/gin-gonic/gin"
-	genRouter "manager-gin/src/app/admin/gen/router"
-	sysRouter "manager-gin/src/app/admin/sys/router"
-	"manager-gin/src/middleware"
+	genRouter "matuto-base/src/app/admin/gen/router"
+	sysRouter "matuto-base/src/app/admin/sys/router"
+	"matuto-base/src/middleware"
 )
 
 type Routers struct {

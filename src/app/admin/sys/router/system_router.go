@@ -8,9 +8,9 @@ package router
 
 import (
 	"github.com/gin-gonic/gin"
-	"manager-gin/src/app/admin/sys/api"
-	"manager-gin/src/middleware"
-	"manager-gin/src/utils"
+	"matuto-base/src/app/admin/sys/api"
+	"matuto-base/src/middleware"
+	"matuto-base/src/utils"
 )
 
 type SystemRouter struct {

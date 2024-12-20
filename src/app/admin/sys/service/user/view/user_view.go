@@ -1,4 +1,4 @@
-// Package view 自动生成模板 User
+// Package convert 自动生成模板 User
 // @description <TODO description class purpose>
 // @author
 // @File: user
@@ -7,10 +7,10 @@
 package view
 
 import (
-	deptView "manager-gin/src/app/admin/sys/service/dept/view"
-	postView "manager-gin/src/app/admin/sys/service/post/view"
-	roleView "manager-gin/src/app/admin/sys/service/role/view"
-	"manager-gin/src/common"
+	deptView "matuto-base/src/app/admin/sys/service/dept/view"
+	postView "matuto-base/src/app/admin/sys/service/post/view"
+	roleView "matuto-base/src/app/admin/sys/service/role/view"
+	"matuto-base/src/common"
 )
 
 // UserView 结构体

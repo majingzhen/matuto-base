@@ -7,9 +7,9 @@
 package dao
 
 import (
-	"manager-gin/src/app/admin/sys/model"
-	"manager-gin/src/common/constants"
-	"manager-gin/src/global"
+	"matuto-base/src/app/admin/sys/model"
+	"matuto-base/src/common/constants"
+	"matuto-base/src/global"
 )
 
 // MenuDao 结构体

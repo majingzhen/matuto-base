@@ -6,10 +6,10 @@
 package dao
 
 import (
-	"manager-gin/src/app/admin/sys/model"
-	"manager-gin/src/app/admin/sys/service/notice/view"
-	"manager-gin/src/common"
-	"manager-gin/src/global"
+	"matuto-base/src/app/admin/sys/model"
+	"matuto-base/src/app/admin/sys/service/notice/view"
+	"matuto-base/src/common"
+	"matuto-base/src/global"
 )
 
 // NoticeDao 结构体

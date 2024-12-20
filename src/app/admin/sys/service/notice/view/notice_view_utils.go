@@ -1,4 +1,4 @@
-// Package view 自动生成模板 NoticeViewUtils
+// Package convert 自动生成模板 NoticeViewUtils
 // @description <TODO description class purpose>
 // @author matuto
 // @version 1.0.0
@@ -8,10 +8,10 @@ package view
 import (
 	"fmt"
 	"go.uber.org/zap"
-	"manager-gin/src/app/admin/sys/model"
-	"manager-gin/src/common"
-	"manager-gin/src/global"
-	"manager-gin/src/utils"
+	"matuto-base/src/app/admin/sys/model"
+	"matuto-base/src/common"
+	"matuto-base/src/global"
+	"matuto-base/src/utils"
 )
 
 type NoticeViewUtils struct{}

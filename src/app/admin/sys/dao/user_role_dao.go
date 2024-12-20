@@ -8,8 +8,8 @@ package dao
 
 import (
 	"gorm.io/gorm"
-	"manager-gin/src/app/admin/sys/model"
-	"manager-gin/src/global"
+	"matuto-base/src/app/admin/sys/model"
+	"matuto-base/src/global"
 )
 
 // UserRoleDao 结构体

@@ -6,7 +6,7 @@ import (
 	"go.uber.org/zap"
 	"gorm.io/gorm"
 	gormlogger "gorm.io/gorm/logger"
-	"manager-gin/src/utils"
+	"matuto-base/src/utils"
 	"path/filepath"
 	"runtime"
 	"strings"

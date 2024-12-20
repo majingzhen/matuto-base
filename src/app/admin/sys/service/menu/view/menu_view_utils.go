@@ -1,4 +1,4 @@
-// Package view
+// Package convert
 // @description <TODO description class purpose>
 // @author
 // @File: sys_menu
@@ -9,9 +9,9 @@ package view
 import (
 	"fmt"
 	"go.uber.org/zap"
-	"manager-gin/src/app/admin/sys/model"
-	"manager-gin/src/global"
-	"manager-gin/src/utils"
+	"matuto-base/src/app/admin/sys/model"
+	"matuto-base/src/global"
+	"matuto-base/src/utils"
 )
 
 type MenuViewUtils struct{}

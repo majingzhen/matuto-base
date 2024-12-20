@@ -1,4 +1,4 @@
-// Package view 自动生成模板 Role
+// Package convert 自动生成模板 Role
 // @description <TODO description class purpose>
 // @author
 // @File: role
@@ -6,7 +6,7 @@
 // @create 2023-08-21 17:37:56
 package view
 
-import "manager-gin/src/common"
+import "matuto-base/src/common"
 
 // RoleView 结构体
 type RoleView struct {

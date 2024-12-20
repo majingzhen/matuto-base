@@ -8,7 +8,7 @@ package {{.BusinessName}}
 import (
     "{{.PackageName}}/dao"
     "{{.PackageName}}/service/{{.BusinessName}}/view"
-    "manager-gin/src/common"
+    "matuto-base/src/common"
 )
 
 type Service struct {

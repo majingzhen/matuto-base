@@ -3,7 +3,7 @@ package middleware
 import (
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
-	"manager-gin/src/global"
+	"matuto-base/src/global"
 	"time"
 )
 

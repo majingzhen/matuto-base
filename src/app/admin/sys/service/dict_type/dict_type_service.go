@@ -7,9 +7,9 @@
 package dict_type
 
 import (
-	"manager-gin/src/app/admin/sys/dao"
-	"manager-gin/src/app/admin/sys/service/dict_type/view"
-	"manager-gin/src/common"
+	"matuto-base/src/app/admin/sys/dao"
+	"matuto-base/src/app/admin/sys/service/dict_type/view"
+	"matuto-base/src/common"
 )
 
 type DictTypeService struct {

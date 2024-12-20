@@ -8,11 +8,11 @@ package config
 
 import (
 	"errors"
-	"manager-gin/src/app/admin/sys/dao"
-	model2 "manager-gin/src/app/admin/sys/model"
-	"manager-gin/src/app/admin/sys/service/config/view"
-	"manager-gin/src/common"
-	"manager-gin/src/common/constants"
+	"matuto-base/src/app/admin/sys/dao"
+	model2 "matuto-base/src/app/admin/sys/model"
+	"matuto-base/src/app/admin/sys/service/config/view"
+	"matuto-base/src/common"
+	"matuto-base/src/common/constants"
 )
 
 type ConfigService struct {

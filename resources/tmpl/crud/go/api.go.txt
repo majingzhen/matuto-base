@@ -10,10 +10,10 @@ import (
     "go.uber.org/zap"
     "{{.PackageName}}/service/{{.BusinessName}}"
     "{{.PackageName}}/service/{{.BusinessName}}/view"
-    "manager-gin/src/common/basic"
-    response "manager-gin/src/common/response"
-    "manager-gin/src/global"
-    "manager-gin/src/utils"
+    "matuto-base/src/common/basic"
+    response "matuto-base/src/common/response"
+    "matuto-base/src/global"
+    "matuto-base/src/utils"
     "strings"
 )
 

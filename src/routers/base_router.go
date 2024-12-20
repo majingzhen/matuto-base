@@ -2,7 +2,7 @@ package routers
 
 import (
 	"github.com/gin-gonic/gin"
-	"manager-gin/src/app/admin/sys/router"
+	"matuto-base/src/app/admin/sys/router"
 )
 
 type BaseRouter struct {

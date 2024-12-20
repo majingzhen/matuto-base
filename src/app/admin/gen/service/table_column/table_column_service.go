@@ -8,9 +8,9 @@ package table_column
 
 import (
 	"gorm.io/gorm"
-	"manager-gin/src/app/admin/gen/dao"
-	"manager-gin/src/app/admin/gen/service/table_column/view"
-	"manager-gin/src/global"
+	"matuto-base/src/app/admin/gen/dao"
+	"matuto-base/src/app/admin/gen/service/table_column/view"
+	"matuto-base/src/global"
 )
 
 type TableColumnService struct {

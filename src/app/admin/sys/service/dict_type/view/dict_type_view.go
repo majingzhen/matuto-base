@@ -1,4 +1,4 @@
-// Package view 自动生成模板 DictType
+// Package convert 自动生成模板 DictType
 // @description <TODO description class purpose>
 // @author
 // @File: dict_type
@@ -6,7 +6,7 @@
 // @create 2023-08-18 13:41:26
 package view
 
-import "manager-gin/src/common"
+import "matuto-base/src/common"
 
 // DictTypeView 结构体
 

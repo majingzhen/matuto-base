@@ -12,15 +12,15 @@ import (
 	"encoding/json"
 	"errors"
 	"go.uber.org/zap"
-	"manager-gin/src/app/admin/gen/dao"
-	"manager-gin/src/app/admin/gen/model"
-	"manager-gin/src/app/admin/gen/service/table/view"
-	columm_service "manager-gin/src/app/admin/gen/service/table_column"
-	genutils "manager-gin/src/app/admin/gen/utils"
-	"manager-gin/src/common"
-	"manager-gin/src/common/constants"
-	"manager-gin/src/global"
-	"manager-gin/src/utils"
+	"matuto-base/src/app/admin/gen/dao"
+	"matuto-base/src/app/admin/gen/model"
+	"matuto-base/src/app/admin/gen/service/table/view"
+	columm_service "matuto-base/src/app/admin/gen/service/table_column"
+	genutils "matuto-base/src/app/admin/gen/utils"
+	"matuto-base/src/common"
+	"matuto-base/src/common/constants"
+	"matuto-base/src/global"
+	"matuto-base/src/utils"
 	"strings"
 	"text/template"
 	"time"
@@ -331,8 +331,8 @@ func (s *Service) GenCode(id string) (error, *bytes.Buffer, string) {
 				// 获取文件类型
 				fileType := newKey[strings.LastIndex(newKey, ".")+1:]
 				filePath := newKey[:strings.LastIndex(newKey, ".")]
-				if strings.Contains(filePath, "view") {
-					filePath = fileType + "/service/view/" + tableView.BusinessName + "_" + newKey
+				if strings.Contains(filePath, "convert") {
+					filePath = fileType + "/service/convert/" + tableView.BusinessName + "_" + newKey
 				} else {
 					if fileType == "vue" {
 						filePath = fileType + "/" + tableView.BusinessName + "/" + newKey

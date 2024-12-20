@@ -1,11 +1,11 @@
 package utils
 
 import (
-	"manager-gin/src/app/admin/gen/model"
-	"manager-gin/src/app/admin/gen/service/table/view"
-	"manager-gin/src/common/constants"
-	"manager-gin/src/global"
-	"manager-gin/src/utils"
+	"matuto-base/src/app/admin/gen/model"
+	"matuto-base/src/app/admin/gen/service/table/view"
+	"matuto-base/src/common/constants"
+	"matuto-base/src/global"
+	"matuto-base/src/utils"
 	"strconv"
 	"strings"
 )
@@ -192,7 +192,7 @@ func GenTemplatePath(tplCategory string) []string {
 		"./resources/tmpl/" + tplCategory + "/go/model.go.txt",
 		"./resources/tmpl/" + tplCategory + "/go/dao.go.txt",
 		"./resources/tmpl/" + tplCategory + "/go/service.go.txt",
-		"./resources/tmpl/" + tplCategory + "/go/view.go.txt",
+		"./resources/tmpl/" + tplCategory + "/go/convert.go.txt",
 		"./resources/tmpl/" + tplCategory + "/go/view_utils.go.txt",
 		"./resources/tmpl/" + tplCategory + "/go/api.go.txt",
 		"./resources/tmpl/" + tplCategory + "/go/router.go.txt",

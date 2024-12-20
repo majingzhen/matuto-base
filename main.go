@@ -1,7 +1,7 @@
 package main
 
 import (
-	"manager-gin/src/server"
+	"matuto-base/src/server"
 )
 
 func main() {

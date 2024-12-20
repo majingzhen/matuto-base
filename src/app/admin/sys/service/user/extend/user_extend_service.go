@@ -1,8 +1,8 @@
 package extend
 
 import (
-	"manager-gin/src/app/admin/sys/dao"
-	"manager-gin/src/app/admin/sys/service/user/view"
+	"matuto-base/src/app/admin/sys/dao"
+	"matuto-base/src/app/admin/sys/service/user/view"
 )
 
 type UserExtendService struct {

@@ -6,9 +6,9 @@
 package notice
 
 import (
-	"manager-gin/src/app/admin/sys/dao"
-	"manager-gin/src/app/admin/sys/service/notice/view"
-	"manager-gin/src/common"
+	"matuto-base/src/app/admin/sys/dao"
+	"matuto-base/src/app/admin/sys/service/notice/view"
+	"matuto-base/src/common"
 )
 
 type NoticeService struct {

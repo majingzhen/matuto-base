@@ -9,16 +9,17 @@ package user
 import (
 	"errors"
 	"gorm.io/gorm"
-	"manager-gin/src/app/admin/sys/dao"
-	"manager-gin/src/app/admin/sys/model"
-	"manager-gin/src/app/admin/sys/service/dept"
-	"manager-gin/src/app/admin/sys/service/role"
-	"manager-gin/src/app/admin/sys/service/user/view"
-	"manager-gin/src/common"
-	"manager-gin/src/common/constants"
-	"manager-gin/src/framework/aspect"
-	"manager-gin/src/global"
-	"manager-gin/src/utils"
+	"matuto-base/src/app/admin/sys/dao"
+	"matuto-base/src/app/admin/sys/model"
+	"matuto-base/src/app/admin/sys/service/dept"
+	"matuto-base/src/app/admin/sys/service/role"
+	"matuto-base/src/app/admin/sys/service/user/view"
+	"matuto-base/src/common"
+	"matuto-base/src/common/constants"
+	"matuto-base/src/framework/aspect"
+	"matuto-base/src/global"
+	"matuto-base/src/utils"
+	"matuto-base/src/utils/convert"
 )
 
 type Service struct {
@@ -33,7 +34,8 @@ type Service struct {
 // Create 创建User记录
 // Author
 func (s *Service) Create(userView *view.UserView) (err error) {
-	err1, user := s.viewUtils.View2Data(userView)
+	//err1, user := s.viewUtils.View2Data(userView)
+	err1, user := convert.View2Data[view.UserView, model.User](userView)
 	if err1 != nil {
 		return err1
 	}
@@ -117,7 +119,7 @@ func (s *Service) DeleteByIds(ids []string, loginUserId string) (err error) {
 // Author
 func (s *Service) Update(id string, userView *view.UserView) (err error) {
 	userView.Id = id
-	err1, user := s.viewUtils.View2Data(userView)
+	err1, user := convert.View2Data[view.UserView, model.User](userView)
 	if err1 != nil {
 		return err1
 	}
@@ -135,7 +137,7 @@ func (s *Service) Get(id string) (err error, userView *view.UserView) {
 	if err1 != nil {
 		return err1, nil
 	}
-	if err, userView = s.viewUtils.Data2View(user); err != nil {
+	if err, userView = convert.Data2View[view.UserView, model.User](user); err != nil {
 		return err, nil
 	} else {
 		if err2, deptView := s.deptService.Get(userView.DeptId); err2 != nil {
@@ -160,10 +162,11 @@ func (s *Service) Page(pageInfo *view.UserPageView, user *view.UserView) (err er
 	if err, res = s.userDao.Page(pageInfo); err != nil {
 		return err, res
 	}
-	if err, res = s.viewUtils.PageData2ViewList(res); err != nil {
+	if err, views := convert.PageData2ViewList[view.UserView, model.User](res); err != nil {
+		//if err, res = s.viewUtils.PageData2ViewList(res); err != nil {
 		return err, res
 	} else {
-		if o, ok := res.Rows.([]*view.UserView); ok {
+		if o, ok := views.Rows.([]*view.UserView); ok {
 			// 组装部门数据
 			for i := 0; i < len(o); i++ {
 				deptId := o[i].DeptId
@@ -174,13 +177,13 @@ func (s *Service) Page(pageInfo *view.UserPageView, user *view.UserView) (err er
 				}
 			}
 		}
-		return err, res
+		return err, views
 	}
 }
 
 // List 获取User记录
 func (s *Service) List(v *view.UserView) (err error, views []*view.UserView) {
-	err, data := s.viewUtils.View2Data(v)
+	err, data := convert.View2Data[view.UserView, model.User](v)
 	if err != nil {
 		return err, nil
 	}
@@ -188,7 +191,7 @@ func (s *Service) List(v *view.UserView) (err error, views []*view.UserView) {
 	if err, datas = s.userDao.List(data); err != nil {
 		return err, nil
 	} else {
-		err, views = s.viewUtils.Data2ViewList(datas)
+		err, views = convert.Data2ViewList[view.UserView, model.User](datas)
 		return
 	}
 }
@@ -200,7 +203,7 @@ func (s *Service) GetByUserName(userName string) (err error, userView *view.User
 	if err1 != nil {
 		return err1, nil
 	}
-	err2, userView := s.viewUtils.Data2View(user)
+	err2, userView := convert.Data2View[view.UserView, model.User](user)
 	if err2 != nil {
 		return err2, nil
 	}
@@ -250,7 +253,7 @@ func (s *Service) CheckUserDataScope(userId, loginUserId string) error {
 
 // ResetPwd 重置密码
 func (s *Service) ResetPwd(v *view.UserView) error {
-	err, user := s.viewUtils.View2Data(v)
+	err, user := convert.View2Data[view.UserView, model.User](v)
 	if err != nil {
 		return err
 	}
@@ -262,7 +265,7 @@ func (s *Service) ResetPwd(v *view.UserView) error {
 
 // ChangeStatus 更新状态
 func (s *Service) ChangeStatus(v *view.UserView) error {
-	err, user := s.viewUtils.View2Data(v)
+	err, user := convert.View2Data[view.UserView, model.User](v)
 	if err != nil {
 		return err
 	}
@@ -292,7 +295,7 @@ func (s *Service) SelectAllocatedList(pageInfo *view.UserPageView, user *view.Us
 	if err, res = s.userDao.SelectAllocatedList(pageInfo); err != nil {
 		return err, nil
 	}
-	if err, res = s.viewUtils.PageData2ViewList(res); err != nil {
+	if err, res = convert.PageData2ViewList[model.User, view.UserView](res); err != nil {
 		return err, res
 	} else {
 		if o, ok := res.Rows.([]*view.UserView); ok {
@@ -316,7 +319,7 @@ func (s *Service) SelectUnallocatedList(pageInfo *view.UserPageView, user *view.
 	if err, res = s.userDao.SelectUnallocatedList(pageInfo); err != nil {
 		return err, nil
 	}
-	if err, res = s.viewUtils.PageData2ViewList(res); err != nil {
+	if err, res = convert.PageData2ViewList[model.User, view.UserView](res); err != nil {
 		return err, res
 	} else {
 		if o, ok := res.Rows.([]*view.UserView); ok {
@@ -340,7 +343,8 @@ func (s *Service) GetByDeptId(deptId string) (err error, userView []*view.UserVi
 	if err1 != nil {
 		return err1, nil
 	}
-	err2, userView := s.viewUtils.Data2ViewList(user)
+	//err2, userView := s.viewUtils.Data2ViewList(user)
+	err2, userView := convert.Data2ViewList[view.UserView, model.User](user)
 	if err2 != nil {
 		return err2, nil
 	}

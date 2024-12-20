@@ -9,12 +9,12 @@ package api
 import (
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
-	"manager-gin/src/app/admin/sys/service/menu"
-	"manager-gin/src/app/admin/sys/service/menu/view"
-	"manager-gin/src/common/basic"
-	response "manager-gin/src/common/response"
-	"manager-gin/src/global"
-	"manager-gin/src/utils"
+	"matuto-base/src/app/admin/sys/service/menu"
+	"matuto-base/src/app/admin/sys/service/menu/view"
+	"matuto-base/src/common/basic"
+	response "matuto-base/src/common/response"
+	"matuto-base/src/global"
+	"matuto-base/src/utils"
 )
 
 type MenuApi struct {
