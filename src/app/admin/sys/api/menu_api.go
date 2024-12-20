@@ -9,10 +9,10 @@ package api
 import (
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
+	"matuto-base/src/app/admin/sys/api/vo"
 	"matuto-base/src/app/admin/sys/service/menu"
-	"matuto-base/src/app/admin/sys/service/menu/view"
 	"matuto-base/src/common/basic"
-	response "matuto-base/src/common/response"
+	"matuto-base/src/common/response"
 	"matuto-base/src/global"
 	"matuto-base/src/utils"
 )
@@ -26,7 +26,7 @@ type MenuApi struct {
 // @Summary 创建Menu
 // @Router /menu/create [post]
 func (api *MenuApi) Create(c *gin.Context) {
-	var menuView view.MenuView
+	var menuView vo.MenuView
 	_ = c.ShouldBindJSON(&menuView)
 	menuView.Id = utils.GenUID()
 	menuView.CreateTime = utils.GetCurTimeStr()
@@ -57,7 +57,7 @@ func (api *MenuApi) Delete(c *gin.Context) {
 // @Summary 更新Menu
 // @Router /menu/update [put]
 func (api *MenuApi) Update(c *gin.Context) {
-	var menuView view.MenuView
+	var menuView vo.MenuView
 	_ = c.ShouldBindJSON(&menuView)
 	id := menuView.Id
 	if id == "" {
@@ -91,7 +91,7 @@ func (api *MenuApi) Get(c *gin.Context) {
 // @Summary 获取Menu列表
 // @Router /menu/list [get]
 func (api *MenuApi) List(c *gin.Context) {
-	var menuView view.MenuView
+	var menuView vo.MenuView
 	// 绑定查询参数到 pageInfo
 	if err := c.ShouldBindQuery(&menuView); err != nil {
 		response.FailWithMessage("获取参数解析失败!", c)
@@ -111,7 +111,7 @@ func (api *MenuApi) List(c *gin.Context) {
 // @Router /menu/selectMenuTreeByRoleId/{roleId} [get]
 func (api *MenuApi) SelectMenuTreeByRoleId(c *gin.Context) {
 	roleId := c.Param("roleId")
-	if err, menuList := api.menuService.SelectMenuList(&view.MenuView{}, api.GetLoginUserId(c)); err != nil {
+	if err, menuList := api.menuService.SelectMenuList(&vo.MenuView{}, api.GetLoginUserId(c)); err != nil {
 		global.Logger.Error("获取数据失败!", zap.Error(err))
 		response.FailWithMessage("获取失败", c)
 		return
@@ -133,7 +133,7 @@ func (api *MenuApi) SelectMenuTreeByRoleId(c *gin.Context) {
 // @Summary 加载菜单列表树
 // @Router /menu/selectMenuTree [get]
 func (api *MenuApi) SelectMenuTree(c *gin.Context) {
-	var menuView view.MenuView
+	var menuView vo.MenuView
 	if err := c.ShouldBindQuery(&menuView); err != nil {
 		response.FailWithMessage("获取参数解析失败!", c)
 		return

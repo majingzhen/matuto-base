@@ -4,11 +4,7 @@
 // @File: user
 // @version 1.0.0
 // @create 2023-08-18 13:41:26
-package view
-
-import (
-	"matuto-base/src/app/admin/sys/service/user/view"
-)
+package vo
 
 // LoginUserView 结构体
 type LoginUserView struct {
@@ -19,9 +15,9 @@ type LoginUserView struct {
 }
 
 type LoginUserResView struct {
-	UserInfo    *view.UserView `json:"user"`
-	Roles       []string       `json:"roles"`
-	Permissions []string       `json:"permissions"`
+	UserInfo    *UserView `json:"user"`
+	Roles       []string  `json:"roles"`
+	Permissions []string  `json:"permissions"`
 }
 
 // Captcha 验证码响应

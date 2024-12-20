@@ -2,7 +2,7 @@ package aspect
 
 import (
 	"fmt"
-	"matuto-base/src/app/admin/sys/service/user/view"
+	"matuto-base/src/app/admin/sys/api/vo"
 	"matuto-base/src/common/constants"
 	"strings"
 )
@@ -21,7 +21,7 @@ const (
 )
 
 // DataScopeFilter 数据权限过滤
-func DataScopeFilter(user *view.UserView, deptAlias string, userAlias string, permission string) string {
+func DataScopeFilter(user *vo.UserView, deptAlias string, userAlias string, permission string) string {
 	// 如果是超级管理员，则不过滤数据
 	if user == nil {
 		return ""

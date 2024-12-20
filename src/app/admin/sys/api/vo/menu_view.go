@@ -4,7 +4,7 @@
 // @File: menu
 // @version 1.0.0
 // @create 2023-08-20 21:21:34
-package view
+package vo
 
 // MenuView 结构体
 type MenuView struct {

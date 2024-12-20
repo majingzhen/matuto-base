@@ -7,20 +7,21 @@
 package dict_type
 
 import (
+	"matuto-base/src/app/admin/sys/api/vo"
 	"matuto-base/src/app/admin/sys/dao"
-	"matuto-base/src/app/admin/sys/service/dict_type/view"
+	"matuto-base/src/app/admin/sys/model"
 	"matuto-base/src/common"
+	"matuto-base/src/utils/convert"
 )
 
 type DictTypeService struct {
 	sysDictTypeDao dao.DictTypeDao
-	viewUtils      view.DictTypeViewUtils
 }
 
 // Create 创建DictType记录
 // Author
-func (s *DictTypeService) Create(sysDictTypeView *view.DictTypeView) (err error) {
-	err1, sysDictType := s.viewUtils.View2Data(sysDictTypeView)
+func (s *DictTypeService) Create(sysDictTypeView *vo.DictTypeView) (err error) {
+	err1, sysDictType := convert.View2Data[vo.DictTypeView, model.DictType](sysDictTypeView)
 	if err1 != nil {
 		return err1
 	}
@@ -47,9 +48,9 @@ func (s *DictTypeService) DeleteByIds(ids []string) (err error) {
 
 // Update 更新DictType记录
 // Author
-func (s *DictTypeService) Update(id string, sysDictTypeView *view.DictTypeView) (err error) {
+func (s *DictTypeService) Update(id string, sysDictTypeView *vo.DictTypeView) (err error) {
 	sysDictTypeView.Id = id
-	err1, sysDictType := s.viewUtils.View2Data(sysDictTypeView)
+	err1, sysDictType := convert.View2Data[vo.DictTypeView, model.DictType](sysDictTypeView)
 	if err1 != nil {
 		return err1
 	}
@@ -59,7 +60,7 @@ func (s *DictTypeService) Update(id string, sysDictTypeView *view.DictTypeView) 
 
 // Get 根据id获取DictType记录
 // Author
-func (s *DictTypeService) Get(id string) (err error, sysDictTypeView *view.DictTypeView) {
+func (s *DictTypeService) Get(id string) (err error, sysDictTypeView *vo.DictTypeView) {
 	if id == "" {
 		return nil, nil
 	}
@@ -67,7 +68,7 @@ func (s *DictTypeService) Get(id string) (err error, sysDictTypeView *view.DictT
 	if err1 != nil {
 		return err1, nil
 	}
-	err2, sysDictTypeView := s.viewUtils.Data2View(sysDictType)
+	err2, sysDictTypeView := convert.Data2View[vo.DictTypeView, model.DictType](sysDictType)
 	if err2 != nil {
 		return err2, nil
 	}
@@ -76,20 +77,20 @@ func (s *DictTypeService) Get(id string) (err error, sysDictTypeView *view.DictT
 
 // Page 分页获取DictType记录
 // Author
-func (s *DictTypeService) Page(pageInfo *view.DictTypePageView) (err error, res *common.PageInfo) {
+func (s *DictTypeService) Page(pageInfo *vo.DictTypePageView) (err error, res *common.PageInfo) {
 	if err, res = s.sysDictTypeDao.Page(pageInfo); err != nil {
 		return err, nil
 	}
-	return s.viewUtils.PageData2ViewList(res)
+	return convert.PageData2ViewList[vo.DictTypeView, model.DictType](res)
 }
 
 // SelectDictTypeAll 获取全部数据
-func (s *DictTypeService) SelectDictTypeAll() (err error, views []*view.DictTypeView) {
+func (s *DictTypeService) SelectDictTypeAll() (err error, views []*vo.DictTypeView) {
 	err, datas := s.sysDictTypeDao.SelectDictTypeAll()
 	if err != nil {
 		return err, nil
 	}
-	err, views = s.viewUtils.Data2ViewList(datas)
+	err, views = convert.Data2ViewList[vo.DictTypeView, model.DictType](datas)
 	if err != nil {
 		return err, nil
 	}

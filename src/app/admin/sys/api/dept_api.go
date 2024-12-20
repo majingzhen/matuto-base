@@ -9,10 +9,10 @@ package api
 import (
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
+	"matuto-base/src/app/admin/sys/api/vo"
 	"matuto-base/src/app/admin/sys/service/dept"
-	"matuto-base/src/app/admin/sys/service/dept/view"
 	"matuto-base/src/common/basic"
-	response "matuto-base/src/common/response"
+	"matuto-base/src/common/response"
 	"matuto-base/src/global"
 	"matuto-base/src/utils"
 	"strings"
@@ -27,7 +27,7 @@ type DeptApi struct {
 // @Summary 创建Dept
 // @Router /dept/create [post]
 func (api *DeptApi) Create(c *gin.Context) {
-	var deptView view.DeptView
+	var deptView vo.DeptView
 	_ = c.ShouldBindJSON(&deptView)
 	deptView.Id = utils.GenUID()
 	deptView.CreateTime = utils.GetCurTimeStr()
@@ -58,7 +58,7 @@ func (api *DeptApi) Delete(c *gin.Context) {
 // @Summary 更新Dept
 // @Router /dept/update [put]
 func (api *DeptApi) Update(c *gin.Context) {
-	var deptView view.DeptView
+	var deptView vo.DeptView
 	_ = c.ShouldBindJSON(&deptView)
 	id := deptView.Id
 	if id == "" {
@@ -92,7 +92,7 @@ func (api *DeptApi) Get(c *gin.Context) {
 // @Summary 获取Dept列表
 // @Router /dept/list [get]
 func (api *DeptApi) List(c *gin.Context) {
-	var view view.DeptView
+	var view vo.DeptView
 	// 绑定查询参数到 view对象
 	if err := c.ShouldBindQuery(&view); err != nil {
 		response.FailWithMessage("获取参数解析失败!", c)
@@ -115,7 +115,7 @@ func (api *DeptApi) List(c *gin.Context) {
 func (api *DeptApi) ListExclude(c *gin.Context) {
 	id := c.Param("id")
 	user := api.GetLoginUser(c)
-	if err, deptView := api.deptService.List(&view.DeptView{}, user); err != nil {
+	if err, deptView := api.deptService.List(&vo.DeptView{}, user); err != nil {
 		global.Logger.Error("查询失败!", zap.Error(err))
 		response.FailWithMessage(err.Error(), c)
 		return
@@ -140,7 +140,7 @@ func (api *DeptApi) ListExclude(c *gin.Context) {
 // @Summary 查询部门树列表
 // @Router /dept/selectDeptTree [get]
 func (api *DeptApi) SelectDeptTree(c *gin.Context) {
-	var view view.DeptView
+	var view vo.DeptView
 	// 绑定查询参数到 view对象
 	if err := c.ShouldBindQuery(&view); err != nil {
 		response.FailWithMessage("获取参数解析失败!", c)
@@ -168,7 +168,7 @@ func (api *DeptApi) SelectDeptTreeByRole(c *gin.Context) {
 		global.Logger.Error("查询失败!", zap.Error(err))
 		response.FailWithMessage(err.Error(), c)
 	} else {
-		err1, deptTree := api.deptService.SelectDeptTree(&view.DeptView{}, api.GetLoginUser(c))
+		err1, deptTree := api.deptService.SelectDeptTree(&vo.DeptView{}, api.GetLoginUser(c))
 		if err1 != nil {
 			global.Logger.Error("查询失败!", zap.Error(err))
 			response.FailWithMessage(err.Error(), c)

@@ -9,20 +9,20 @@ package post
 import (
 	"errors"
 	"fmt"
+	view2 "matuto-base/src/app/admin/sys/api/vo"
 	"matuto-base/src/app/admin/sys/dao"
 	"matuto-base/src/app/admin/sys/model"
-	"matuto-base/src/app/admin/sys/service/post/view"
 	"matuto-base/src/common"
+	"matuto-base/src/utils/convert"
 )
 
 type PostService struct {
 	sysPostDao dao.PostDao
-	viewUtils  view.PostViewUtils
 }
 
 // Create 创建Post记录
 // Author
-func (s *PostService) Create(sysPostView *view.PostView) error {
+func (s *PostService) Create(sysPostView *view2.PostView) error {
 	// 校验是否重复
 	if err := s.CheckPostCodeUnique(sysPostView.PostCode); err != nil {
 		return err
@@ -30,7 +30,7 @@ func (s *PostService) Create(sysPostView *view.PostView) error {
 	if err := s.CheckPostNameUnique(sysPostView.PostName); err != nil {
 		return err
 	}
-	if err, sysPost := s.viewUtils.View2Data(sysPostView); err != nil {
+	if err, sysPost := convert.View2Data[view2.PostView, model.Post](sysPostView); err != nil {
 		return err
 	} else {
 		return s.sysPostDao.Create(*sysPost)
@@ -58,7 +58,7 @@ func (s *PostService) DeleteByIds(ids []string) error {
 
 // Update 更新Post记录
 // Author
-func (s *PostService) Update(id string, sysPostView *view.PostView) error {
+func (s *PostService) Update(id string, sysPostView *view2.PostView) error {
 	// 校验是否重复
 	if err := s.CheckPostCodeUnique(sysPostView.PostCode); err != nil {
 		return err
@@ -67,7 +67,7 @@ func (s *PostService) Update(id string, sysPostView *view.PostView) error {
 		return err
 	}
 	sysPostView.Id = id
-	if err, sysPost := s.viewUtils.View2Data(sysPostView); err != nil {
+	if err, sysPost := convert.View2Data[view2.PostView, model.Post](sysPostView); err != nil {
 		return err
 	} else {
 		return s.sysPostDao.Update(*sysPost)
@@ -76,7 +76,7 @@ func (s *PostService) Update(id string, sysPostView *view.PostView) error {
 
 // Get 根据id获取Post记录
 // Author
-func (s *PostService) Get(id string) (err error, sysPostView *view.PostView) {
+func (s *PostService) Get(id string) (err error, sysPostView *view2.PostView) {
 	if id == "" {
 		return nil, nil
 	}
@@ -84,23 +84,23 @@ func (s *PostService) Get(id string) (err error, sysPostView *view.PostView) {
 	if err1 != nil {
 		return err1, nil
 	}
-	err, sysPostView = s.viewUtils.Data2View(sysPost)
+	err, sysPostView = convert.Data2View[view2.PostView, model.Post](sysPost)
 	return
 }
 
 // Page 分页获取Post记录
 // Author
-func (s *PostService) Page(pageInfo *view.PostPageView) (err error, res *common.PageInfo) {
+func (s *PostService) Page(pageInfo *view2.PostPageView) (err error, res *common.PageInfo) {
 	if err, res = s.sysPostDao.Page(pageInfo); err != nil {
 		return err, nil
 	}
-	return s.viewUtils.PageData2ViewList(res)
+	return convert.PageData2ViewList[view2.PostView, model.Post](res)
 }
 
 // List 获取Post列表
 // Author
-func (s *PostService) List(v *view.PostView) (err error, views []*view.PostView) {
-	err, data := s.viewUtils.View2Data(v)
+func (s *PostService) List(v *view2.PostView) (err error, views []*view2.PostView) {
+	err, data := convert.View2Data[view2.PostView, model.Post](v)
 	if err != nil {
 		return err, nil
 	}
@@ -108,7 +108,7 @@ func (s *PostService) List(v *view.PostView) (err error, views []*view.PostView)
 	if err, datas = s.sysPostDao.List(data); err != nil {
 		return err, nil
 	} else {
-		err, views = s.viewUtils.Data2ViewList(datas)
+		err, views = convert.Data2ViewList[view2.PostView, model.Post](datas)
 		return
 	}
 }
@@ -139,8 +139,8 @@ func (s *PostService) CheckPostNameUnique(postName string) error {
 	return nil
 }
 
-func (s *PostService) SelectPostAll() (err error, views []*view.PostView) {
-	err, views = s.List(&view.PostView{})
+func (s *PostService) SelectPostAll() (err error, views []*view2.PostView) {
+	err, views = s.List(&view2.PostView{})
 	return
 }
 
@@ -156,11 +156,11 @@ func (s *PostService) SelectPostIdListByUserId(userId string) (err error, ids []
 }
 
 // SelectPostListByUserId 根据用户ID查询岗位
-func (s *PostService) SelectPostListByUserId(userId string) (err error, views []*view.PostView) {
+func (s *PostService) SelectPostListByUserId(userId string) (err error, views []*view2.PostView) {
 	err, dataList := s.sysPostDao.SelectPostListByUserId(userId)
 	if err != nil {
 		return err, nil
 	}
-	err, views = s.viewUtils.Data2ViewList(dataList)
+	err, views = convert.Data2ViewList[view2.PostView, model.Post](dataList)
 	return
 }

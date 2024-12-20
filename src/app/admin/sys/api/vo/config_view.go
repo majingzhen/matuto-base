@@ -4,7 +4,7 @@
 // @File: config
 // @version 1.0.0
 // @create 2023-08-21 14:20:37
-package view
+package vo
 
 import "matuto-base/src/common"
 

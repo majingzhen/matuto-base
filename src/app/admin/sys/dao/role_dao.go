@@ -8,8 +8,8 @@ package dao
 
 import (
 	"gorm.io/gorm"
+	"matuto-base/src/app/admin/sys/api/vo"
 	"matuto-base/src/app/admin/sys/model"
-	"matuto-base/src/app/admin/sys/service/role/view"
 	"matuto-base/src/common"
 	"matuto-base/src/common/constants"
 	"matuto-base/src/global"
@@ -56,7 +56,7 @@ func (dao *RoleDao) Get(id string) (err error, sysRole *model.Role) {
 
 // Page 分页获取Role记录
 // Author
-func (dao *RoleDao) Page(param *view.RolePageView) (err error, page *common.PageInfo) {
+func (dao *RoleDao) Page(param *vo.RolePageView) (err error, page *common.PageInfo) {
 	// 创建model
 	db := global.GormDao.Table("sys_role r")
 	db.Select("distinct r.id, r.role_name, r.role_key, r.role_sort, r.data_scope, r.menu_check_strictly, r.dept_check_strictly,r.status, r.create_time, r.remark ")

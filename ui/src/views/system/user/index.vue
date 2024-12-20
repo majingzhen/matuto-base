@@ -386,7 +386,7 @@ export default {
       form: {},
       defaultProps: {
         children: "children",
-        label: "label"
+        label: "deptName"
       },
       // 用户导入参数
       upload: {

@@ -4,7 +4,7 @@
 // @File: dept
 // @version 1.0.0
 // @create 2023-08-21 10:27:01
-package view
+package vo
 
 // DeptView 结构体
 
@@ -27,7 +27,7 @@ type DeptView struct {
 
 type DeptTreeView struct {
 	Id       string          `json:"id" form:"id"`
-	Label    string          `json:"label" form:"label"`
+	DeptName string          `json:"deptName" form:"deptName"`
 	ParentId string          `json:"parentId" form:"parentId"`
 	Children []*DeptTreeView `json:"children" form:"children"`
 }

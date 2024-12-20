@@ -9,10 +9,10 @@ package api
 import (
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
+	"matuto-base/src/app/admin/sys/api/vo"
 	"matuto-base/src/app/admin/sys/service/config"
-	"matuto-base/src/app/admin/sys/service/config/view"
 	"matuto-base/src/common/basic"
-	response "matuto-base/src/common/response"
+	"matuto-base/src/common/response"
 	"matuto-base/src/global"
 	"matuto-base/src/utils"
 	"strings"
@@ -27,7 +27,7 @@ type ConfigApi struct {
 // @Summary 创建Config
 // @Router /config/create [post]
 func (api *ConfigApi) Create(c *gin.Context) {
-	var configView view.ConfigView
+	var configView vo.ConfigView
 	_ = c.ShouldBindJSON(&configView)
 	// 判断是否重复
 	if err, value := api.configService.SelectConfigByKey(configView.ConfigKey); err != nil {
@@ -69,7 +69,7 @@ func (api *ConfigApi) Delete(c *gin.Context) {
 // @Summary 更新Config
 // @Router /config/update [put]
 func (api *ConfigApi) Update(c *gin.Context) {
-	var configView view.ConfigView
+	var configView vo.ConfigView
 	_ = c.ShouldBindJSON(&configView)
 	id := configView.Id
 	if id == "" {
@@ -113,7 +113,7 @@ func (api *ConfigApi) Get(c *gin.Context) {
 // @Summary 分页获取Config列表
 // @Router /config/page [get]
 func (api *ConfigApi) Page(c *gin.Context) {
-	var pageInfo view.ConfigPageView
+	var pageInfo vo.ConfigPageView
 	// 绑定查询参数到 pageInfo
 	if err := c.ShouldBindQuery(&pageInfo); err != nil {
 		response.FailWithMessage("获取分页数据解析失败!", c)
@@ -131,7 +131,7 @@ func (api *ConfigApi) Page(c *gin.Context) {
 // @Summary 获取Config列表
 // @Router /config/list [get]
 func (api *ConfigApi) List(c *gin.Context) {
-	var view view.ConfigView
+	var view vo.ConfigView
 	// 绑定查询参数到 view对象
 	if err := c.ShouldBindQuery(&view); err != nil {
 		response.FailWithMessage("获取参数解析失败!", c)

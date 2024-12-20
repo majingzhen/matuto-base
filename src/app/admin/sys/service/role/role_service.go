@@ -9,20 +9,20 @@ package role
 import (
 	"errors"
 	"fmt"
-	"gorm.io/gorm"
+	"matuto-base/src/app/admin/sys/api/vo"
 	"matuto-base/src/app/admin/sys/dao"
 	"matuto-base/src/app/admin/sys/model"
-	"matuto-base/src/app/admin/sys/service/role/view"
-	userView "matuto-base/src/app/admin/sys/service/user/view"
 	"matuto-base/src/common"
 	"matuto-base/src/common/constants"
 	"matuto-base/src/framework/aspect"
 	"matuto-base/src/global"
+	"matuto-base/src/utils/convert"
+
+	"gorm.io/gorm"
 )
 
 type RoleService struct {
 	sysRoleDao  dao.RoleDao
-	viewUtils   view.RoleViewUtils
 	roleMenuDao dao.RoleMenuDao
 	roleDeptDao dao.RoleDeptDao
 	userRoleDao dao.UserRoleDao
@@ -30,9 +30,9 @@ type RoleService struct {
 
 // Create 创建Role记录
 // Author
-func (s *RoleService) Create(sysRoleView *view.RoleView) (err error) {
+func (s *RoleService) Create(sysRoleView *vo.RoleView) (err error) {
 
-	err1, sysRole := s.viewUtils.View2Data(sysRoleView)
+	err1, sysRole := convert.View2Data[vo.RoleView, model.Role](sysRoleView)
 	if err1 != nil {
 		return err1
 	}
@@ -60,7 +60,7 @@ func (s *RoleService) Delete(id string) (err error) {
 
 // DeleteByIds 批量删除Role记录
 // Author
-func (s *RoleService) DeleteByIds(ids []string, loginUser *userView.UserView) (err error) {
+func (s *RoleService) DeleteByIds(ids []string, loginUser *vo.UserView) (err error) {
 	for _, id := range ids {
 		if id == constants.SYSTEM_ROLE_ADMIN_ID {
 			return errors.New("不允许删除超级管理员角色")
@@ -101,9 +101,9 @@ func (s *RoleService) DeleteByIds(ids []string, loginUser *userView.UserView) (e
 
 // Update 更新Role记录
 // Author
-func (s *RoleService) Update(id string, sysRoleView *view.RoleView) (err error) {
+func (s *RoleService) Update(id string, sysRoleView *vo.RoleView) (err error) {
 	sysRoleView.Id = id
-	err1, sysRole := s.viewUtils.View2Data(sysRoleView)
+	err1, sysRole := convert.View2Data[vo.RoleView, model.Role](sysRoleView)
 	if err1 != nil {
 		return err1
 	}
@@ -142,7 +142,7 @@ func (s *RoleService) insertRoleMenu(tx *gorm.DB, id string, ids []string) error
 
 // Get 根据id获取Role记录
 // Author
-func (s *RoleService) Get(id string) (err error, sysRoleView *view.RoleView) {
+func (s *RoleService) Get(id string) (err error, sysRoleView *vo.RoleView) {
 	if id == "" {
 		return nil, nil
 	}
@@ -150,7 +150,7 @@ func (s *RoleService) Get(id string) (err error, sysRoleView *view.RoleView) {
 	if err1 != nil {
 		return err1, nil
 	}
-	err2, sysRoleView := s.viewUtils.Data2View(sysRole)
+	err2, sysRoleView := convert.Data2View[vo.RoleView, model.Role](sysRole)
 	if err2 != nil {
 		return err2, nil
 	}
@@ -159,18 +159,18 @@ func (s *RoleService) Get(id string) (err error, sysRoleView *view.RoleView) {
 
 // Page 分页获取Role记录
 // Author
-func (s *RoleService) Page(pageInfo *view.RolePageView, sysUserView *userView.UserView) (err error, res *common.PageInfo) {
+func (s *RoleService) Page(pageInfo *vo.RolePageView, sysUserView *vo.UserView) (err error, res *common.PageInfo) {
 	pageInfo.DataScopeSql = aspect.DataScopeFilter(sysUserView, "d", "u", "")
 	if err, res = s.sysRoleDao.Page(pageInfo); err != nil {
 		return err, res
 	}
-	return s.viewUtils.PageData2ViewList(res)
+	return convert.PageData2ViewList[vo.RoleView, model.Role](res)
 }
 
 // List 获取Role列表
 // Author
-func (s *RoleService) List(v *view.RoleView, loginUser *userView.UserView) (err error, views []*view.RoleView) {
-	err, data := s.viewUtils.View2Data(v)
+func (s *RoleService) List(v *vo.RoleView, loginUser *vo.UserView) (err error, views []*vo.RoleView) {
+	err, data := convert.View2Data[vo.RoleView, model.Role](v)
 	if err != nil {
 		return err, nil
 	}
@@ -179,13 +179,13 @@ func (s *RoleService) List(v *view.RoleView, loginUser *userView.UserView) (err 
 	if err, datas = s.sysRoleDao.List(data); err != nil {
 		return err, nil
 	} else {
-		err, views = s.viewUtils.Data2ViewList(datas)
+		err, views = convert.Data2ViewList[vo.RoleView, model.Role](datas)
 		return
 	}
 }
 
 // GetRoleByUserId 根据用户获取角色集合
-func (s *RoleService) GetRoleByUserId(user *userView.UserView) (err error, roleNames []string) {
+func (s *RoleService) GetRoleByUserId(user *vo.UserView) (err error, roleNames []string) {
 	is := user.Id == constants.SYSTEM_ADMIN_ID
 	if is {
 		roleNames = append(roleNames, "admin")
@@ -197,29 +197,29 @@ func (s *RoleService) GetRoleByUserId(user *userView.UserView) (err error, roleN
 		for _, role := range roles {
 			roleNames = append(roleNames, role.RoleKey)
 		}
-		_, user.Roles = s.viewUtils.Data2ViewList(roles)
+		_, user.Roles = convert.Data2ViewList[vo.RoleView, model.Role](roles)
 	}
 	return nil, roleNames
 }
 
 // SelectRoleAll 查询所有角色
-func (s *RoleService) SelectRoleAll(loginUser *userView.UserView) (err error, roles []*view.RoleView) {
-	err, roles = s.List(&view.RoleView{}, loginUser)
+func (s *RoleService) SelectRoleAll(loginUser *vo.UserView) (err error, roles []*vo.RoleView) {
+	err, roles = s.List(&vo.RoleView{}, loginUser)
 	return
 }
 
 // SelectRolesByUserId 根据用户ID查询角色
-func (s *RoleService) SelectRolesByUserId(userId string) (err error, roles []*view.RoleView) {
+func (s *RoleService) SelectRolesByUserId(userId string) (err error, roles []*vo.RoleView) {
 	err1, datas := s.sysRoleDao.GetRoleByUserId(userId)
 	if err1 != nil {
 		return err1, nil
 	}
-	err, roles = s.viewUtils.Data2ViewList(datas)
+	err, roles = convert.Data2ViewList[vo.RoleView, model.Role](datas)
 	return
 }
 
 // AssembleRolesByUserId 根据用户ID查询授权角色
-func (s *RoleService) AssembleRolesByUserId(userId string) (error, []*view.RoleView) {
+func (s *RoleService) AssembleRolesByUserId(userId string) (error, []*vo.RoleView) {
 	if err, roles := s.SelectRoleAll(nil); err != nil {
 		return err, nil
 	} else {
@@ -264,7 +264,7 @@ func (s *RoleService) CheckRoleKeyUnique(roleKey string, id string) error {
 }
 
 // CheckRoleDataScope 校验角色是否允许操作
-func (s *RoleService) CheckRoleDataScope(id string, loginUser *userView.UserView) error {
+func (s *RoleService) CheckRoleDataScope(id string, loginUser *vo.UserView) error {
 	if loginUser.Id != constants.SYSTEM_ADMIN_ID {
 		role := &model.Role{
 			Id:           id,
@@ -279,8 +279,8 @@ func (s *RoleService) CheckRoleDataScope(id string, loginUser *userView.UserView
 }
 
 // UpdateStatus 更新状态
-func (s *RoleService) UpdateStatus(view *view.RoleView) error {
-	if err, data := s.viewUtils.View2Data(view); err != nil {
+func (s *RoleService) UpdateStatus(roleView *vo.RoleView) error {
+	if err, data := convert.View2Data[vo.RoleView, model.Role](roleView); err != nil {
 		return err
 	} else {
 		return s.sysRoleDao.Update(global.GormDao, data)
@@ -288,8 +288,8 @@ func (s *RoleService) UpdateStatus(view *view.RoleView) error {
 }
 
 // AuthDataScope 数据权限
-func (s *RoleService) AuthDataScope(v *view.RoleView) error {
-	if err, data := s.viewUtils.View2Data(v); err != nil {
+func (s *RoleService) AuthDataScope(v *vo.RoleView) error {
+	if err, data := convert.View2Data[vo.RoleView, model.Role](v); err != nil {
 		return err
 	} else {
 		tx := global.GormDao.Begin()
@@ -316,7 +316,7 @@ func (s *RoleService) AuthDataScope(v *view.RoleView) error {
 }
 
 // CancelAuthUser 取消用户授权
-func (s *RoleService) CancelAuthUser(v *view.UserRoleView) error {
+func (s *RoleService) CancelAuthUser(v *vo.UserRoleView) error {
 	return s.userRoleDao.DeleteUserRoleInfo(v.UserId, v.RoleId)
 }
 

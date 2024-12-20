@@ -3,8 +3,8 @@ package basic
 import (
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
+	"matuto-base/src/app/admin/sys/api/vo"
 	"matuto-base/src/app/admin/sys/service/user"
-	"matuto-base/src/app/admin/sys/service/user/view"
 	"matuto-base/src/global"
 )
 
@@ -13,7 +13,7 @@ type BasicApi struct {
 }
 
 // GetLoginUser 获取当前登录用户
-func (api *BasicApi) GetLoginUser(c *gin.Context) *view.UserView {
+func (api *BasicApi) GetLoginUser(c *gin.Context) *vo.UserView {
 	err, view := api.userService.Get(api.GetLoginUserId(c))
 	if err != nil {
 		global.Logger.Error("[获取登录用户] is error", zap.Error(err))

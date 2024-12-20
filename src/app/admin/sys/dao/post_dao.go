@@ -7,8 +7,8 @@
 package dao
 
 import (
+	"matuto-base/src/app/admin/sys/api/vo"
 	"matuto-base/src/app/admin/sys/model"
-	"matuto-base/src/app/admin/sys/service/post/view"
 	"matuto-base/src/common"
 	"matuto-base/src/global"
 )
@@ -47,7 +47,7 @@ func (dao *PostDao) Get(id string) (err error, sysPost *model.Post) {
 
 // Page 分页获取Post记录
 // Author
-func (dao *PostDao) Page(param *view.PostPageView) (err error, page *common.PageInfo) {
+func (dao *PostDao) Page(param *vo.PostPageView) (err error, page *common.PageInfo) {
 	// 创建model
 	db := global.GormDao.Model(&model.Post{})
 	if param.PostName != "" {

@@ -8,8 +8,8 @@ package dao
 
 import (
 	"gorm.io/gorm"
+	"matuto-base/src/app/admin/sys/api/vo"
 	"matuto-base/src/app/admin/sys/model"
-	"matuto-base/src/app/admin/sys/service/user/view"
 	"matuto-base/src/common"
 	"matuto-base/src/global"
 )
@@ -54,7 +54,7 @@ func (dao *UserDao) Get(id string) (err error, sysUser *model.User) {
 
 // Page 分页获取User记录
 // Author
-func (dao *UserDao) Page(param *view.UserPageView) (err error, page *common.PageInfo) {
+func (dao *UserDao) Page(param *vo.UserPageView) (err error, page *common.PageInfo) {
 	// 创建model
 	db := global.GormDao.Table("sys_user u")
 	db.Select("distinct u.id, u.dept_id, u.nick_name, u.user_name, u.email, u.avatar, u.phone_number, u.sex, u.status, u.login_ip, u.login_date, u.create_by, u.create_time, u.remark")
@@ -157,7 +157,7 @@ func (dao *UserDao) SelectByField(fieldName string, value string) (error, *model
 }
 
 // SelectAllocatedList 获取已分配用户角色的用户列表
-func (dao *UserDao) SelectAllocatedList(param *view.UserPageView) (err error, page *common.PageInfo) {
+func (dao *UserDao) SelectAllocatedList(param *vo.UserPageView) (err error, page *common.PageInfo) {
 	// 创建model
 	db := global.GormDao.Table("sys_user u")
 	db.Select("distinct u.id, u.dept_id, u.user_name, u.nick_name, u.email, u.phone_number, u.status, u.create_time")
@@ -190,7 +190,7 @@ func (dao *UserDao) SelectAllocatedList(param *view.UserPageView) (err error, pa
 }
 
 // SelectUnallocatedList 获取未分配用户角色的用户列表
-func (dao *UserDao) SelectUnallocatedList(param *view.UserPageView) (err error, page *common.PageInfo) {
+func (dao *UserDao) SelectUnallocatedList(param *vo.UserPageView) (err error, page *common.PageInfo) {
 	// 创建model
 	db := global.GormDao.Table("sys_user u")
 	db.Select("distinct u.id, u.dept_id, u.user_name, u.nick_name, u.email, u.phone_number, u.status, u.create_time")

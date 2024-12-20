@@ -8,25 +8,24 @@ package menu
 
 import (
 	"errors"
+	"matuto-base/src/app/admin/sys/api/vo"
 	"matuto-base/src/app/admin/sys/dao"
-	model2 "matuto-base/src/app/admin/sys/model"
-	"matuto-base/src/app/admin/sys/service/menu/view"
+	"matuto-base/src/app/admin/sys/model"
 	"matuto-base/src/app/admin/sys/service/role"
-	userView "matuto-base/src/app/admin/sys/service/user/view"
 	"matuto-base/src/common/constants"
 	"matuto-base/src/utils"
+	"matuto-base/src/utils/convert"
 	"strings"
 )
 
 type MenuService struct {
 	sysMenuDao  dao.MenuDao
-	viewUtils   view.MenuViewUtils
 	roleService role.RoleService
 }
 
 // Create 创建Menu记录
 // Author
-func (s *MenuService) Create(view *view.MenuView) error {
+func (s *MenuService) Create(view *vo.MenuView) error {
 	// 判断是否重复
 	if err, value := s.CheckMenuNameUniqueAll(view); err != nil {
 		return err
@@ -38,7 +37,7 @@ func (s *MenuService) Create(view *view.MenuView) error {
 	if view.IsFrame == constants.YES_FRAME && !utils.IsHttp(view.Path) {
 		return errors.New("外链必须以http://或者https://开头")
 	}
-	if err1, sysMenu := s.viewUtils.View2Data(view); err1 != nil {
+	if err1, sysMenu := convert.View2Data[vo.MenuView, model.Menu](view); err1 != nil {
 		return err1
 	} else {
 		return s.sysMenuDao.Create(*sysMenu)
@@ -69,7 +68,7 @@ func (s *MenuService) Delete(id string) error {
 
 // Update 更新Menu记录
 // Author
-func (s *MenuService) Update(id string, view *view.MenuView) (err error) {
+func (s *MenuService) Update(id string, view *vo.MenuView) (err error) {
 	// 判断是否重复
 	if err, value := s.CheckMenuNameUniqueAll(view); err != nil {
 		return err
@@ -85,7 +84,7 @@ func (s *MenuService) Update(id string, view *view.MenuView) (err error) {
 		return errors.New("上级菜单不能选择自己")
 	}
 	view.Id = id
-	err1, sysMenu := s.viewUtils.View2Data(view)
+	err1, sysMenu := convert.View2Data[vo.MenuView, model.Menu](view)
 	if err1 != nil {
 		return err1
 	}
@@ -95,7 +94,7 @@ func (s *MenuService) Update(id string, view *view.MenuView) (err error) {
 
 // Get 根据id获取Menu记录
 // Author
-func (s *MenuService) Get(id string) (err error, view *view.MenuView) {
+func (s *MenuService) Get(id string) (err error, view *vo.MenuView) {
 	if id == "" {
 		return nil, nil
 	}
@@ -103,7 +102,7 @@ func (s *MenuService) Get(id string) (err error, view *view.MenuView) {
 	if err1 != nil {
 		return err1, nil
 	}
-	err2, view := s.viewUtils.Data2View(sysMenu)
+	err2, view := convert.Data2View[vo.MenuView, model.Menu](sysMenu)
 	if err2 != nil {
 		return err2, nil
 	}
@@ -111,7 +110,7 @@ func (s *MenuService) Get(id string) (err error, view *view.MenuView) {
 }
 
 // GetMenuPermission 根据用户id获取菜单权限
-func (s *MenuService) GetMenuPermission(user *userView.UserView) (err error, perms []string) {
+func (s *MenuService) GetMenuPermission(user *vo.UserView) (err error, perms []string) {
 	is := user.Id == constants.SYSTEM_ADMIN_ID
 	// 管理员拥有所有权限
 	if is {
@@ -139,8 +138,8 @@ func (s *MenuService) GetMenuPermission(user *userView.UserView) (err error, per
 }
 
 // GetMenuTreeByUserId 根据用户id获取菜单树
-func (s *MenuService) GetMenuTreeByUserId(userId string) (err error, menuTree []*view.RouterView) {
-	var menus []*model2.Menu
+func (s *MenuService) GetMenuTreeByUserId(userId string) (err error, menuTree []*vo.RouterView) {
+	var menus []*model.Menu
 	itIs := userId == constants.SYSTEM_ADMIN_ID
 	if itIs {
 		err, menus = s.sysMenuDao.SelectMenuAll()
@@ -150,35 +149,35 @@ func (s *MenuService) GetMenuTreeByUserId(userId string) (err error, menuTree []
 	if err != nil {
 		return err, nil
 	}
-	_, viewList := s.viewUtils.Data2ViewList(menus)
+	_, viewList := convert.Data2ViewList[vo.MenuView, model.Menu](menus)
 
 	tree := buildTree(viewList, "0")
 	return err, tree
 }
 
 // SelectMenuList 查询菜单列表
-func (s *MenuService) SelectMenuList(v *view.MenuView, userId string) (err error, menus []*view.MenuView) {
-	err, data := s.viewUtils.View2Data(v)
+func (s *MenuService) SelectMenuList(v *vo.MenuView, userId string) (err error, menus []*vo.MenuView) {
+	err, data := convert.View2Data[vo.MenuView, model.Menu](v)
 	if err != nil {
 		return err, nil
 	}
-	var dataMenus []*model2.Menu
+	var dataMenus []*model.Menu
 	itIs := userId == constants.SYSTEM_ADMIN_ID
 	if itIs {
 		err, dataMenus = s.sysMenuDao.SelectMenuList(data)
 	} else {
 		err, dataMenus = s.sysMenuDao.SelectMenuListByUserId(data, userId)
 	}
-	err, menus = s.viewUtils.Data2ViewList(dataMenus)
+	err, menus = convert.Data2ViewList[vo.MenuView, model.Menu](dataMenus)
 	return
 }
 
 // 递归函数，将MenuView转换为MenuNode
-func buildTree(menuList []*view.MenuView, parentId string) []*view.RouterView {
-	var tree []*view.RouterView
+func buildTree(menuList []*vo.MenuView, parentId string) []*vo.RouterView {
+	var tree []*vo.RouterView
 	for _, menu := range menuList {
 		if menu.ParentId == parentId {
-			meta := &view.MetaView{
+			meta := &vo.MetaView{
 				Title:   menu.MenuName,
 				Icon:    menu.Icon,
 				NoCache: 1 == menu.IsCache,
@@ -187,7 +186,7 @@ func buildTree(menuList []*view.MenuView, parentId string) []*view.RouterView {
 			if utils.IsHttp(menu.Path) {
 				meta.Link = menu.Path
 			}
-			node := &view.RouterView{
+			node := &vo.RouterView{
 				Hidden:    "1" == menu.Visible,
 				Name:      getRouterName(*menu),
 				Path:      getRouterPath(*menu),
@@ -202,7 +201,7 @@ func buildTree(menuList []*view.MenuView, parentId string) []*view.RouterView {
 				node.Children = views
 			} else if isMenuFrame(*menu) {
 				node.Meta = nil
-				tempMeta := &view.MetaView{
+				tempMeta := &vo.MetaView{
 					Title:   menu.MenuName,
 					Icon:    menu.Icon,
 					NoCache: 1 == menu.IsCache,
@@ -211,8 +210,8 @@ func buildTree(menuList []*view.MenuView, parentId string) []*view.RouterView {
 				if utils.IsHttp(menu.Path) {
 					tempMeta.Link = menu.Path
 				}
-				var childrenList []*view.RouterView
-				children := &view.RouterView{
+				var childrenList []*vo.RouterView
+				children := &vo.RouterView{
 					Path:      menu.Path,
 					Component: menu.Component,
 					Name:      strings.Title(menu.Path),
@@ -222,16 +221,16 @@ func buildTree(menuList []*view.MenuView, parentId string) []*view.RouterView {
 				childrenList = append(childrenList, children)
 				node.Children = childrenList
 			} else if menu.ParentId == "0" && isInnerLink(*menu) {
-				tempMeta := &view.MetaView{
+				tempMeta := &vo.MetaView{
 					Title: menu.MenuName,
 					Icon:  menu.Icon,
 				}
 				node.Meta = tempMeta
 				node.Path = "/"
-				var childrenList []*view.RouterView
+				var childrenList []*vo.RouterView
 				routerPath := innerLinkReplaceEach(menu.Path)
 
-				childMeta := &view.MetaView{
+				childMeta := &vo.MetaView{
 					Title: menu.MenuName,
 					Icon:  menu.Icon,
 				}
@@ -240,7 +239,7 @@ func buildTree(menuList []*view.MenuView, parentId string) []*view.RouterView {
 				if utils.IsHttp(menu.Path) {
 					childMeta.Link = menu.Path
 				}
-				children := &view.RouterView{
+				children := &vo.RouterView{
 					Path:      routerPath,
 					Component: constants.INNER_LINK,
 					Name:      strings.Title(routerPath),
@@ -257,7 +256,7 @@ func buildTree(menuList []*view.MenuView, parentId string) []*view.RouterView {
 }
 
 // 获取组件信息
-func getComponent(menu view.MenuView) string {
+func getComponent(menu vo.MenuView) string {
 	component := constants.LAYOUT
 	if menu.Component != "" && !isMenuFrame(menu) {
 		component = menu.Component
@@ -270,12 +269,12 @@ func getComponent(menu view.MenuView) string {
 }
 
 // 是否为parent_view组件
-func isParentView(menu view.MenuView) bool {
+func isParentView(menu vo.MenuView) bool {
 	return menu.ParentId != "0" && menu.MenuType == constants.MENU_TYPE_DIR
 }
 
 // 获取路由地址
-func getRouterPath(menu view.MenuView) string {
+func getRouterPath(menu vo.MenuView) string {
 	routerPath := menu.Path
 	// 内链打开外网方式
 	if menu.ParentId != "0" && isInnerLink(menu) {
@@ -296,12 +295,12 @@ func innerLinkReplaceEach(path string) string {
 }
 
 // isInnerLink 是否为内链组件
-func isInnerLink(menu view.MenuView) bool {
+func isInnerLink(menu vo.MenuView) bool {
 	return menu.IsFrame == constants.NO_FRAME && utils.IsHttp(menu.Path)
 }
 
 // 获取组件名称
-func getRouterName(menu view.MenuView) string {
+func getRouterName(menu vo.MenuView) string {
 	routerName := strings.Title(menu.Path)
 	// 非外链并且是一级目录（类型为目录）
 	if isMenuFrame(menu) {
@@ -311,13 +310,13 @@ func getRouterName(menu view.MenuView) string {
 }
 
 // 是否为外链
-func isMenuFrame(menu view.MenuView) bool {
+func isMenuFrame(menu vo.MenuView) bool {
 	return menu.ParentId == "0" && constants.MENU_TYPE_MENU == menu.MenuType && menu.IsFrame == constants.YES_FRAME
 }
 
 // CheckMenuNameUniqueAll 判断名称是否重复
-func (s *MenuService) CheckMenuNameUniqueAll(menu *view.MenuView) (err error, isUnique bool) {
-	err, data := s.viewUtils.View2Data(menu)
+func (s *MenuService) CheckMenuNameUniqueAll(menu *vo.MenuView) (err error, isUnique bool) {
+	err, data := convert.View2Data[vo.MenuView, model.Menu](menu)
 	if err != nil {
 		return err, false
 	}
@@ -343,19 +342,19 @@ func (s *MenuService) SelectMenuListByRoleId(id string) (error, []string) {
 }
 
 // BuildMenuTreeSelect 构建菜单树
-func (s *MenuService) BuildMenuTreeSelect(menuViews []*view.MenuView) []*view.MenuTree {
-	menuMap := make(map[string]*view.MenuTree)
+func (s *MenuService) BuildMenuTreeSelect(menuViews []*vo.MenuView) []*vo.MenuTree {
+	menuMap := make(map[string]*vo.MenuTree)
 
 	// 先创建所有的节点
 	for _, menuView := range menuViews {
-		menuMap[menuView.Id] = &view.MenuTree{
+		menuMap[menuView.Id] = &vo.MenuTree{
 			Id:    menuView.Id,
 			Label: menuView.MenuName,
 		}
 	}
 
 	// 构建树结构
-	var rootNodes []*view.MenuTree
+	var rootNodes []*vo.MenuTree
 	for _, menuView := range menuViews {
 		menu := menuMap[menuView.Id]
 		if menuView.ParentId == "0" {

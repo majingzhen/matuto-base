@@ -9,8 +9,8 @@ package api
 import (
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
+	"matuto-base/src/app/admin/sys/api/vo"
 	"matuto-base/src/app/admin/sys/service/dict_type"
-	"matuto-base/src/app/admin/sys/service/dict_type/view"
 	"matuto-base/src/common/basic"
 	response "matuto-base/src/common/response"
 	"matuto-base/src/global"
@@ -27,7 +27,7 @@ type DictTypeApi struct {
 // @Summary 创建DictType
 // @Router /dictType/create [post]
 func (api *DictTypeApi) Create(c *gin.Context) {
-	var dictTypeView view.DictTypeView
+	var dictTypeView vo.DictTypeView
 	_ = c.ShouldBindJSON(&dictTypeView)
 	dictTypeView.Id = utils.GenUID()
 	dictTypeView.CreateTime = utils.GetCurTimeStr()
@@ -59,7 +59,7 @@ func (api *DictTypeApi) Delete(c *gin.Context) {
 // @Summary 更新DictType
 // @Router /dictType/update [put]
 func (api *DictTypeApi) Update(c *gin.Context) {
-	var dictTypeView view.DictTypeView
+	var dictTypeView vo.DictTypeView
 	_ = c.ShouldBindJSON(&dictTypeView)
 	id := dictTypeView.Id
 	if id == "" {
@@ -93,7 +93,7 @@ func (api *DictTypeApi) Get(c *gin.Context) {
 // @Summary 分页获取DictType列表
 // @Router /dictType/list [get]
 func (api *DictTypeApi) Page(c *gin.Context) {
-	var pageInfo view.DictTypePageView
+	var pageInfo vo.DictTypePageView
 	// 绑定查询参数到 pageInfo
 	if err := c.ShouldBindQuery(&pageInfo); err != nil {
 		response.FailWithMessage("获取分页数据解析失败!", c)

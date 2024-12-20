@@ -4,7 +4,7 @@
 // @File: dict_type
 // @version 1.0.0
 // @create 2023-08-18 13:41:26
-package view
+package vo
 
 import "matuto-base/src/common"
 

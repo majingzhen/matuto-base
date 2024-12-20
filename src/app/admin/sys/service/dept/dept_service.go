@@ -8,36 +8,36 @@ package dept
 
 import (
 	"errors"
-	"gorm.io/gorm"
+	"matuto-base/src/app/admin/sys/api/vo"
 	"matuto-base/src/app/admin/sys/dao"
 	"matuto-base/src/app/admin/sys/model"
-	"matuto-base/src/app/admin/sys/service/dept/view"
 	"matuto-base/src/app/admin/sys/service/role"
 	"matuto-base/src/app/admin/sys/service/user/extend"
-	userView "matuto-base/src/app/admin/sys/service/user/view"
 	"matuto-base/src/common/constants"
 	"matuto-base/src/framework/aspect"
 	"matuto-base/src/global"
+	"matuto-base/src/utils/convert"
 	"strings"
+
+	"gorm.io/gorm"
 )
 
 type DeptService struct {
 	deptDao     dao.DeptDao
-	viewUtils   view.DeptViewUtils
 	userService extend.UserExtendService
 	roleService role.RoleService
 }
 
 // Create 创建Dept记录
 // Author
-func (s *DeptService) Create(deptView *view.DeptView) (err error) {
+func (s *DeptService) Create(view *vo.DeptView) (err error) {
 	// 判断名称是否重复
-	err, exist := s.deptDao.CheckDeptNameALL(deptView.DeptName, deptView.ParentId)
+	err, exist := s.deptDao.CheckDeptNameALL(view.DeptName, view.ParentId)
 	if exist {
 		return errors.New("部门名称已经存在")
 	}
 	// 根据前端传入的数据创建model
-	if err1, dept := s.viewUtils.View2Data(deptView); err1 != nil {
+	if err1, dept := convert.View2Data[vo.DeptView, model.Dept](view); err1 != nil {
 		return err1
 	} else {
 		if err1, deptView := s.Get(dept.ParentId); err1 != nil {
@@ -77,8 +77,8 @@ func (s *DeptService) Delete(id string) error {
 
 // Update 更新Dept记录
 // Author
-func (s *DeptService) Update(id string, deptView *view.DeptView) (err error) {
-	var oldDept *view.DeptView
+func (s *DeptService) Update(id string, deptView *vo.DeptView) (err error) {
+	var oldDept *vo.DeptView
 	// 判断是否存在
 	if err, oldDept = s.Get(id); err != nil {
 		return errors.New("部门不存在")
@@ -92,7 +92,7 @@ func (s *DeptService) Update(id string, deptView *view.DeptView) (err error) {
 		return errors.New("上级部门不能是自己")
 	}
 	deptView.Id = id
-	if err1, dept := s.viewUtils.View2Data(deptView); err1 != nil {
+	if err1, dept := convert.View2Data[vo.DeptView, model.Dept](deptView); err1 != nil {
 		return err1
 	} else {
 		if err1, newParentDept := s.Get(dept.ParentId); err1 != nil {
@@ -140,7 +140,7 @@ func (s *DeptService) updateDeptChildren(tx *gorm.DB, id, newAncestors, oldAnces
 
 // Get 根据id获取Dept记录
 // Author
-func (s *DeptService) Get(id string) (err error, deptView *view.DeptView) {
+func (s *DeptService) Get(id string) (err error, deptView *vo.DeptView) {
 	if id == "" {
 		return nil, nil
 	}
@@ -148,13 +148,13 @@ func (s *DeptService) Get(id string) (err error, deptView *view.DeptView) {
 	if err1 != nil {
 		return err1, nil
 	}
-	err, deptView = s.viewUtils.Data2View(dept)
+	err, deptView = convert.Data2View[vo.DeptView, model.Dept](dept)
 	return err, deptView
 }
 
 // List 获取Dept列表
-func (s *DeptService) List(v *view.DeptView, userView *userView.UserView) (err error, views []*view.DeptView) {
-	err, data := s.viewUtils.View2Data(v)
+func (s *DeptService) List(v *vo.DeptView, userView *vo.UserView) (err error, views []*vo.DeptView) {
+	err, data := convert.View2Data[vo.DeptView, model.Dept](v)
 	if err != nil {
 		return err, nil
 	}
@@ -163,14 +163,14 @@ func (s *DeptService) List(v *view.DeptView, userView *userView.UserView) (err e
 	if err, datas = s.deptDao.List(data); err != nil {
 		return err, nil
 	} else {
-		err, views = s.viewUtils.Data2ViewList(datas)
+		err, views = convert.Data2ViewList[vo.DeptView, model.Dept](datas)
 		return
 	}
 }
 
 // SelectDeptTree 获取部门树
-func (s *DeptService) SelectDeptTree(v *view.DeptView, sysUserView *userView.UserView) (error, []*view.DeptTreeView) {
-	err, data := s.viewUtils.View2Data(v)
+func (s *DeptService) SelectDeptTree(v *vo.DeptView, sysUserView *vo.UserView) (error, []*vo.DeptTreeView) {
+	err, data := convert.View2Data[vo.DeptView, model.Dept](v)
 	if err != nil {
 		return err, nil
 	}
@@ -179,14 +179,13 @@ func (s *DeptService) SelectDeptTree(v *view.DeptView, sysUserView *userView.Use
 	if err, datas = s.deptDao.List(data); err != nil {
 		return err, nil
 	} else {
-		var trees []*view.DeptTreeView
-		if err, trees = s.viewUtils.Data2TreeList(datas); err != nil {
+		var trees []*vo.DeptTreeView
+		if err, trees = convert.Data2ViewList[vo.DeptTreeView, model.Dept](datas); err != nil {
 			return err, nil
 		} else {
 			deptTrees := getDeptTree(trees)
 			return nil, deptTrees
 		}
-
 	}
 }
 
@@ -200,8 +199,8 @@ func (s *DeptService) SelectDeptTreeByRole(id string) (error, []string) {
 }
 
 // getDeptTree 获取部门树
-func getDeptTree(departments []*view.DeptTreeView) []*view.DeptTreeView {
-	var rootDepts []*view.DeptTreeView
+func getDeptTree(departments []*vo.DeptTreeView) []*vo.DeptTreeView {
+	var rootDepts []*vo.DeptTreeView
 
 	// 遍历所有部门，找到根节点
 	for _, dept := range departments {
@@ -217,8 +216,8 @@ func getDeptTree(departments []*view.DeptTreeView) []*view.DeptTreeView {
 }
 
 // getChildren 获取所有子集部门
-func getChildren(parentId string, departments []*view.DeptTreeView) []*view.DeptTreeView {
-	var children []*view.DeptTreeView
+func getChildren(parentId string, departments []*vo.DeptTreeView) []*vo.DeptTreeView {
+	var children []*vo.DeptTreeView
 	// 遍历所有部门，找到指定父节点的子部门
 	for _, dept := range departments {
 		if dept.ParentId == parentId {

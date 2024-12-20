@@ -8,22 +8,22 @@ package config
 
 import (
 	"errors"
+	"matuto-base/src/app/admin/sys/api/vo"
 	"matuto-base/src/app/admin/sys/dao"
-	model2 "matuto-base/src/app/admin/sys/model"
-	"matuto-base/src/app/admin/sys/service/config/view"
+	"matuto-base/src/app/admin/sys/model"
 	"matuto-base/src/common"
 	"matuto-base/src/common/constants"
+	"matuto-base/src/utils/convert"
 )
 
 type ConfigService struct {
 	configDao dao.ConfigDao
-	viewUtils view.ConfigViewUtils
 }
 
 // Create 创建Config记录
 // Author
-func (s *ConfigService) Create(configView *view.ConfigView) error {
-	if err, config := s.viewUtils.View2Data(configView); err != nil {
+func (s *ConfigService) Create(configView *vo.ConfigView) error {
+	if err, config := convert.View2Data[vo.ConfigView, model.Config](configView); err != nil {
 		return err
 	} else {
 		return s.configDao.Create(*config)
@@ -49,9 +49,9 @@ func (s *ConfigService) DeleteByIds(ids []string) (err error) {
 
 // Update 更新Config记录
 // Author
-func (s *ConfigService) Update(id string, configView *view.ConfigView) (err error) {
+func (s *ConfigService) Update(id string, configView *vo.ConfigView) (err error) {
 	configView.Id = id
-	if err1, config := s.viewUtils.View2Data(configView); err1 != nil {
+	if err1, config := convert.View2Data[vo.ConfigView, model.Config](configView); err1 != nil {
 		return err1
 	} else {
 		return s.configDao.Update(*config)
@@ -60,7 +60,7 @@ func (s *ConfigService) Update(id string, configView *view.ConfigView) (err erro
 
 // Get 根据id获取Config记录
 // Author
-func (s *ConfigService) Get(id string) (err error, configView *view.ConfigView) {
+func (s *ConfigService) Get(id string) (err error, configView *vo.ConfigView) {
 	if id == "" {
 		return nil, nil
 	}
@@ -68,40 +68,40 @@ func (s *ConfigService) Get(id string) (err error, configView *view.ConfigView) 
 	if err1 != nil {
 		return err1, nil
 	}
-	err, configView = s.viewUtils.Data2View(config)
+	err, configView = convert.Data2View[vo.ConfigView, model.Config](config)
 	return
 }
 
 // Page 分页获取Config记录
 // Author
-func (s *ConfigService) Page(pageInfo *view.ConfigPageView) (err error, res *common.PageInfo) {
+func (s *ConfigService) Page(pageInfo *vo.ConfigPageView) (err error, res *common.PageInfo) {
 	err, res = s.configDao.Page(pageInfo)
 	if err != nil {
 		return err, nil
 	}
-	return s.viewUtils.PageData2ViewList(res)
+	return convert.PageData2ViewList[vo.ConfigView, model.Config](res)
 }
 
-func (s *ConfigService) List(v *view.ConfigView) (err error, views []*view.ConfigView) {
-	err, data := s.viewUtils.View2Data(v)
+func (s *ConfigService) List(v *vo.ConfigView) (err error, views []*vo.ConfigView) {
+	err, data := convert.View2Data[vo.ConfigView, model.Config](v)
 	if err != nil {
 		return err, nil
 	}
-	var datas []*model2.Config
+	var datas []*model.Config
 	if err, datas = s.configDao.List(data); err != nil {
 		return err, nil
 	} else {
-		err, views = s.viewUtils.Data2ViewList(datas)
+		err, views = convert.Data2ViewList[vo.ConfigView, model.Config](datas)
 		return
 	}
 }
 
 // SelectConfigByKey 根据key查询Config记录
-func (s *ConfigService) SelectConfigByKey(key string) (error, *view.ConfigView) {
+func (s *ConfigService) SelectConfigByKey(key string) (error, *vo.ConfigView) {
 	if err, config := s.configDao.SelectConfigByKey(key); err != nil {
 		return err, nil
 	} else {
-		if err, configView := s.viewUtils.Data2View(config); err != nil {
+		if err, configView := convert.Data2View[vo.ConfigView, model.Config](config); err != nil {
 			return err, nil
 		} else {
 			return nil, configView

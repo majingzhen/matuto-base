@@ -7,8 +7,8 @@
 package dao
 
 import (
+	"matuto-base/src/app/admin/sys/api/vo"
 	"matuto-base/src/app/admin/sys/model"
-	"matuto-base/src/app/admin/sys/service/dict_type/view"
 	"matuto-base/src/common"
 	"matuto-base/src/global"
 )
@@ -54,7 +54,7 @@ func (dao *DictTypeDao) Get(id string) (err error, sysDictType *model.DictType) 
 
 // Page 分页获取DictType记录
 // Author
-func (dao *DictTypeDao) Page(param *view.DictTypePageView) (err error, page *common.PageInfo) {
+func (dao *DictTypeDao) Page(param *vo.DictTypePageView) (err error, page *common.PageInfo) {
 	// 创建db
 	db := global.GormDao.Model(&model.DictType{})
 	// 如果有条件搜索 下方会自动创建搜索语句

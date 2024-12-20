@@ -7,8 +7,8 @@
 package dao
 
 import (
+	"matuto-base/src/app/admin/sys/api/vo"
 	"matuto-base/src/app/admin/sys/model"
-	"matuto-base/src/app/admin/sys/service/config/view"
 	"matuto-base/src/common"
 	"matuto-base/src/global"
 )
@@ -46,7 +46,7 @@ func (dao *ConfigDao) Get(id string) (err error, sysConfig *model.Config) {
 
 // Page 分页获取Config记录
 // Author
-func (dao *ConfigDao) Page(param *view.ConfigPageView) (err error, res *common.PageInfo) {
+func (dao *ConfigDao) Page(param *vo.ConfigPageView) (err error, res *common.PageInfo) {
 	// 创建db
 	db := global.GormDao.Model(&model.Config{})
 	// 如果有条件搜索 下方会自动创建搜索语句

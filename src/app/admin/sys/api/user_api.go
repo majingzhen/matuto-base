@@ -9,11 +9,10 @@ package api
 import (
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
+	"matuto-base/src/app/admin/sys/api/vo"
 	"matuto-base/src/app/admin/sys/service/post"
 	"matuto-base/src/app/admin/sys/service/role"
-	roleView "matuto-base/src/app/admin/sys/service/role/view"
 	"matuto-base/src/app/admin/sys/service/user"
-	"matuto-base/src/app/admin/sys/service/user/view"
 	"matuto-base/src/common/basic"
 	"matuto-base/src/common/constants"
 	response "matuto-base/src/common/response"
@@ -33,7 +32,7 @@ type UserApi struct {
 // @Summary 创建User
 // @Router /user/create [post]
 func (api *UserApi) Create(c *gin.Context) {
-	var userView view.UserView
+	var userView vo.UserView
 	_ = c.ShouldBindJSON(&userView)
 	// 校验参数
 
@@ -84,7 +83,7 @@ func (api *UserApi) Delete(c *gin.Context) {
 // @Summary 更新User
 // @Router /user/update [put]
 func (api *UserApi) Update(c *gin.Context) {
-	var userView view.UserView
+	var userView vo.UserView
 	_ = c.ShouldBindJSON(&userView)
 	id := userView.Id
 	if id == "" {
@@ -128,7 +127,7 @@ func (api *UserApi) Update(c *gin.Context) {
 // @Summary 用id查询User
 // @Router /user/get [get]
 func (api *UserApi) Get(c *gin.Context) {
-	var userInfoView = new(view.UserInfoView)
+	var userInfoView = new(vo.UserInfoView)
 	err, roles := api.roleService.SelectRoleAll(api.GetLoginUser(c))
 	if err == nil {
 		removeAdminRole(&roles)
@@ -169,7 +168,7 @@ func (api *UserApi) Get(c *gin.Context) {
 // @Summary 分页获取User列表
 // @Router /user/page [get]
 func (api *UserApi) Page(c *gin.Context) {
-	var pageInfo view.UserPageView
+	var pageInfo vo.UserPageView
 	// 绑定查询参数到 pageInfo
 	if err := c.ShouldBindQuery(&pageInfo); err != nil {
 		response.FailWithMessage("获取分页数据解析失败!", c)
@@ -188,7 +187,7 @@ func (api *UserApi) Page(c *gin.Context) {
 // @Summary 获取User列表
 // @Router /user/list [get]
 func (api *UserApi) List(c *gin.Context) {
-	var view view.UserView
+	var view vo.UserView
 	// 绑定查询参数到 view对象
 	if err := c.ShouldBindQuery(&view); err != nil {
 		response.FailWithMessage("获取参数解析失败!", c)
@@ -208,7 +207,7 @@ func (api *UserApi) List(c *gin.Context) {
 // @Summary 重置密码
 // @Router /user/resetPwd [put]
 func (api *UserApi) ResetPwd(c *gin.Context) {
-	var req view.UserView
+	var req vo.UserView
 	if err := c.ShouldBindJSON(&req); err != nil {
 		response.FailWithMessage(err.Error(), c)
 		return
@@ -234,7 +233,7 @@ func (api *UserApi) ResetPwd(c *gin.Context) {
 // @Summary 更新状态
 // @Router /user/changeStatus [put]
 func (api *UserApi) ChangeStatus(c *gin.Context) {
-	var req view.UserView
+	var req vo.UserView
 	if err := c.ShouldBindJSON(&req); err != nil {
 		response.FailWithMessage(err.Error(), c)
 		return
@@ -294,7 +293,7 @@ func (api *UserApi) AuthRole(c *gin.Context) {
 		response.FailWithMessage("没有权限访问用户数据", c)
 		return
 	}
-	v := &view.UserView{
+	v := &vo.UserView{
 		Id:         userId,
 		RoleIds:    roleIds,
 		UpdateTime: utils.GetCurTimeStr(),
@@ -309,7 +308,7 @@ func (api *UserApi) AuthRole(c *gin.Context) {
 }
 
 // 剔除超级管理员
-func removeAdminRole(roles *[]*roleView.RoleView) {
+func removeAdminRole(roles *[]*vo.RoleView) {
 	for i := 0; i < len(*roles); i++ {
 		if (*roles)[i].Id == constants.SYSTEM_ROLE_ADMIN_ID {
 			*roles = append((*roles)[:i], (*roles)[i+1:]...)
@@ -322,7 +321,7 @@ func removeAdminRole(roles *[]*roleView.RoleView) {
 // @Summary 查询已分配用户角色列表
 // @Router /user/selectAllocatedList [get]
 func (api *UserApi) SelectAllocatedList(c *gin.Context) {
-	var pageInfo view.UserPageView
+	var pageInfo vo.UserPageView
 	// 绑定查询参数到 pageInfo
 	if err := c.ShouldBindQuery(&pageInfo); err != nil {
 		response.FailWithMessage("获取分页数据解析失败!", c)
@@ -341,7 +340,7 @@ func (api *UserApi) SelectAllocatedList(c *gin.Context) {
 // @Summary 查询未分配用户角色列表
 // @Router /user/selectUnallocatedList [get]
 func (api *UserApi) SelectUnallocatedList(c *gin.Context) {
-	var pageInfo view.UserPageView
+	var pageInfo vo.UserPageView
 	// 绑定查询参数到 pageInfo
 	if err := c.ShouldBindQuery(&pageInfo); err != nil {
 		response.FailWithMessage("获取分页数据解析失败!", c)

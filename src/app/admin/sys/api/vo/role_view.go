@@ -4,7 +4,7 @@
 // @File: role
 // @version 1.0.0
 // @create 2023-08-21 17:37:56
-package view
+package vo
 
 import "matuto-base/src/common"
 

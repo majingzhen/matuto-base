@@ -9,8 +9,8 @@ package api
 import (
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
+	"matuto-base/src/app/admin/sys/api/vo"
 	"matuto-base/src/app/admin/sys/service/post"
-	"matuto-base/src/app/admin/sys/service/post/view"
 	"matuto-base/src/common/basic"
 	response "matuto-base/src/common/response"
 	"matuto-base/src/global"
@@ -28,7 +28,7 @@ type PostApi struct {
 // @Summary 创建Post
 // @Router /post/create [post]
 func (api *PostApi) Create(c *gin.Context) {
-	var postView view.PostView
+	var postView vo.PostView
 	_ = c.ShouldBindJSON(&postView)
 	postView.Id = utils.GenUID()
 	postView.CreateTime = utils.GetCurTimeStr()
@@ -60,7 +60,7 @@ func (api *PostApi) Delete(c *gin.Context) {
 // @Summary 更新Post
 // @Router /post/update [put]
 func (api *PostApi) Update(c *gin.Context) {
-	var postView view.PostView
+	var postView vo.PostView
 	_ = c.ShouldBindJSON(&postView)
 	id := postView.Id
 	if id == "" {
@@ -94,7 +94,7 @@ func (api *PostApi) Get(c *gin.Context) {
 // @Summary 分页获取Post列表
 // @Router /post/page [get]
 func (api *PostApi) Page(c *gin.Context) {
-	var pageInfo view.PostPageView
+	var pageInfo vo.PostPageView
 	// 绑定查询参数到 pageInfo
 	if err := c.ShouldBindQuery(&pageInfo); err != nil {
 		response.FailWithMessage("获取分页数据解析失败!", c)
@@ -113,7 +113,7 @@ func (api *PostApi) Page(c *gin.Context) {
 // @Summary 获取Post列表
 // @Router /post/list [get]
 func (api *PostApi) List(c *gin.Context) {
-	var view view.PostView
+	var view vo.PostView
 	// 绑定查询参数到 view对象
 	if err := c.ShouldBindQuery(&view); err != nil {
 		response.FailWithMessage("获取参数解析失败!", c)

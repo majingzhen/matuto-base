@@ -9,8 +9,8 @@ package api
 import (
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
+	"matuto-base/src/app/admin/sys/api/vo"
 	"matuto-base/src/app/admin/sys/service/role"
-	"matuto-base/src/app/admin/sys/service/role/view"
 	"matuto-base/src/common/basic"
 	"matuto-base/src/common/constants"
 	response "matuto-base/src/common/response"
@@ -28,7 +28,7 @@ type RoleApi struct {
 // @Summary 创建Role
 // @Router /role/create [post]
 func (api *RoleApi) Create(c *gin.Context) {
-	var roleView view.RoleView
+	var roleView vo.RoleView
 	if err := c.ShouldBindJSON(&roleView); err != nil {
 		global.Logger.Error("参数解析失败!", zap.Error(err))
 		response.FailWithMessage("参数解析失败", c)
@@ -72,7 +72,7 @@ func (api *RoleApi) Delete(c *gin.Context) {
 // @Summary 更新Role
 // @Router /role/update [put]
 func (api *RoleApi) Update(c *gin.Context) {
-	var roleView view.RoleView
+	var roleView vo.RoleView
 	_ = c.ShouldBindJSON(&roleView)
 	id := roleView.Id
 	if id == "" {
@@ -124,7 +124,7 @@ func (api *RoleApi) Get(c *gin.Context) {
 // @Summary 分页获取Role列表
 // @Router /role/page [get]
 func (api *RoleApi) Page(c *gin.Context) {
-	var pageInfo view.RolePageView
+	var pageInfo vo.RolePageView
 	// 绑定查询参数到 pageInfo
 	if err := c.ShouldBindQuery(&pageInfo); err != nil {
 		response.FailWithMessage("获取分页数据解析失败!", c)
@@ -143,7 +143,7 @@ func (api *RoleApi) Page(c *gin.Context) {
 // @Summary 获取Role列表
 // @Router /role/list [get]
 func (api *RoleApi) List(c *gin.Context) {
-	var view view.RoleView
+	var view vo.RoleView
 	// 绑定查询参数到 view对象
 	if err := c.ShouldBindQuery(&view); err != nil {
 		response.FailWithMessage("获取参数解析失败!", c)
@@ -163,7 +163,7 @@ func (api *RoleApi) List(c *gin.Context) {
 // @Summary 更新Role状态
 // @Router /role/changeStatus [put]
 func (api *RoleApi) ChangeStatus(c *gin.Context) {
-	var view view.RoleView
+	var view vo.RoleView
 	_ = c.ShouldBindJSON(&view)
 	if view.Id == constants.SYSTEM_ROLE_ADMIN_ID {
 		response.FailWithMessage("超级管理员不允许修改", c)
@@ -187,7 +187,7 @@ func (api *RoleApi) ChangeStatus(c *gin.Context) {
 // @Summary 修改保存数据权限
 // @Router /role/dataScope [put]
 func (api *RoleApi) DataScope(c *gin.Context) {
-	var view view.RoleView
+	var view vo.RoleView
 	_ = c.ShouldBindJSON(&view)
 	if view.Id == constants.SYSTEM_ROLE_ADMIN_ID {
 		response.FailWithMessage("超级管理员不允许修改", c)
@@ -211,7 +211,7 @@ func (api *RoleApi) DataScope(c *gin.Context) {
 // @Summary 取消授权用户
 // @Router /role/cancelAuthUser [put]
 func (api *RoleApi) CancelAuthUser(c *gin.Context) {
-	var view view.UserRoleView
+	var view vo.UserRoleView
 	_ = c.ShouldBindJSON(&view)
 	if err := api.roleService.CancelAuthUser(&view); err != nil {
 		global.Logger.Error("取消授权失败!", zap.Error(err))

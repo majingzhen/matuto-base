@@ -11,9 +11,9 @@ import (
 	"github.com/mojocn/base64Captcha"
 	"go.uber.org/zap"
 	"image/color"
+	"matuto-base/src/app/admin/sys/api/vo"
 	"matuto-base/src/app/admin/sys/service/menu"
 	"matuto-base/src/app/admin/sys/service/role"
-	"matuto-base/src/app/admin/sys/service/system/view"
 	"matuto-base/src/app/admin/sys/service/user"
 	"matuto-base/src/common/basic"
 	"matuto-base/src/common/response"
@@ -36,7 +36,7 @@ var store = base64Captcha.DefaultMemStore
 // @Summary 登录系统
 // @Router /sysOauth2/login [post]
 func (api *SystemApi) Login(c *gin.Context) {
-	var loginUserView view.LoginUserView
+	var loginUserView vo.LoginUserView
 	_ = c.ShouldBindJSON(&loginUserView)
 	// 校验验证码
 	captcha := VerifyCaptcha(loginUserView.VerifyUuid, loginUserView.VerifyCode)
@@ -86,7 +86,7 @@ func (api *SystemApi) GetUserInfo(c *gin.Context) {
 	// 获取用户权限
 	_, perms := api.menuService.GetMenuPermission(userView)
 	// 获取用户菜单
-	resView := view.LoginUserResView{
+	resView := vo.LoginUserResView{
 		UserInfo:    userView,
 		Roles:       roles,
 		Permissions: perms,
@@ -135,7 +135,7 @@ func (api *SystemApi) CaptchaImage(c *gin.Context) {
 		// 处理生成验证码时的错误
 		response.FailWithMessage("登录失败", c)
 	}
-	response.OkWithData(&view.Captcha{
+	response.OkWithData(&vo.Captcha{
 		Key: id,
 		Img: b64s,
 	}, c)
