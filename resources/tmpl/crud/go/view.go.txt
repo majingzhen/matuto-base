@@ -1,9 +1,13 @@
-// Package view 自动生成模板 {{.StructName}}
+// Package vo 自动生成模板 {{.StructName}}
 // @description <TODO description class purpose>
 // @author {{.Author}}
 // @version 1.0.0
 // @create {{.CreateTime}}
-package view
+package vo
+
+import (
+    "matuto-base/src/common"
+)
 
 // {{.StructName}}View 结构体
 type {{.StructName}}View struct {

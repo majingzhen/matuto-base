@@ -4,15 +4,14 @@
 // @File: dept
 // @version 1.0.0
 // @create 2023-08-21 10:27:01
-package dept
+package service
 
 import (
 	"errors"
 	"matuto-base/src/app/admin/sys/api/vo"
 	"matuto-base/src/app/admin/sys/dao"
 	"matuto-base/src/app/admin/sys/model"
-	"matuto-base/src/app/admin/sys/service/role"
-	"matuto-base/src/app/admin/sys/service/user/extend"
+	"matuto-base/src/app/admin/sys/service/extend"
 	"matuto-base/src/common/constants"
 	"matuto-base/src/framework/aspect"
 	"matuto-base/src/global"
@@ -25,7 +24,7 @@ import (
 type DeptService struct {
 	deptDao     dao.DeptDao
 	userService extend.UserExtendService
-	roleService role.RoleService
+	roleService RoleService
 }
 
 // Create 创建Dept记录

@@ -3,7 +3,7 @@
 // @author matuto
 // @version 1.0.0
 // @create 2023-09-14 14:18:43
-package view
+package vo
 
 import (
 	"matuto-base/src/common"

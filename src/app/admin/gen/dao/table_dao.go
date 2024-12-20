@@ -8,8 +8,8 @@ package dao
 
 import (
 	"gorm.io/gorm"
+	"matuto-base/src/app/admin/gen/api/vo"
 	"matuto-base/src/app/admin/gen/model"
-	"matuto-base/src/app/admin/gen/service/table/view"
 	"matuto-base/src/common"
 	"matuto-base/src/global"
 )
@@ -48,7 +48,7 @@ func (dao *TableDao) Get(id string) (err error, table *model.Table) {
 
 // Page 分页获取Table记录
 // Author
-func (dao *TableDao) Page(param *view.TablePageView) (err error, page *common.PageInfo) {
+func (dao *TableDao) Page(param *vo.TablePageView) (err error, page *common.PageInfo) {
 	db := global.GormDao.Model(&model.Table{})
 	// 如果有条件搜索 下方会自动创建搜索语句
 	if param.TableName != "" {
@@ -74,7 +74,7 @@ func (dao *TableDao) Page(param *view.TablePageView) (err error, page *common.Pa
 
 // List 获取Table记录
 // Author
-func (dao *TableDao) List(v *view.TableQueryView) (err error, dataList []*model.Table) {
+func (dao *TableDao) List(v *vo.TableQueryView) (err error, dataList []*model.Table) {
 	db := global.GormDao.Model(&model.Table{})
 	// TODO 输入查询条件
 	//if data.Id != "" {
@@ -86,7 +86,7 @@ func (dao *TableDao) List(v *view.TableQueryView) (err error, dataList []*model.
 }
 
 // SelectDbTablePage 获取数据库表列表
-func (dao *TableDao) SelectDbTablePage(v *view.TablePageView) (error, *common.PageInfo) {
+func (dao *TableDao) SelectDbTablePage(v *vo.TablePageView) (error, *common.PageInfo) {
 	tx := global.GormDao.Table("information_schema.tables")
 	tx.Select("TABLE_NAME table_name,TABLE_COMMENT table_comment,CREATE_TIME create_time,UPDATE_TIME update_time")
 	tx.Where("table_schema = (select database())")

@@ -4,11 +4,12 @@
 // @File: sys_role
 // @version 1.0.0
 // @create 2023-08-18 14:00:53
-package role
+package service
 
 import (
 	"errors"
 	"fmt"
+	"gorm.io/gorm"
 	"matuto-base/src/app/admin/sys/api/vo"
 	"matuto-base/src/app/admin/sys/dao"
 	"matuto-base/src/app/admin/sys/model"
@@ -17,8 +18,6 @@ import (
 	"matuto-base/src/framework/aspect"
 	"matuto-base/src/global"
 	"matuto-base/src/utils/convert"
-
-	"gorm.io/gorm"
 )
 
 type RoleService struct {

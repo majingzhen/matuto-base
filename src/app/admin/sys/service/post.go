@@ -4,7 +4,7 @@
 // @File: sys_post
 // @version 1.0.0
 // @create 2023-08-21 17:37:56
-package post
+package service
 
 import (
 	"errors"

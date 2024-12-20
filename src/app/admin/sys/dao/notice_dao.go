@@ -6,8 +6,8 @@
 package dao
 
 import (
+	"matuto-base/src/app/admin/sys/api/vo"
 	"matuto-base/src/app/admin/sys/model"
-	"matuto-base/src/app/admin/sys/service/notice/view"
 	"matuto-base/src/common"
 	"matuto-base/src/global"
 )
@@ -17,8 +17,9 @@ type NoticeDao struct{}
 
 // Create 新增通知公告表记录
 // Author matuto
-func (dao *NoticeDao) Create(notice *view.NoticeCreateView) (err error) {
-	return global.GormDao.Create(notice).Error
+func (dao *NoticeDao) Create(notice *model.Notice) (err error) {
+	err = global.GormDao.Create(notice).Error
+	return err
 }
 
 // DeleteByIds 批量删除通知公告表记录
@@ -29,8 +30,9 @@ func (dao *NoticeDao) DeleteByIds(ids []string) (err error) {
 
 // Update 更新通知公告表记录
 // Author matuto
-func (dao *NoticeDao) Update(notice *view.NoticeEditView) (err error) {
-	return global.GormDao.Updates(notice).Error
+func (dao *NoticeDao) Update(notice *model.Notice) (err error) {
+	err = global.GormDao.Updates(notice).Error
+	return err
 }
 
 // Get 根据id获取通知公告表记录
@@ -42,7 +44,7 @@ func (dao *NoticeDao) Get(id string) (err error, notice *model.Notice) {
 
 // Page 分页获取通知公告表记录
 // Author matuto
-func (dao *NoticeDao) Page(param *view.NoticePageView) (err error, page *common.PageInfo) {
+func (dao *NoticeDao) Page(param *vo.NoticePageView) (err error, page *common.PageInfo) {
 	db := global.GormDao.Model(&model.Notice{})
 
 	if param.NoticeTitle != "" {
@@ -81,7 +83,7 @@ func (dao *NoticeDao) Page(param *view.NoticePageView) (err error, page *common.
 
 // List 获取通知公告表记录
 // Author matuto
-func (dao *NoticeDao) List(param *view.NoticeQueryView) (err error, dataList []*model.Notice) {
+func (dao *NoticeDao) List(param *vo.NoticeQueryView) (err error, dataList []*model.Notice) {
 	db := global.GormDao.Model(&model.Notice{})
 
 	if param.NoticeTitle != "" {

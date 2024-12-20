@@ -10,9 +10,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
 	"matuto-base/src/app/admin/sys/api/vo"
-	"matuto-base/src/app/admin/sys/service/post"
-	"matuto-base/src/app/admin/sys/service/role"
-	"matuto-base/src/app/admin/sys/service/user"
+	"matuto-base/src/app/admin/sys/service"
 	"matuto-base/src/common/basic"
 	"matuto-base/src/common/constants"
 	response "matuto-base/src/common/response"
@@ -23,9 +21,9 @@ import (
 
 type UserApi struct {
 	basic.BasicApi
-	userService user.Service
-	roleService role.RoleService
-	postService post.PostService
+	userService service.Service
+	roleService service.RoleService
+	postService service.PostService
 }
 
 // Create 创建User

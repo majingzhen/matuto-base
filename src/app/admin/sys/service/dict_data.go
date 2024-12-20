@@ -4,7 +4,7 @@
 // @File: sys_dict_data
 // @version 1.0.0
 // @create 2023-08-20 19:08:42
-package dict_data
+package service
 
 import (
 	"matuto-base/src/app/admin/sys/api/vo"

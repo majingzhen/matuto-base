@@ -4,14 +4,13 @@
 // @File: menu
 // @version 1.0.0
 // @create 2023-08-18 13:41:26
-package menu
+package service
 
 import (
 	"errors"
 	"matuto-base/src/app/admin/sys/api/vo"
 	"matuto-base/src/app/admin/sys/dao"
 	"matuto-base/src/app/admin/sys/model"
-	"matuto-base/src/app/admin/sys/service/role"
 	"matuto-base/src/common/constants"
 	"matuto-base/src/utils"
 	"matuto-base/src/utils/convert"
@@ -20,7 +19,7 @@ import (
 
 type MenuService struct {
 	sysMenuDao  dao.MenuDao
-	roleService role.RoleService
+	roleService RoleService
 }
 
 // Create 创建Menu记录

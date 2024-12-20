@@ -7,10 +7,9 @@ package dao
 
 import (
     "{{.PackageName}}/model"
-    "{{.PackageName}}/service/{{.BusinessName}}/view"
+    "{{.PackageName}}/api/vo"
     "matuto-base/src/common"
     "matuto-base/src/global"
-
 )
 
 // {{.StructName}}Dao 结构体
@@ -18,7 +17,7 @@ type {{.StructName}}Dao struct {}
 
 // Create 新增{{.FunctionName}}记录
 // Author {{.FunctionAuthor}}
-func (dao *{{.StructName}}Dao) Create({{.BusinessName}} *view.{{.StructName}}CreateView) (err error) {
+func (dao *{{.StructName}}Dao) Create({{.BusinessName}} *model.{{.StructName}}) (err error) {
     return global.GormDao.Create({{.BusinessName}}).Error
 }
 
@@ -30,7 +29,7 @@ func (dao *{{.StructName}}Dao) DeleteByIds(ids []string) (err error) {
 
 // Update 更新{{.FunctionName}}记录
 // Author {{.FunctionAuthor}}
-func (dao *{{.StructName}}Dao) Update({{.BusinessName}} *view.{{.StructName}}EditView) (err error) {
+func (dao *{{.StructName}}Dao) Update({{.BusinessName}} *model.{{.StructName}}) (err error) {
     return global.GormDao.Updates({{.BusinessName}}).Error
 }
 
@@ -43,7 +42,7 @@ func (dao *{{.StructName}}Dao) Get({{.PKColumn.JsonField}} {{.PKColumn.GoType}})
 
 // Page 分页获取{{.FunctionName}}记录
 // Author {{.FunctionAuthor}}
-func (dao *{{.StructName}}Dao) Page(param *view.{{.StructName}}PageView) (err error, page *common.PageInfo) {
+func (dao *{{.StructName}}Dao) Page(param *vo.{{.StructName}}PageView) (err error, page *common.PageInfo) {
     db := global.GormDao.Model(&model.{{.StructName}}{})
     {{range .SearchColumn}}
     {{if eq .QueryType "LIKE"}}if param.{{.GoField}} != {{if eq .DefaultValue ""}}""{{else}}{{.DefaultValue}}{{end}} {
@@ -87,7 +86,7 @@ func (dao *{{.StructName}}Dao) Page(param *view.{{.StructName}}PageView) (err er
 
 // List 获取{{.FunctionName}}记录
 // Author {{.FunctionAuthor}}
-func (dao *{{.StructName}}Dao) List(param *view.{{.StructName}}QueryView) (err error, dataList []*model.{{.StructName}}) {
+func (dao *{{.StructName}}Dao) List(param *vo.{{.StructName}}QueryView) (err error, dataList []*model.{{.StructName}}) {
     db := global.GormDao.Model(&model.{{.StructName}}{})
     {{range .SearchColumn}}
     {{if eq .QueryType "LIKE"}}if param.{{.GoField}} != {{if eq .DefaultValue ""}}""{{else}}{{.DefaultValue}}{{end}} {

@@ -4,7 +4,7 @@
 // @File: table_column
 // @version 1.0.0
 // @create 2023-08-31 09:09:53
-package view
+package vo
 
 // TableColumnView 结构体
 type TableColumnView struct {

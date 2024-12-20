@@ -1,4 +1,4 @@
-// Package utils 提供通用的VO和DO对象转换工具类
+// Package convert Package utils 提供通用的VO和DO对象转换工具类
 package convert
 
 import (

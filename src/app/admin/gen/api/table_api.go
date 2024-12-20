@@ -10,9 +10,8 @@ import (
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
-	"matuto-base/src/app/admin/gen/service/table"
-	"matuto-base/src/app/admin/gen/service/table/view"
-	"matuto-base/src/app/admin/gen/service/table_column"
+	"matuto-base/src/app/admin/gen/api/vo"
+	"matuto-base/src/app/admin/gen/service"
 	"matuto-base/src/common/basic"
 	response "matuto-base/src/common/response"
 	"matuto-base/src/global"
@@ -22,15 +21,15 @@ import (
 
 type TableApi struct {
 	basic.BasicApi
-	tableService  table.Service
-	columnService table_column.TableColumnService
+	tableService  service.Service
+	columnService service.TableColumnService
 }
 
 // Create 创建Table
 // @Summary 创建Table
 // @Router /table/create [post]
 func (api *TableApi) Create(c *gin.Context) {
-	var tableView view.TableView
+	var tableView vo.TableView
 	_ = c.ShouldBindJSON(&tableView)
 	tableView.Id = utils.GenUID()
 	tableView.CreateTime = utils.GetCurTimeStr()
@@ -66,7 +65,7 @@ func (api *TableApi) Delete(c *gin.Context) {
 // @Summary 更新Table
 // @Router /table/update [put]
 func (api *TableApi) Update(c *gin.Context) {
-	var tableView view.TableView
+	var tableView vo.TableView
 	err := c.ShouldBindJSON(&tableView)
 	if err != nil {
 		response.FailWithMessage("参数解析错误", c)
@@ -108,7 +107,7 @@ func (api *TableApi) Get(c *gin.Context) {
 // @Summary 分页获取Table列表
 // @Router /table/page [get]
 func (api *TableApi) Page(c *gin.Context) {
-	var pageInfo view.TablePageView
+	var pageInfo vo.TablePageView
 	// 绑定查询参数到 pageInfo
 	if err := c.ShouldBindQuery(&pageInfo); err != nil {
 		response.FailWithMessage("获取分页数据解析失败!", c)
@@ -126,7 +125,7 @@ func (api *TableApi) Page(c *gin.Context) {
 // @Summary 获取Table列表
 // @Router /table/list [get]
 func (api *TableApi) List(c *gin.Context) {
-	var view view.TableQueryView
+	var view vo.TableQueryView
 	// 绑定查询参数到 view对象
 	if err := c.ShouldBindQuery(&view); err != nil {
 		response.FailWithMessage("获取参数解析失败!", c)
@@ -146,7 +145,7 @@ func (api *TableApi) List(c *gin.Context) {
 // @Summary 获取数据库表列表
 // @Router /table/SelectDbTablePage [get]
 func (api *TableApi) SelectDbTablePage(c *gin.Context) {
-	var view view.TablePageView
+	var view vo.TablePageView
 	// 绑定查询参数到 view对象
 	if err := c.ShouldBindQuery(&view); err != nil {
 		response.FailWithMessage("获取参数解析失败!", c)

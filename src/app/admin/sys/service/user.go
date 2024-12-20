@@ -4,7 +4,7 @@
 // @File: user
 // @version 1.0.0
 // @create 2023-08-18 14:02:24
-package user
+package service
 
 import (
 	"errors"
@@ -12,8 +12,6 @@ import (
 	"matuto-base/src/app/admin/sys/api/vo"
 	"matuto-base/src/app/admin/sys/dao"
 	"matuto-base/src/app/admin/sys/model"
-	"matuto-base/src/app/admin/sys/service/dept"
-	"matuto-base/src/app/admin/sys/service/role"
 	"matuto-base/src/common"
 	"matuto-base/src/common/constants"
 	"matuto-base/src/framework/aspect"
@@ -24,8 +22,8 @@ import (
 
 type Service struct {
 	userDao     dao.UserDao
-	deptService dept.DeptService
-	roleService role.RoleService
+	deptService DeptService
+	roleService RoleService
 	userRoleDao dao.UserRoleDao
 	userPostDao dao.UserPostDao
 }

@@ -7,26 +7,25 @@
 package api
 
 import (
-	"github.com/gin-gonic/gin"
-	"github.com/mojocn/base64Captcha"
-	"go.uber.org/zap"
 	"image/color"
 	"matuto-base/src/app/admin/sys/api/vo"
-	"matuto-base/src/app/admin/sys/service/menu"
-	"matuto-base/src/app/admin/sys/service/role"
-	"matuto-base/src/app/admin/sys/service/user"
+	"matuto-base/src/app/admin/sys/service"
 	"matuto-base/src/common/basic"
 	"matuto-base/src/common/response"
 	"matuto-base/src/framework"
 	"matuto-base/src/global"
 	"matuto-base/src/utils"
+
+	"github.com/gin-gonic/gin"
+	"github.com/mojocn/base64Captcha"
+	"go.uber.org/zap"
 )
 
 type SystemApi struct {
 	basic.BasicApi
-	userService user.Service
-	roleService role.RoleService
-	menuService menu.MenuService
+	userService service.Service
+	roleService service.RoleService
+	menuService service.MenuService
 }
 
 // store 验证码

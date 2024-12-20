@@ -10,7 +10,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
 	"matuto-base/src/app/admin/sys/api/vo"
-	"matuto-base/src/app/admin/sys/service/post"
+	"matuto-base/src/app/admin/sys/service"
 	"matuto-base/src/common/basic"
 	response "matuto-base/src/common/response"
 	"matuto-base/src/global"
@@ -21,7 +21,7 @@ import (
 // PostApi 结构体
 type PostApi struct {
 	basic.BasicApi
-	postService post.PostService
+	postService service.PostService
 }
 
 // Create 创建Post

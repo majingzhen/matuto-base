@@ -10,7 +10,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
 	"matuto-base/src/app/admin/sys/api/vo"
-	"matuto-base/src/app/admin/sys/service/config"
+	"matuto-base/src/app/admin/sys/service"
 	"matuto-base/src/common/basic"
 	"matuto-base/src/common/response"
 	"matuto-base/src/global"
@@ -20,7 +20,7 @@ import (
 
 type ConfigApi struct {
 	basic.BasicApi
-	configService config.ConfigService
+	configService service.ConfigService
 }
 
 // Create 创建Config

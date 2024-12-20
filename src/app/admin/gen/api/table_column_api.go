@@ -9,8 +9,8 @@ package api
 import (
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
-	"matuto-base/src/app/admin/gen/service/table_column"
-	"matuto-base/src/app/admin/gen/service/table_column/view"
+	"matuto-base/src/app/admin/gen/api/vo"
+	"matuto-base/src/app/admin/gen/service"
 	"matuto-base/src/common/basic"
 	response "matuto-base/src/common/response"
 	"matuto-base/src/global"
@@ -20,7 +20,7 @@ import (
 
 type TableColumnApi struct {
 	basic.BasicApi
-	tableColumnService table_column.TableColumnService
+	tableColumnService service.TableColumnService
 }
 
 // Delete 删除TableColumn
@@ -45,7 +45,7 @@ func (api *TableColumnApi) Delete(c *gin.Context) {
 // @Summary 更新TableColumn
 // @Router /tableColumn/update [put]
 func (api *TableColumnApi) Update(c *gin.Context) {
-	var tableColumnView view.TableColumnView
+	var tableColumnView vo.TableColumnView
 	err := c.ShouldBindJSON(&tableColumnView)
 	if err != nil {
 		response.FailWithMessage("参数解析错误", c)

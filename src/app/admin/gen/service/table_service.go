@@ -4,40 +4,40 @@
 // @File: table
 // @version 1.0.0
 // @create 2023-08-31 09:09:53
-package table
+package service
 
 import (
 	"archive/zip"
 	"bytes"
 	"encoding/json"
 	"errors"
-	"go.uber.org/zap"
+	"matuto-base/src/app/admin/gen/api/vo"
 	"matuto-base/src/app/admin/gen/dao"
 	"matuto-base/src/app/admin/gen/model"
-	"matuto-base/src/app/admin/gen/service/table/view"
-	columm_service "matuto-base/src/app/admin/gen/service/table_column"
 	genutils "matuto-base/src/app/admin/gen/utils"
 	"matuto-base/src/common"
 	"matuto-base/src/common/constants"
 	"matuto-base/src/global"
 	"matuto-base/src/utils"
+	"matuto-base/src/utils/convert"
 	"strings"
 	"text/template"
 	"time"
+
+	"go.uber.org/zap"
 )
 
 // Service 结构体
 type Service struct {
 	tableDao      dao.TableDao
-	viewUtils     view.TableViewUtils
 	columnDao     dao.TableColumnDao
-	columnService columm_service.TableColumnService
+	columnService TableColumnService
 }
 
 // Create 创建Table记录
 // Author
-func (s *Service) Create(tableView *view.TableView) error {
-	if err, table := s.viewUtils.View2Data(tableView); err != nil {
+func (s *Service) Create(tableView *vo.TableView) error {
+	if err, table := convert.View2Data[vo.TableView, model.Table](tableView); err != nil {
 		return err
 	} else {
 		return s.tableDao.Create(global.GormDao, table)
@@ -65,10 +65,10 @@ func (s *Service) DeleteByIds(ids []string) (err error) {
 
 // Update 更新Table记录
 // Author
-func (s *Service) Update(tableView *view.TableView) error {
+func (s *Service) Update(tableView *vo.TableView) error {
 	tx := global.GormDao.Begin()
 	// 更新
-	options := view.TableViewOptions{
+	options := vo.TableViewOptions{
 		TreeCode:       tableView.TreeCode,
 		TreeParentCode: tableView.TreeParentCode,
 		TreeName:       tableView.TreeName,
@@ -81,7 +81,7 @@ func (s *Service) Update(tableView *view.TableView) error {
 	} else {
 		tableView.Options = string(jsonBytes)
 	}
-	if err, table := s.viewUtils.View2Data(tableView); err != nil {
+	if err, table := convert.View2Data[vo.TableView, model.Table](tableView); err != nil {
 		tx.Rollback()
 		return err
 	} else {
@@ -103,19 +103,19 @@ func (s *Service) Update(tableView *view.TableView) error {
 
 // Get 根据id获取Table记录
 // Author
-func (s *Service) Get(id string) (err error, tableView *view.TableView) {
+func (s *Service) Get(id string) (err error, tableView *vo.TableView) {
 	err1, table := s.tableDao.Get(id)
 	if err1 != nil {
 		return err1, nil
 	}
-	err, tableView = s.viewUtils.Data2View(table)
+	err, tableView = convert.Data2View[vo.TableView, model.Table](table)
 	// 通过id查询列信息
 	if err, tableView.ColumnList = s.columnService.GetColumnListByTableId(id); err != nil {
 		global.Logger.Error("GetColumnListByTableId is error ", zap.Error(err))
 	}
 	// options 转字段
 	if tableView != nil && tableView.Options != "" {
-		var tableOption view.TableViewOptions
+		var tableOption vo.TableViewOptions
 		if err := json.Unmarshal([]byte(tableView.Options), &tableOption); err != nil {
 			global.Logger.Error("TableOption Convert is error ", zap.Error(err))
 		} else {
@@ -131,30 +131,30 @@ func (s *Service) Get(id string) (err error, tableView *view.TableView) {
 
 // Page 分页获取Table记录
 // Author
-func (s *Service) Page(pageInfo *view.TablePageView) (err error, res *common.PageInfo) {
+func (s *Service) Page(pageInfo *vo.TablePageView) (err error, res *common.PageInfo) {
 	if err, res = s.tableDao.Page(pageInfo); err != nil {
 		return err, nil
 	} else {
-		return s.viewUtils.PageData2ViewList(res)
+		return convert.PageData2ViewList[vo.TableView, model.Table](res)
 	}
 }
 
 // List 获取Table列表
 // Author
-func (s *Service) List(v *view.TableQueryView) (error, []*view.TableView) {
+func (s *Service) List(v *vo.TableQueryView) (error, []*vo.TableView) {
 	if err, dataList := s.tableDao.List(v); err != nil {
 		return err, nil
 	} else {
-		return s.viewUtils.Data2ViewList(dataList)
+		return convert.Data2ViewList[vo.TableView, model.Table](dataList)
 	}
 }
 
 // SelectDbTablePage 获取数据库表列表
-func (s *Service) SelectDbTablePage(v *view.TablePageView) (err error, res *common.PageInfo) {
+func (s *Service) SelectDbTablePage(v *vo.TablePageView) (err error, res *common.PageInfo) {
 	if err, res = s.tableDao.SelectDbTablePage(v); err != nil {
 		return err, nil
 	} else {
-		return s.viewUtils.PageData2ViewList(res)
+		return convert.PageData2ViewList[vo.TableView, model.Table](res)
 	}
 }
 
@@ -204,7 +204,7 @@ func (s *Service) ImportGenTable(tables []*model.Table, loginUser string) error 
 }
 
 // ValidateEdit 表单验证
-func (s *Service) ValidateEdit(v *view.TableView) error {
+func (s *Service) ValidateEdit(v *vo.TableView) error {
 	if v.TplCategory == constants.TPL_TREE {
 		if v.TreeCode == "" {
 			return errors.New("树编码不能为空")
@@ -250,12 +250,12 @@ func (s *Service) PreviewCode(id string) (err error, dataMap map[string]string) 
 }
 
 // PreviewTreeCode 预览树编码
-func (s *Service) PreviewTreeCode(tableView *view.TableView) (err error, dataMap map[string]string) {
+func (s *Service) PreviewTreeCode(tableView *vo.TableView) (err error, dataMap map[string]string) {
 	return nil, nil
 }
 
 // SelectGenTableById 根据id获取GenTable包含各种列信息
-func (s *Service) SelectGenTableById(id string) (err error, tableView *view.TableView) {
+func (s *Service) SelectGenTableById(id string) (err error, tableView *vo.TableView) {
 	err, v := s.Get(id)
 	if err != nil {
 		return err, nil
@@ -295,7 +295,7 @@ func (s *Service) SelectGenTableById(id string) (err error, tableView *view.Tabl
 }
 
 // PreviewSubTable 预览子表
-func (s *Service) PreviewSubTable(tableView *view.TableView) (err error, dataMap map[string]string) {
+func (s *Service) PreviewSubTable(tableView *vo.TableView) (err error, dataMap map[string]string) {
 	dataMap = make(map[string]string)
 	var templatePath = genutils.GenTemplatePath(tableView.TplCategory)
 	for _, path := range templatePath {
@@ -331,8 +331,8 @@ func (s *Service) GenCode(id string) (error, *bytes.Buffer, string) {
 				// 获取文件类型
 				fileType := newKey[strings.LastIndex(newKey, ".")+1:]
 				filePath := newKey[:strings.LastIndex(newKey, ".")]
-				if strings.Contains(filePath, "convert") {
-					filePath = fileType + "/service/convert/" + tableView.BusinessName + "_" + newKey
+				if strings.Contains(filePath, "view") {
+					filePath = fileType + "/api/vo/" + tableView.BusinessName + "_" + newKey
 				} else {
 					if fileType == "vue" {
 						filePath = fileType + "/" + tableView.BusinessName + "/" + newKey

@@ -10,7 +10,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
 	"matuto-base/src/app/admin/sys/api/vo"
-	"matuto-base/src/app/admin/sys/service/dict_type"
+	"matuto-base/src/app/admin/sys/service"
 	"matuto-base/src/common/basic"
 	response "matuto-base/src/common/response"
 	"matuto-base/src/global"
@@ -20,7 +20,7 @@ import (
 
 type DictTypeApi struct {
 	basic.BasicApi
-	dictTypeService dict_type.DictTypeService
+	dictTypeService service.DictTypeService
 }
 
 // Create 创建DictType

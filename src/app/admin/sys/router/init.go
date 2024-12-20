@@ -14,6 +14,7 @@ type SysRouter struct {
 	dictTypeRouter DictTypeRouter
 	dictDataRouter DictDataRouter
 	noticeRouter   NoticeRouter
+	monitorRouter  MonitorRouter
 }
 
 // var jobRouter job.JobRouter
@@ -30,10 +31,11 @@ func (r *SysRouter) InitSysRouter(Router *gin.RouterGroup) {
 		r.dictTypeRouter.InitDictTypeRouter(sys)
 		r.dictDataRouter.InitDictDataRouter(sys)
 		r.noticeRouter.InitNoticeRouter(sys)
-		//operLogRouter.InitOperLogRouter(sys)
 		r.postRouter.InitPostRouter(sys)
 		r.configRouter.InitConfigRouter(sys)
 		r.deptRouter.InitDeptRouter(sys)
+		// 监控相关
+		r.monitorRouter.InitMonitorRouter(sys)
 		//jobRouter.InitJobRouter(sys)
 		//jobLogRouter.InitJobLogRouter(sys)
 		//logininForRouter.InitLogininforRouter(sys)

@@ -5993,3 +5993,340 @@
 2024-12-20T14:24:14.457+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_dept` WHERE id = '101' ORDER BY `sys_dept`.`id` LIMIT 1", "time": "51.49ms", "rows": 1}
 2024-12-20T14:24:14.507+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_dept` WHERE id = '103' ORDER BY `sys_dept`.`id` LIMIT 1", "time": "49.74ms", "rows": 1}
 2024-12-20T14:24:14.507+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/sys/user/page", "ip": "127.0.0.1", "latency": 0.5388584}
+2024-12-20T14:28:50.689+0800	info	Gin request	{"status": 404, "method": "GET", "path": "/api/swagger-ui/index.html", "ip": "127.0.0.1", "latency": 0}
+2024-12-20T14:29:03.803+0800	debug	Database Query	{"sql": "SELECT count(*) FROM `sys_notice`", "time": "132.96ms", "rows": 1}
+2024-12-20T14:29:03.819+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_dict_data` WHERE dict_type = 'sys_notice_status'", "time": "149.67ms", "rows": 2}
+2024-12-20T14:29:03.819+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/sys/dictData/type/sys_notice_status", "ip": "127.0.0.1", "latency": 0.1496745}
+2024-12-20T14:29:03.831+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_dict_data` WHERE dict_type = 'sys_notice_type'", "time": "161.44ms", "rows": 2}
+2024-12-20T14:29:03.831+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/sys/dictData/type/sys_notice_type", "ip": "127.0.0.1", "latency": 0.1614367}
+2024-12-20T14:29:03.833+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_notice` LIMIT 10", "time": "30.04ms", "rows": 1}
+2024-12-20T14:29:03.833+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/sys/notice/page", "ip": "127.0.0.1", "latency": 0.1640654}
+2024-12-20T14:29:05.021+0800	debug	Database Query	{"sql": "SELECT count(*) FROM `sys_config`", "time": "27.38ms", "rows": 1}
+2024-12-20T14:29:05.049+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_config` LIMIT 10", "time": "27.77ms", "rows": 6}
+2024-12-20T14:29:05.049+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/sys/config/page", "ip": "127.0.0.1", "latency": 0.0570896}
+2024-12-20T14:29:05.049+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_dict_data` WHERE dict_type = 'sys_yes_no'", "time": "57.59ms", "rows": 2}
+2024-12-20T14:29:05.049+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/sys/dictData/type/sys_yes_no", "ip": "127.0.0.1", "latency": 0.057592}
+2024-12-20T14:29:06.294+0800	debug	Database Query	{"sql": "SELECT count(*) FROM `sys_dict_type`", "time": "29.15ms", "rows": 1}
+2024-12-20T14:29:06.324+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_dict_type` LIMIT 10", "time": "29.54ms", "rows": 10}
+2024-12-20T14:29:06.324+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/sys/dictType/page", "ip": "127.0.0.1", "latency": 0.0607361}
+2024-12-20T14:29:08.053+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_dict_type` WHERE id = '1' ORDER BY `sys_dict_type`.`id` LIMIT 1", "time": "59.35ms", "rows": 1}
+2024-12-20T14:29:08.053+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/sys/dictType/get/1", "ip": "127.0.0.1", "latency": 0.0593529}
+2024-12-20T14:29:10.625+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_dict_type`", "time": "41.80ms", "rows": 10}
+2024-12-20T14:29:10.625+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/sys/dictType/optionSelect", "ip": "127.0.0.1", "latency": 0.0426787}
+2024-12-20T14:29:10.660+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_dict_type` WHERE id = '1' ORDER BY `sys_dict_type`.`id` LIMIT 1", "time": "78.56ms", "rows": 1}
+2024-12-20T14:29:10.660+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/sys/dictType/get/1", "ip": "127.0.0.1", "latency": 0.0785611}
+2024-12-20T14:29:10.723+0800	debug	Database Query	{"sql": "SELECT count(*) FROM `sys_dict_data` WHERE dict_type = 'sys_user_sex'", "time": "54.75ms", "rows": 1}
+2024-12-20T14:29:10.792+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_dict_data` WHERE dict_type = 'sys_user_sex' LIMIT 10", "time": "67.85ms", "rows": 3}
+2024-12-20T14:29:10.793+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/sys/dictData/page", "ip": "127.0.0.1", "latency": 0.1231296}
+2024-12-20T14:29:43.560+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_user` WHERE id = '1' ORDER BY `sys_user`.`id` LIMIT 1", "time": "56.62ms", "rows": 1}
+2024-12-20T14:29:43.629+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_dept` WHERE id = '103' ORDER BY `sys_dept`.`id` LIMIT 1", "time": "67.88ms", "rows": 1}
+2024-12-20T14:29:43.671+0800	debug	Database Query	{"sql": "SELECT distinct r.id, r.role_name, r.role_key, r.role_sort, r.data_scope, r.menu_check_strictly, r.dept_check_strictly,r.status, r.create_time, r.remark  FROM sys_role r left join sys_user_role ur on ur.role_id = r.id left join sys_user u on u.id = ur.user_id left join sys_dept d on u.dept_id = d.id ORDER BY create_time desc", "time": "42.47ms", "rows": 2}
+2024-12-20T14:29:43.735+0800	debug	Database Query	{"sql": "SELECT distinct r.id, r.role_name, r.role_key, r.role_sort, r.data_scope, r.menu_check_strictly, r.dept_check_strictly,r.status, r.create_time, r.remark  FROM sys_role r left join sys_user_role ur on ur.role_id = r.id WHERE ur.user_id = '1' and r.status = 0", "time": "63.65ms", "rows": 1}
+2024-12-20T14:29:43.735+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/getInfo", "ip": "127.0.0.1", "latency": 0.2311238}
+2024-12-20T14:29:43.807+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_menu` WHERE status = 0 and menu_type in ('M', 'C')", "time": "66.49ms", "rows": 23}
+2024-12-20T14:29:43.808+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/getRouters", "ip": "127.0.0.1", "latency": 0.0680239}
+2024-12-20T14:29:43.961+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_dict_type`", "time": "29.48ms", "rows": 10}
+2024-12-20T14:29:43.961+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/sys/dictType/optionSelect", "ip": "127.0.0.1", "latency": 0.0304942}
+2024-12-20T14:29:43.989+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_dict_type` WHERE id = '1' ORDER BY `sys_dict_type`.`id` LIMIT 1", "time": "58.14ms", "rows": 1}
+2024-12-20T14:29:43.989+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/sys/dictType/get/1", "ip": "127.0.0.1", "latency": 0.0581426}
+2024-12-20T14:29:43.996+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_dict_data` WHERE dict_type = 'sys_normal_disable'", "time": "64.65ms", "rows": 2}
+2024-12-20T14:29:43.996+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/sys/dictData/type/sys_normal_disable", "ip": "127.0.0.1", "latency": 0.0646523}
+2024-12-20T14:29:44.064+0800	debug	Database Query	{"sql": "SELECT count(*) FROM `sys_dict_data` WHERE dict_type = 'sys_user_sex'", "time": "63.63ms", "rows": 1}
+2024-12-20T14:29:44.120+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_dict_data` WHERE dict_type = 'sys_user_sex' LIMIT 10", "time": "55.92ms", "rows": 3}
+2024-12-20T14:29:44.121+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/sys/dictData/page", "ip": "127.0.0.1", "latency": 0.1200613}
+2024-12-20T14:29:45.373+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_dict_data` WHERE dict_type = 'sys_user_sex'", "time": "60.03ms", "rows": 3}
+2024-12-20T14:29:45.374+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/sys/dictData/type/sys_user_sex", "ip": "127.0.0.1", "latency": 0.0605309}
+2024-12-20T14:29:45.374+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_user` WHERE id = '1' ORDER BY `sys_user`.`id` LIMIT 1", "time": "60.53ms", "rows": 1}
+2024-12-20T14:29:45.374+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_user` WHERE id = '1' ORDER BY `sys_user`.`id` LIMIT 1", "time": "60.53ms", "rows": 1}
+2024-12-20T14:29:45.441+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_dept` WHERE id = '103' ORDER BY `sys_dept`.`id` LIMIT 1", "time": "66.34ms", "rows": 1}
+2024-12-20T14:29:45.441+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_dept` WHERE id = '103' ORDER BY `sys_dept`.`id` LIMIT 1", "time": "66.85ms", "rows": 1}
+2024-12-20T14:29:45.467+0800	debug	Database Query	{"sql": "SELECT distinct r.id, r.role_name, r.role_key, r.role_sort, r.data_scope, r.menu_check_strictly, r.dept_check_strictly,r.status, r.create_time, r.remark  FROM sys_role r left join sys_user_role ur on ur.role_id = r.id left join sys_user u on u.id = ur.user_id left join sys_dept d on u.dept_id = d.id ORDER BY create_time desc", "time": "25.63ms", "rows": 2}
+2024-12-20T14:29:45.469+0800	debug	Database Query	{"sql": "SELECT distinct r.id, r.role_name, r.role_key, r.role_sort, r.data_scope, r.menu_check_strictly, r.dept_check_strictly,r.status, r.create_time, r.remark  FROM sys_role r left join sys_user_role ur on ur.role_id = r.id left join sys_user u on u.id = ur.user_id left join sys_dept d on u.dept_id = d.id ORDER BY create_time desc", "time": "27.96ms", "rows": 2}
+2024-12-20T14:29:45.494+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_config` WHERE config_key = 'sys.user.initPassword'", "time": "180.91ms", "rows": 1}
+2024-12-20T14:29:45.494+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/sys/config/configKey/sys.user.initPassword", "ip": "127.0.0.1", "latency": 0.1809101}
+2024-12-20T14:29:45.524+0800	debug	Database Query	{"sql": "SELECT distinct r.id, r.role_name, r.role_key, r.role_sort, r.data_scope, r.menu_check_strictly, r.dept_check_strictly,r.status, r.create_time, r.remark  FROM sys_role r left join sys_user_role ur on ur.role_id = r.id WHERE ur.user_id = '1' and r.status = 0", "time": "57.47ms", "rows": 1}
+2024-12-20T14:29:45.531+0800	debug	Database Query	{"sql": "SELECT distinct r.id, r.role_name, r.role_key, r.role_sort, r.data_scope, r.menu_check_strictly, r.dept_check_strictly,r.status, r.create_time, r.remark  FROM sys_role r left join sys_user_role ur on ur.role_id = r.id WHERE ur.user_id = '1' and r.status = 0", "time": "61.77ms", "rows": 1}
+2024-12-20T14:29:45.558+0800	debug	Database Query	{"sql": "SELECT * FROM sys_dept d ORDER BY d.parent_id, d.order_num", "time": "33.17ms", "rows": 10}
+2024-12-20T14:29:45.558+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/sys/dept/tree", "ip": "127.0.0.1", "latency": 0.244171}
+2024-12-20T14:29:45.560+0800	debug	Database Query	{"sql": "SELECT count(*) FROM sys_user u left join sys_dept d on u.dept_id = d.id", "time": "28.78ms", "rows": 1}
+2024-12-20T14:29:45.589+0800	debug	Database Query	{"sql": "SELECT distinct u.id, u.dept_id, u.nick_name, u.user_name, u.email, u.avatar, u.phone_number, u.sex, u.status, u.login_ip, u.login_date, u.create_by, u.create_time, u.remark FROM sys_user u left join sys_dept d on u.dept_id = d.id LIMIT 10", "time": "28.84ms", "rows": 4}
+2024-12-20T14:29:45.654+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_dept` WHERE id = '103' ORDER BY `sys_dept`.`id` LIMIT 1", "time": "65.16ms", "rows": 1}
+2024-12-20T14:29:45.718+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_dept` WHERE id = '102' ORDER BY `sys_dept`.`id` LIMIT 1", "time": "63.68ms", "rows": 1}
+2024-12-20T14:29:45.775+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_dept` WHERE id = '101' ORDER BY `sys_dept`.`id` LIMIT 1", "time": "56.62ms", "rows": 1}
+2024-12-20T14:29:45.835+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_dept` WHERE id = '103' ORDER BY `sys_dept`.`id` LIMIT 1", "time": "60.33ms", "rows": 1}
+2024-12-20T14:29:45.836+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/sys/user/page", "ip": "127.0.0.1", "latency": 0.5225438}
+2024-12-20T14:29:51.699+0800	debug	Database Query	{"sql": "SELECT count(*) FROM `gen_table`", "time": "38.04ms", "rows": 1}
+2024-12-20T14:29:51.730+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table` LIMIT 10", "time": "30.88ms", "rows": 1}
+2024-12-20T14:29:51.731+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/gen/table/page", "ip": "127.0.0.1", "latency": 0.0694276}
+2024-12-20T14:29:53.428+0800	debug	Database Query	{"sql": "SELECT count(*) FROM `information_schema`.`tables` WHERE table_schema = (select database()) AND (table_name NOT LIKE 'qrtz_%' AND table_name NOT LIKE 'gen_%') AND table_name NOT IN (select table_name from gen_table)", "time": "30.41ms", "rows": 1}
+2024-12-20T14:29:53.460+0800	debug	Database Query	{"sql": "SELECT TABLE_NAME table_name,TABLE_COMMENT table_comment,CREATE_TIME create_time,UPDATE_TIME update_time FROM `information_schema`.`tables` WHERE table_schema = (select database()) AND (table_name NOT LIKE 'qrtz_%' AND table_name NOT LIKE 'gen_%') AND table_name NOT IN (select table_name from gen_table) ORDER BY create_time desc LIMIT 10", "time": "32.11ms", "rows": 10}
+2024-12-20T14:29:53.461+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/gen/table/db/page", "ip": "127.0.0.1", "latency": 0.0635312}
+2024-12-20T14:35:10.422+0800	debug	Database Query	{"sql": "SELECT count(*) FROM `sys_post`", "time": "118.47ms", "rows": 1}
+2024-12-20T14:35:10.450+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_post` LIMIT 10", "time": "27.10ms", "rows": 4}
+2024-12-20T14:35:10.450+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/sys/post/page", "ip": "127.0.0.1", "latency": 0.146082}
+2024-12-20T14:35:11.485+0800	debug	Database Query	{"sql": "SELECT count(*) FROM `sys_dict_type`", "time": "39.05ms", "rows": 1}
+2024-12-20T14:35:11.510+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_dict_type` LIMIT 10", "time": "25.66ms", "rows": 10}
+2024-12-20T14:35:11.512+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/sys/dictType/page", "ip": "127.0.0.1", "latency": 0.0663706}
+2024-12-20T14:35:12.964+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_dict_data` WHERE dict_type = 'sys_yes_no'", "time": "56.49ms", "rows": 2}
+2024-12-20T14:35:12.964+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/sys/dictData/type/sys_yes_no", "ip": "127.0.0.1", "latency": 0.0567118}
+2024-12-20T14:35:13.019+0800	debug	Database Query	{"sql": "SELECT count(*) FROM `sys_config`", "time": "111.24ms", "rows": 1}
+2024-12-20T14:35:13.047+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_config` LIMIT 10", "time": "27.35ms", "rows": 6}
+2024-12-20T14:35:13.047+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/sys/config/page", "ip": "127.0.0.1", "latency": 0.1396089}
+2024-12-20T14:35:49.085+0800	debug	Database Query	{"sql": "SELECT count(*) FROM `sys_notice`", "time": "27.73ms", "rows": 1}
+2024-12-20T14:35:49.110+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_notice` LIMIT 10", "time": "24.49ms", "rows": 1}
+2024-12-20T14:35:49.111+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/sys/notice/page", "ip": "127.0.0.1", "latency": 0.0540177}
+2024-12-20T14:35:49.119+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_dict_data` WHERE dict_type = 'sys_notice_status'", "time": "62.06ms", "rows": 2}
+2024-12-20T14:35:49.119+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/sys/dictData/type/sys_notice_status", "ip": "127.0.0.1", "latency": 0.0625673}
+2024-12-20T14:35:49.203+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_dict_data` WHERE dict_type = 'sys_notice_type'", "time": "144.70ms", "rows": 2}
+2024-12-20T14:35:49.203+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/sys/dictData/type/sys_notice_type", "ip": "127.0.0.1", "latency": 0.1446961}
+2024-12-20T14:35:50.890+0800	error	查询失败!	{"error": "invalid value, should be pointer to struct or slice"}
+2024-12-20T14:35:50.890+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/sys/notice/get/9ce4c7d38ec448eb8f9163605a30a436", "ip": "127.0.0.1", "latency": 0}
+2024-12-20T14:35:55.393+0800	error	查询失败!	{"error": "invalid value, should be pointer to struct or slice"}
+2024-12-20T14:35:55.393+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/sys/notice/get/9ce4c7d38ec448eb8f9163605a30a436", "ip": "127.0.0.1", "latency": 0}
+2024-12-20T14:47:08.027+0800	info	Shutting down server...
+2024-12-20T14:47:08.027+0800	info	Server exiting
+2024-12-20T14:47:24.545+0800	info	系统启动成功,服务运行在 http://169.254.138.50:8081
+2024-12-20T15:12:47.208+0800	info	Shutting down server...
+2024-12-20T15:12:47.208+0800	info	Server exiting
+2024-12-20T15:12:55.729+0800	info	系统启动成功,服务运行在 http://169.254.138.50:8081
+2024-12-20T15:13:07.692+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_user` WHERE id = '1' ORDER BY `sys_user`.`id` LIMIT 1", "time": "129.74ms", "rows": 1}
+2024-12-20T15:13:07.759+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_dept` WHERE id = '103' ORDER BY `sys_dept`.`id` LIMIT 1", "time": "66.48ms", "rows": 1}
+2024-12-20T15:13:07.788+0800	debug	Database Query	{"sql": "SELECT distinct r.id, r.role_name, r.role_key, r.role_sort, r.data_scope, r.menu_check_strictly, r.dept_check_strictly,r.status, r.create_time, r.remark  FROM sys_role r left join sys_user_role ur on ur.role_id = r.id left join sys_user u on u.id = ur.user_id left join sys_dept d on u.dept_id = d.id ORDER BY create_time desc", "time": "28.59ms", "rows": 2}
+2024-12-20T15:13:07.855+0800	debug	Database Query	{"sql": "SELECT distinct r.id, r.role_name, r.role_key, r.role_sort, r.data_scope, r.menu_check_strictly, r.dept_check_strictly,r.status, r.create_time, r.remark  FROM sys_role r left join sys_user_role ur on ur.role_id = r.id WHERE ur.user_id = '1' and r.status = 0", "time": "66.56ms", "rows": 1}
+2024-12-20T15:13:07.855+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/getInfo", "ip": "127.0.0.1", "latency": 0.2934037}
+2024-12-20T15:13:07.922+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_menu` WHERE status = 0 and menu_type in ('M', 'C')", "time": "61.13ms", "rows": 23}
+2024-12-20T15:13:07.923+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/getRouters", "ip": "127.0.0.1", "latency": 0.062145}
+2024-12-20T15:13:08.339+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_dict_data` WHERE dict_type = 'sys_notice_type'", "time": "65.48ms", "rows": 2}
+2024-12-20T15:13:08.340+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/sys/dictData/type/sys_notice_type", "ip": "127.0.0.1", "latency": 0.0659901}
+2024-12-20T15:13:08.400+0800	debug	Database Query	{"sql": "SELECT count(*) FROM `sys_notice`", "time": "125.41ms", "rows": 1}
+2024-12-20T15:13:08.427+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_dict_data` WHERE dict_type = 'sys_notice_status'", "time": "153.57ms", "rows": 2}
+2024-12-20T15:13:08.427+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/sys/dictData/type/sys_notice_status", "ip": "127.0.0.1", "latency": 0.1535753}
+2024-12-20T15:13:08.435+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_notice` LIMIT 10", "time": "35.00ms", "rows": 1}
+2024-12-20T15:13:08.435+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/sys/notice/page", "ip": "127.0.0.1", "latency": 0.1609143}
+2024-12-20T15:13:12.886+0800	info	Gin request	{"status": 404, "method": "GET", "path": "/api/swagger-ui/index.html", "ip": "127.0.0.1", "latency": 0}
+2024-12-20T15:13:13.645+0800	debug	Database Query	{"sql": "SELECT count(*) FROM `gen_table`", "time": "33.11ms", "rows": 1}
+2024-12-20T15:13:13.676+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table` LIMIT 10", "time": "30.89ms", "rows": 1}
+2024-12-20T15:13:13.677+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/gen/table/page", "ip": "127.0.0.1", "latency": 0.0644982}
+2024-12-20T15:13:15.309+0800	debug	Database Query	{"sql": "SELECT count(*) FROM `information_schema`.`tables` WHERE table_schema = (select database()) AND (table_name NOT LIKE 'qrtz_%' AND table_name NOT LIKE 'gen_%') AND table_name NOT IN (select table_name from gen_table)", "time": "36.51ms", "rows": 1}
+2024-12-20T15:13:15.346+0800	debug	Database Query	{"sql": "SELECT TABLE_NAME table_name,TABLE_COMMENT table_comment,CREATE_TIME create_time,UPDATE_TIME update_time FROM `information_schema`.`tables` WHERE table_schema = (select database()) AND (table_name NOT LIKE 'qrtz_%' AND table_name NOT LIKE 'gen_%') AND table_name NOT IN (select table_name from gen_table) ORDER BY create_time desc LIMIT 10", "time": "36.36ms", "rows": 10}
+2024-12-20T15:13:15.347+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/gen/table/db/page", "ip": "127.0.0.1", "latency": 0.0739025}
+2024-12-20T15:13:19.921+0800	debug	Database Query	{"sql": "SELECT count(*) FROM `information_schema`.`tables` WHERE table_schema = (select database()) AND (table_name NOT LIKE 'qrtz_%' AND table_name NOT LIKE 'gen_%') AND table_name NOT IN (select table_name from gen_table)", "time": "32.89ms", "rows": 1}
+2024-12-20T15:13:19.955+0800	debug	Database Query	{"sql": "SELECT TABLE_NAME table_name,TABLE_COMMENT table_comment,CREATE_TIME create_time,UPDATE_TIME update_time FROM `information_schema`.`tables` WHERE table_schema = (select database()) AND (table_name NOT LIKE 'qrtz_%' AND table_name NOT LIKE 'gen_%') AND table_name NOT IN (select table_name from gen_table) ORDER BY create_time desc LIMIT 10 OFFSET 10", "time": "33.66ms", "rows": 6}
+2024-12-20T15:13:19.957+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/gen/table/db/page", "ip": "127.0.0.1", "latency": 0.068713}
+2024-12-20T15:13:25.960+0800	debug	Database Query	{"sql": "SELECT count(*) FROM `information_schema`.`tables` WHERE table_schema = (select database()) AND (table_name NOT LIKE 'qrtz_%' AND table_name NOT LIKE 'gen_%') AND table_name NOT IN (select table_name from gen_table)", "time": "35.47ms", "rows": 1}
+2024-12-20T15:13:25.996+0800	debug	Database Query	{"sql": "SELECT TABLE_NAME table_name,TABLE_COMMENT table_comment,CREATE_TIME create_time,UPDATE_TIME update_time FROM `information_schema`.`tables` WHERE table_schema = (select database()) AND (table_name NOT LIKE 'qrtz_%' AND table_name NOT LIKE 'gen_%') AND table_name NOT IN (select table_name from gen_table) ORDER BY create_time desc LIMIT 10", "time": "36.81ms", "rows": 10}
+2024-12-20T15:13:25.997+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/gen/table/db/page", "ip": "127.0.0.1", "latency": 0.0743332}
+2024-12-20T15:14:18.626+0800	debug	Database Query	{"sql": "SELECT count(*) FROM `information_schema`.`tables` WHERE table_schema = (select database()) AND (table_name NOT LIKE 'qrtz_%' AND table_name NOT LIKE 'gen_%') AND table_name NOT IN (select table_name from gen_table)", "time": "124.19ms", "rows": 1}
+2024-12-20T15:14:18.654+0800	debug	Database Query	{"sql": "SELECT TABLE_NAME table_name,TABLE_COMMENT table_comment,CREATE_TIME create_time,UPDATE_TIME update_time FROM `information_schema`.`tables` WHERE table_schema = (select database()) AND (table_name NOT LIKE 'qrtz_%' AND table_name NOT LIKE 'gen_%') AND table_name NOT IN (select table_name from gen_table) ORDER BY create_time desc LIMIT 10", "time": "28.05ms", "rows": 10}
+2024-12-20T15:15:50.338+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/gen/table/db/page", "ip": "127.0.0.1", "latency": 94.8466198}
+2024-12-20T15:15:50.723+0800	info	Shutting down server...
+2024-12-20T15:15:50.723+0800	info	Server exiting
+2024-12-20T15:16:07.715+0800	info	系统启动成功,服务运行在 http://169.254.138.50:8081
+2024-12-20T15:17:51.042+0800	info	Shutting down server...
+2024-12-20T15:17:51.042+0800	info	Server exiting
+2024-12-20T15:18:05.302+0800	info	系统启动成功,服务运行在 http://169.254.138.50:8081
+2024-12-20T15:18:23.044+0800	debug	Database Query	{"sql": "SELECT count(*) FROM `information_schema`.`tables` WHERE table_schema = (select database()) AND (table_name NOT LIKE 'qrtz_%' AND table_name NOT LIKE 'gen_%') AND table_name NOT IN (select table_name from gen_table)", "time": "30.17ms", "rows": 1}
+2024-12-20T15:18:23.073+0800	debug	Database Query	{"sql": "SELECT TABLE_NAME table_name,TABLE_COMMENT table_comment,CREATE_TIME create_time,UPDATE_TIME update_time FROM `information_schema`.`tables` WHERE table_schema = (select database()) AND (table_name NOT LIKE 'qrtz_%' AND table_name NOT LIKE 'gen_%') AND table_name NOT IN (select table_name from gen_table) ORDER BY create_time desc LIMIT 10", "time": "29.52ms", "rows": 10}
+2024-12-20T15:18:23.074+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/gen/table/db/page", "ip": "127.0.0.1", "latency": 2.9621773}
+2024-12-20T15:18:31.066+0800	debug	Database Query	{"sql": "SELECT count(*) FROM `information_schema`.`tables` WHERE table_schema = (select database()) AND (table_name NOT LIKE 'qrtz_%' AND table_name NOT LIKE 'gen_%') AND table_name NOT IN (select table_name from gen_table)", "time": "30.36ms", "rows": 1}
+2024-12-20T15:18:31.094+0800	debug	Database Query	{"sql": "SELECT TABLE_NAME table_name,TABLE_COMMENT table_comment,CREATE_TIME create_time,UPDATE_TIME update_time FROM `information_schema`.`tables` WHERE table_schema = (select database()) AND (table_name NOT LIKE 'qrtz_%' AND table_name NOT LIKE 'gen_%') AND table_name NOT IN (select table_name from gen_table) ORDER BY create_time desc LIMIT 10 OFFSET 10", "time": "27.75ms", "rows": 6}
+2024-12-20T15:18:31.094+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/gen/table/db/page", "ip": "127.0.0.1", "latency": 0.0586089}
+2024-12-20T15:18:35.355+0800	debug	Database Query	{"sql": "SELECT count(*) FROM `information_schema`.`tables` WHERE table_schema = (select database()) AND (table_name NOT LIKE 'qrtz_%' AND table_name NOT LIKE 'gen_%') AND table_name NOT IN (select table_name from gen_table)", "time": "28.96ms", "rows": 1}
+2024-12-20T15:18:35.382+0800	debug	Database Query	{"sql": "SELECT TABLE_NAME table_name,TABLE_COMMENT table_comment,CREATE_TIME create_time,UPDATE_TIME update_time FROM `information_schema`.`tables` WHERE table_schema = (select database()) AND (table_name NOT LIKE 'qrtz_%' AND table_name NOT LIKE 'gen_%') AND table_name NOT IN (select table_name from gen_table) ORDER BY create_time desc LIMIT 10", "time": "26.54ms", "rows": 10}
+2024-12-20T15:18:35.383+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/gen/table/db/page", "ip": "127.0.0.1", "latency": 0.0566126}
+2024-12-20T15:18:40.619+0800	debug	Database Query	{"sql": "SELECT TABLE_NAME table_name,TABLE_COMMENT table_comment,CREATE_TIME create_time,UPDATE_TIME update_time FROM `information_schema`.`tables` WHERE table_schema = (select database()) AND (table_name NOT LIKE 'qrtz_%' AND table_name NOT LIKE 'gen_%') AND table_name in ('sys_logininfor')", "time": "66.22ms", "rows": 1}
+2024-12-20T15:18:40.717+0800	debug	Database Query	{"sql": "INSERT INTO `gen_table` (`business_name`,`create_by`,`create_time`,`function_author`,`function_name`,`gen_path`,`gen_type`,`id`,`module_name`,`options`,`package_name`,`remark`,`struct_name`,`sub_table_fk_name`,`sub_table_name`,`table_comment`,`table_name`,`tpl_category`,`update_by`,`update_time`) VALUES ('logininfor','admin','2024-12-20 11:16:38','matuto','系统访问记录','','','1f2d233e74e9491a8dac707569778c91','sys','','matuto-base/src/app/admin/sys','','Logininfor','','','系统访问记录','sys_logininfor','','',NULL)", "time": "71.20ms", "rows": 1}
+2024-12-20T15:18:40.781+0800	debug	Database Query	{"sql": "SELECT COLUMN_NAME column_name,( CASE WHEN ( IS_NULLABLE = 'no' && COLUMN_KEY != 'PRI' ) THEN '1' ELSE NULL END ) AS is_required,( CASE WHEN COLUMN_KEY = 'PRI' THEN '1' ELSE '0' END ) AS is_pk,ORDINAL_POSITION AS sort,COLUMN_COMMENT column_comment,( CASE WHEN extra = 'AUTO_INCREMENT' THEN '1' ELSE '0' END ) AS is_increment,DATA_TYPE data_type, COLUMN_TYPE column_type, CHARACTER_MAXIMUM_LENGTH column_length FROM `information_schema`.`columns` WHERE table_schema = (SELECT DATABASE()) AND table_name = 'sys_logininfor'", "time": "62.25ms", "rows": 9}
+2024-12-20T15:18:40.834+0800	debug	Database Query	{"sql": "SELECT COLUMN_NAME column_name,( CASE WHEN ( IS_NULLABLE = 'no' && COLUMN_KEY != 'PRI' ) THEN '1' ELSE NULL END ) AS is_required,( CASE WHEN COLUMN_KEY = 'PRI' THEN '1' ELSE '0' END ) AS is_pk,ORDINAL_POSITION AS sort,COLUMN_COMMENT column_comment,( CASE WHEN extra = 'AUTO_INCREMENT' THEN '1' ELSE '0' END ) AS is_increment,DATA_TYPE data_type, COLUMN_TYPE column_type, CHARACTER_MAXIMUM_LENGTH column_length FROM `information_schema`.`columns` WHERE table_schema = (SELECT DATABASE()) AND table_name = 'sys_logininfor'", "time": "53.75ms", "rows": 9}
+2024-12-20T15:18:40.890+0800	debug	Database Query	{"sql": "INSERT INTO `gen_table_column` (`column_comment`,`column_name`,`column_type`,`data_type`,`column_length`,`create_by`,`json_field`,`create_time`,`dict_type`,`go_field`,`show_label`,`go_type`,`default_value`,`html_type`,`id`,`is_edit`,`is_increment`,`is_insert`,`is_list`,`is_pk`,`is_query`,`is_required`,`is_base`,`query_type`,`sort`,`table_id`,`update_by`,`update_time`) VALUES ('访问ID','id','varchar(32)','varchar',32,'admin','id','2024-12-20 15:18:40.835','','Id','访问ID','string','','input','8f55d2e846ed4a1d900dbfe36f2d3287','','0','1','','1','','','1','EQ',1,'1f2d233e74e9491a8dac707569778c91','',NULL)", "time": "54.73ms", "rows": 1}
+2024-12-20T15:18:40.944+0800	debug	Database Query	{"sql": "INSERT INTO `gen_table_column` (`column_comment`,`column_name`,`column_type`,`data_type`,`column_length`,`create_by`,`json_field`,`create_time`,`dict_type`,`go_field`,`show_label`,`go_type`,`default_value`,`html_type`,`id`,`is_edit`,`is_increment`,`is_insert`,`is_list`,`is_pk`,`is_query`,`is_required`,`is_base`,`query_type`,`sort`,`table_id`,`update_by`,`update_time`) VALUES ('用户账号','user_name','varchar(50)','varchar',50,'admin','userName','2024-12-20 15:18:40.89','','UserName','用户账号','string','','input','0d793d755588465aa6f5ed431e395f98','1','0','1','1','0','1','','','LIKE',2,'1f2d233e74e9491a8dac707569778c91','',NULL)", "time": "54.09ms", "rows": 1}
+2024-12-20T15:18:41.020+0800	debug	Database Query	{"sql": "INSERT INTO `gen_table_column` (`column_comment`,`column_name`,`column_type`,`data_type`,`column_length`,`create_by`,`json_field`,`create_time`,`dict_type`,`go_field`,`show_label`,`go_type`,`default_value`,`html_type`,`id`,`is_edit`,`is_increment`,`is_insert`,`is_list`,`is_pk`,`is_query`,`is_required`,`is_base`,`query_type`,`sort`,`table_id`,`update_by`,`update_time`) VALUES ('登录IP地址','ipaddr','varchar(128)','varchar',128,'admin','ipaddr','2024-12-20 15:18:40.944','','Ipaddr','登录IP地址','string','','input','54d8852e7d2447e1ab5e31c099a44660','1','0','1','1','0','1','','','LIKE',3,'1f2d233e74e9491a8dac707569778c91','',NULL)", "time": "76.06ms", "rows": 1}
+2024-12-20T15:18:41.075+0800	debug	Database Query	{"sql": "INSERT INTO `gen_table_column` (`column_comment`,`column_name`,`column_type`,`data_type`,`column_length`,`create_by`,`json_field`,`create_time`,`dict_type`,`go_field`,`show_label`,`go_type`,`default_value`,`html_type`,`id`,`is_edit`,`is_increment`,`is_insert`,`is_list`,`is_pk`,`is_query`,`is_required`,`is_base`,`query_type`,`sort`,`table_id`,`update_by`,`update_time`) VALUES ('登录地点','login_location','varchar(255)','varchar',255,'admin','loginLocation','2024-12-20 15:18:41.02','','LoginLocation','登录地点','string','','input','36321e5c1e0f44a7938bca1c9e55090b','1','0','1','1','0','1','','','LIKE',4,'1f2d233e74e9491a8dac707569778c91','',NULL)", "time": "55.11ms", "rows": 1}
+2024-12-20T15:18:41.129+0800	debug	Database Query	{"sql": "INSERT INTO `gen_table_column` (`column_comment`,`column_name`,`column_type`,`data_type`,`column_length`,`create_by`,`json_field`,`create_time`,`dict_type`,`go_field`,`show_label`,`go_type`,`default_value`,`html_type`,`id`,`is_edit`,`is_increment`,`is_insert`,`is_list`,`is_pk`,`is_query`,`is_required`,`is_base`,`query_type`,`sort`,`table_id`,`update_by`,`update_time`) VALUES ('浏览器类型','browser','varchar(50)','varchar',50,'admin','browser','2024-12-20 15:18:41.075','','Browser','浏览器类型','string','','input','c48e61a6b39942ff9bd3f1680e5e0919','1','0','1','1','0','1','','','LIKE',5,'1f2d233e74e9491a8dac707569778c91','',NULL)", "time": "54.04ms", "rows": 1}
+2024-12-20T15:18:41.185+0800	debug	Database Query	{"sql": "INSERT INTO `gen_table_column` (`column_comment`,`column_name`,`column_type`,`data_type`,`column_length`,`create_by`,`json_field`,`create_time`,`dict_type`,`go_field`,`show_label`,`go_type`,`default_value`,`html_type`,`id`,`is_edit`,`is_increment`,`is_insert`,`is_list`,`is_pk`,`is_query`,`is_required`,`is_base`,`query_type`,`sort`,`table_id`,`update_by`,`update_time`) VALUES ('操作系统','os','varchar(50)','varchar',50,'admin','os','2024-12-20 15:18:41.129','','Os','操作系统','string','','input','40b3d59a61d8490e910321f2c70da7fc','1','0','1','1','0','1','','','LIKE',6,'1f2d233e74e9491a8dac707569778c91','',NULL)", "time": "55.58ms", "rows": 1}
+2024-12-20T15:18:41.247+0800	debug	Database Query	{"sql": "INSERT INTO `gen_table_column` (`column_comment`,`column_name`,`column_type`,`data_type`,`column_length`,`create_by`,`json_field`,`create_time`,`dict_type`,`go_field`,`show_label`,`go_type`,`default_value`,`html_type`,`id`,`is_edit`,`is_increment`,`is_insert`,`is_list`,`is_pk`,`is_query`,`is_required`,`is_base`,`query_type`,`sort`,`table_id`,`update_by`,`update_time`) VALUES ('登录状态（0成功 1失败）','status','char(1)','char',1,'admin','status','2024-12-20 15:18:41.185','','Status','登录状态','string','','radio','f7371493a2f54834b107e79d2d04fb8f','1','0','1','1','0','1','','','LIKE',7,'1f2d233e74e9491a8dac707569778c91','',NULL)", "time": "62.32ms", "rows": 1}
+2024-12-20T15:18:41.299+0800	debug	Database Query	{"sql": "INSERT INTO `gen_table_column` (`column_comment`,`column_name`,`column_type`,`data_type`,`column_length`,`create_by`,`json_field`,`create_time`,`dict_type`,`go_field`,`show_label`,`go_type`,`default_value`,`html_type`,`id`,`is_edit`,`is_increment`,`is_insert`,`is_list`,`is_pk`,`is_query`,`is_required`,`is_base`,`query_type`,`sort`,`table_id`,`update_by`,`update_time`) VALUES ('提示消息','msg','varchar(255)','varchar',255,'admin','msg','2024-12-20 15:18:41.247','','Msg','提示消息','string','','input','850dcfe592fb41caa962be64cba3ad0f','1','0','1','1','0','1','','','LIKE',8,'1f2d233e74e9491a8dac707569778c91','',NULL)", "time": "52.05ms", "rows": 1}
+2024-12-20T15:18:41.354+0800	debug	Database Query	{"sql": "INSERT INTO `gen_table_column` (`column_comment`,`column_name`,`column_type`,`data_type`,`column_length`,`create_by`,`json_field`,`create_time`,`dict_type`,`go_field`,`show_label`,`go_type`,`default_value`,`html_type`,`id`,`is_edit`,`is_increment`,`is_insert`,`is_list`,`is_pk`,`is_query`,`is_required`,`is_base`,`query_type`,`sort`,`table_id`,`update_by`,`update_time`) VALUES ('访问时间','login_time','datetime','datetime',0,'admin','loginTime','2024-12-20 15:18:41.299','','LoginTime','访问时间','*time.Time','nil','datetime','bb22a7f80ce64a5cbd47f3dcd2b613f8','1','0','1','1','0','1','','','BETWEEN',9,'1f2d233e74e9491a8dac707569778c91','',NULL)", "time": "54.82ms", "rows": 1}
+2024-12-20T15:18:41.386+0800	info	Gin request	{"status": 200, "method": "POST", "path": "/api/gen/table/importTable", "ip": "127.0.0.1", "latency": 0.833847}
+2024-12-20T15:18:41.437+0800	debug	Database Query	{"sql": "SELECT count(*) FROM `gen_table`", "time": "26.73ms", "rows": 1}
+2024-12-20T15:18:41.480+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table` LIMIT 10", "time": "43.07ms", "rows": 2}
+2024-12-20T15:18:41.481+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/gen/table/page", "ip": "127.0.0.1", "latency": 0.0721858}
+2024-12-20T15:18:43.798+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table` WHERE id = '1f2d233e74e9491a8dac707569778c91' ORDER BY `gen_table`.`id` LIMIT 1", "time": "70.64ms", "rows": 1}
+2024-12-20T15:18:43.850+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table_column` WHERE table_id = '1f2d233e74e9491a8dac707569778c91' ORDER BY sort", "time": "51.13ms", "rows": 9}
+2024-12-20T15:18:43.904+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table_column` WHERE table_id = '1f2d233e74e9491a8dac707569778c91' AND is_pk = '1' ORDER BY `gen_table_column`.`id` LIMIT 1", "time": "53.43ms", "rows": 1}
+2024-12-20T15:18:43.954+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table_column` WHERE table_id = '1f2d233e74e9491a8dac707569778c91' AND is_query = '1' ORDER BY sort", "time": "49.96ms", "rows": 8}
+2024-12-20T15:18:44.019+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table_column` WHERE table_id = '1f2d233e74e9491a8dac707569778c91' AND is_insert = '1' ORDER BY sort", "time": "63.61ms", "rows": 9}
+2024-12-20T15:18:44.070+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table_column` WHERE table_id = '1f2d233e74e9491a8dac707569778c91' AND is_edit = '1' ORDER BY sort", "time": "50.03ms", "rows": 8}
+2024-12-20T15:18:44.133+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table_column` WHERE table_id = '1f2d233e74e9491a8dac707569778c91' AND is_list = '1' ORDER BY sort", "time": "62.30ms", "rows": 8}
+2024-12-20T15:18:44.134+0800	error	预览失败!	{"error": "template: model.go.txt:20:12: executing \"model.go.txt\" at <.TableName>: can't evaluate field TableName in type *vo.TableView"}
+2024-12-20T15:18:44.134+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/gen/table/preview/1f2d233e74e9491a8dac707569778c91", "ip": "127.0.0.1", "latency": 0.4061937}
+2024-12-20T15:19:09.737+0800	info	Shutting down server...
+2024-12-20T15:19:09.737+0800	info	Server exiting
+2024-12-20T15:19:16.586+0800	info	系统启动成功,服务运行在 http://169.254.138.50:8081
+2024-12-20T15:19:19.070+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table` WHERE id = '1f2d233e74e9491a8dac707569778c91' ORDER BY `gen_table`.`id` LIMIT 1", "time": "54.75ms", "rows": 1}
+2024-12-20T15:19:19.129+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table_column` WHERE table_id = '1f2d233e74e9491a8dac707569778c91' ORDER BY sort", "time": "58.47ms", "rows": 9}
+2024-12-20T15:19:19.195+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table_column` WHERE table_id = '1f2d233e74e9491a8dac707569778c91' AND is_pk = '1' ORDER BY `gen_table_column`.`id` LIMIT 1", "time": "65.30ms", "rows": 1}
+2024-12-20T15:19:19.250+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table_column` WHERE table_id = '1f2d233e74e9491a8dac707569778c91' AND is_query = '1' ORDER BY sort", "time": "55.12ms", "rows": 8}
+2024-12-20T15:19:19.306+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table_column` WHERE table_id = '1f2d233e74e9491a8dac707569778c91' AND is_insert = '1' ORDER BY sort", "time": "55.40ms", "rows": 9}
+2024-12-20T15:19:19.364+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table_column` WHERE table_id = '1f2d233e74e9491a8dac707569778c91' AND is_edit = '1' ORDER BY sort", "time": "56.97ms", "rows": 8}
+2024-12-20T15:19:19.424+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table_column` WHERE table_id = '1f2d233e74e9491a8dac707569778c91' AND is_list = '1' ORDER BY sort", "time": "59.22ms", "rows": 8}
+2024-12-20T15:19:19.433+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/gen/table/preview/1f2d233e74e9491a8dac707569778c91", "ip": "127.0.0.1", "latency": 0.4175365}
+2024-12-20T15:19:52.281+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table` WHERE id = '1f2d233e74e9491a8dac707569778c91' ORDER BY `gen_table`.`id` LIMIT 1", "time": "53.57ms", "rows": 1}
+2024-12-20T15:19:52.334+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table_column` WHERE table_id = '1f2d233e74e9491a8dac707569778c91' ORDER BY sort", "time": "52.35ms", "rows": 9}
+2024-12-20T15:19:52.335+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/gen/table/get/1f2d233e74e9491a8dac707569778c91", "ip": "127.0.0.1", "latency": 0.1069795}
+2024-12-20T15:19:52.346+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_dict_type`", "time": "117.78ms", "rows": 10}
+2024-12-20T15:19:52.347+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/sys/dictType/optionSelect", "ip": "127.0.0.1", "latency": 0.1182833}
+2024-12-20T15:19:52.347+0800	debug	Database Query	{"sql": "SELECT distinct id, parent_id, menu_name, path, component, `query`, visible, status, perms, is_frame, is_cache, menu_type, icon, order_num, create_time FROM `sys_menu` ORDER BY parent_id, order_num", "time": "118.80ms", "rows": 84}
+2024-12-20T15:19:52.352+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/sys/menu/list", "ip": "127.0.0.1", "latency": 0.1241054}
+2024-12-20T15:20:39.404+0800	debug	Database Query	{"sql": "SELECT count(*) FROM `gen_table`", "time": "26.52ms", "rows": 1}
+2024-12-20T15:20:39.432+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table` LIMIT 10", "time": "27.17ms", "rows": 2}
+2024-12-20T15:20:39.432+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/gen/table/page", "ip": "127.0.0.1", "latency": 0.0536914}
+2024-12-20T15:20:40.822+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table` WHERE id = '1f2d233e74e9491a8dac707569778c91' ORDER BY `gen_table`.`id` LIMIT 1", "time": "53.11ms", "rows": 1}
+2024-12-20T15:20:40.892+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table_column` WHERE table_id = '1f2d233e74e9491a8dac707569778c91' ORDER BY sort", "time": "70.39ms", "rows": 9}
+2024-12-20T15:20:40.970+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table_column` WHERE table_id = '1f2d233e74e9491a8dac707569778c91' AND is_pk = '1' ORDER BY `gen_table_column`.`id` LIMIT 1", "time": "77.14ms", "rows": 1}
+2024-12-20T15:20:41.034+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table_column` WHERE table_id = '1f2d233e74e9491a8dac707569778c91' AND is_query = '1' ORDER BY sort", "time": "64.09ms", "rows": 8}
+2024-12-20T15:20:41.092+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table_column` WHERE table_id = '1f2d233e74e9491a8dac707569778c91' AND is_insert = '1' ORDER BY sort", "time": "57.75ms", "rows": 9}
+2024-12-20T15:20:41.153+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table_column` WHERE table_id = '1f2d233e74e9491a8dac707569778c91' AND is_edit = '1' ORDER BY sort", "time": "58.59ms", "rows": 8}
+2024-12-20T15:20:41.218+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table_column` WHERE table_id = '1f2d233e74e9491a8dac707569778c91' AND is_list = '1' ORDER BY sort", "time": "62.53ms", "rows": 8}
+2024-12-20T15:20:41.274+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table` WHERE id = '1f2d233e74e9491a8dac707569778c91' ORDER BY `gen_table`.`id` LIMIT 1", "time": "54.97ms", "rows": 1}
+2024-12-20T15:20:41.336+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table_column` WHERE table_id = '1f2d233e74e9491a8dac707569778c91' ORDER BY sort", "time": "62.40ms", "rows": 9}
+2024-12-20T15:20:41.389+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table_column` WHERE table_id = '1f2d233e74e9491a8dac707569778c91' AND is_pk = '1' ORDER BY `gen_table_column`.`id` LIMIT 1", "time": "51.56ms", "rows": 1}
+2024-12-20T15:20:41.449+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table_column` WHERE table_id = '1f2d233e74e9491a8dac707569778c91' AND is_query = '1' ORDER BY sort", "time": "60.07ms", "rows": 8}
+2024-12-20T15:20:41.505+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table_column` WHERE table_id = '1f2d233e74e9491a8dac707569778c91' AND is_insert = '1' ORDER BY sort", "time": "54.83ms", "rows": 9}
+2024-12-20T15:20:41.566+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table_column` WHERE table_id = '1f2d233e74e9491a8dac707569778c91' AND is_edit = '1' ORDER BY sort", "time": "60.06ms", "rows": 8}
+2024-12-20T15:20:41.619+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table_column` WHERE table_id = '1f2d233e74e9491a8dac707569778c91' AND is_list = '1' ORDER BY sort", "time": "51.82ms", "rows": 8}
+2024-12-20T15:20:41.625+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/gen/table/genCode/1f2d233e74e9491a8dac707569778c91", "ip": "127.0.0.1", "latency": 0.8563392}
+2024-12-20T15:21:37.139+0800	info	Shutting down server...
+2024-12-20T15:21:37.139+0800	info	Server exiting
+2024-12-20T15:21:51.803+0800	info	系统启动成功,服务运行在 http://169.254.138.50:8081
+2024-12-20T15:21:59.039+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table` WHERE id = '1f2d233e74e9491a8dac707569778c91' ORDER BY `gen_table`.`id` LIMIT 1", "time": "62.95ms", "rows": 1}
+2024-12-20T15:21:59.109+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table_column` WHERE table_id = '1f2d233e74e9491a8dac707569778c91' ORDER BY sort", "time": "69.87ms", "rows": 9}
+2024-12-20T15:21:59.180+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table_column` WHERE table_id = '1f2d233e74e9491a8dac707569778c91' AND is_pk = '1' ORDER BY `gen_table_column`.`id` LIMIT 1", "time": "69.96ms", "rows": 1}
+2024-12-20T15:21:59.250+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table_column` WHERE table_id = '1f2d233e74e9491a8dac707569778c91' AND is_query = '1' ORDER BY sort", "time": "68.59ms", "rows": 8}
+2024-12-20T15:21:59.318+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table_column` WHERE table_id = '1f2d233e74e9491a8dac707569778c91' AND is_insert = '1' ORDER BY sort", "time": "67.52ms", "rows": 9}
+2024-12-20T15:21:59.380+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table_column` WHERE table_id = '1f2d233e74e9491a8dac707569778c91' AND is_edit = '1' ORDER BY sort", "time": "60.59ms", "rows": 8}
+2024-12-20T15:21:59.443+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table_column` WHERE table_id = '1f2d233e74e9491a8dac707569778c91' AND is_list = '1' ORDER BY sort", "time": "61.59ms", "rows": 8}
+2024-12-20T15:21:59.520+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table` WHERE id = '1f2d233e74e9491a8dac707569778c91' ORDER BY `gen_table`.`id` LIMIT 1", "time": "76.59ms", "rows": 1}
+2024-12-20T15:21:59.579+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table_column` WHERE table_id = '1f2d233e74e9491a8dac707569778c91' ORDER BY sort", "time": "59.23ms", "rows": 9}
+2024-12-20T15:21:59.643+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table_column` WHERE table_id = '1f2d233e74e9491a8dac707569778c91' AND is_pk = '1' ORDER BY `gen_table_column`.`id` LIMIT 1", "time": "63.99ms", "rows": 1}
+2024-12-20T15:21:59.705+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table_column` WHERE table_id = '1f2d233e74e9491a8dac707569778c91' AND is_query = '1' ORDER BY sort", "time": "61.54ms", "rows": 8}
+2024-12-20T15:21:59.777+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table_column` WHERE table_id = '1f2d233e74e9491a8dac707569778c91' AND is_insert = '1' ORDER BY sort", "time": "70.87ms", "rows": 9}
+2024-12-20T15:21:59.835+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table_column` WHERE table_id = '1f2d233e74e9491a8dac707569778c91' AND is_edit = '1' ORDER BY sort", "time": "56.87ms", "rows": 8}
+2024-12-20T15:21:59.898+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table_column` WHERE table_id = '1f2d233e74e9491a8dac707569778c91' AND is_list = '1' ORDER BY sort", "time": "61.46ms", "rows": 8}
+2024-12-20T15:21:59.910+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/gen/table/genCode/1f2d233e74e9491a8dac707569778c91", "ip": "127.0.0.1", "latency": 0.9351115}
+2024-12-20T15:23:26.109+0800	info	Shutting down server...
+2024-12-20T15:23:26.109+0800	info	Server exiting
+2024-12-20T15:23:42.473+0800	info	系统启动成功,服务运行在 http://169.254.138.50:8081
+2024-12-20T15:23:53.984+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_user` WHERE id = '1' ORDER BY `sys_user`.`id` LIMIT 1", "time": "74.06ms", "rows": 1}
+2024-12-20T15:23:54.045+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_dept` WHERE id = '103' ORDER BY `sys_dept`.`id` LIMIT 1", "time": "60.68ms", "rows": 1}
+2024-12-20T15:23:54.076+0800	debug	Database Query	{"sql": "SELECT distinct r.id, r.role_name, r.role_key, r.role_sort, r.data_scope, r.menu_check_strictly, r.dept_check_strictly,r.status, r.create_time, r.remark  FROM sys_role r left join sys_user_role ur on ur.role_id = r.id left join sys_user u on u.id = ur.user_id left join sys_dept d on u.dept_id = d.id ORDER BY create_time desc", "time": "30.22ms", "rows": 2}
+2024-12-20T15:23:54.138+0800	debug	Database Query	{"sql": "SELECT distinct r.id, r.role_name, r.role_key, r.role_sort, r.data_scope, r.menu_check_strictly, r.dept_check_strictly,r.status, r.create_time, r.remark  FROM sys_role r left join sys_user_role ur on ur.role_id = r.id WHERE ur.user_id = '1' and r.status = 0", "time": "61.67ms", "rows": 1}
+2024-12-20T15:23:54.138+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/getInfo", "ip": "127.0.0.1", "latency": 0.2301648}
+2024-12-20T15:23:54.204+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_menu` WHERE status = 0 and menu_type in ('M', 'C')", "time": "61.29ms", "rows": 23}
+2024-12-20T15:23:54.206+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/getRouters", "ip": "127.0.0.1", "latency": 0.0631752}
+2024-12-20T15:23:54.495+0800	debug	Database Query	{"sql": "SELECT count(*) FROM `gen_table`", "time": "30.17ms", "rows": 1}
+2024-12-20T15:23:54.525+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table` LIMIT 10", "time": "29.74ms", "rows": 2}
+2024-12-20T15:23:54.525+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/gen/table/page", "ip": "127.0.0.1", "latency": 0.0599084}
+2024-12-20T15:23:55.108+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table` WHERE id = '1f2d233e74e9491a8dac707569778c91' ORDER BY `gen_table`.`id` LIMIT 1", "time": "60.78ms", "rows": 1}
+2024-12-20T15:23:55.179+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table_column` WHERE table_id = '1f2d233e74e9491a8dac707569778c91' ORDER BY sort", "time": "70.60ms", "rows": 9}
+2024-12-20T15:23:55.252+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table_column` WHERE table_id = '1f2d233e74e9491a8dac707569778c91' AND is_pk = '1' ORDER BY `gen_table_column`.`id` LIMIT 1", "time": "71.97ms", "rows": 1}
+2024-12-20T15:23:55.323+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table_column` WHERE table_id = '1f2d233e74e9491a8dac707569778c91' AND is_query = '1' ORDER BY sort", "time": "70.43ms", "rows": 8}
+2024-12-20T15:23:55.401+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table_column` WHERE table_id = '1f2d233e74e9491a8dac707569778c91' AND is_insert = '1' ORDER BY sort", "time": "76.77ms", "rows": 9}
+2024-12-20T15:23:55.474+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table_column` WHERE table_id = '1f2d233e74e9491a8dac707569778c91' AND is_edit = '1' ORDER BY sort", "time": "71.75ms", "rows": 8}
+2024-12-20T15:23:55.533+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table_column` WHERE table_id = '1f2d233e74e9491a8dac707569778c91' AND is_list = '1' ORDER BY sort", "time": "57.88ms", "rows": 8}
+2024-12-20T15:23:55.605+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table` WHERE id = '1f2d233e74e9491a8dac707569778c91' ORDER BY `gen_table`.`id` LIMIT 1", "time": "70.69ms", "rows": 1}
+2024-12-20T15:23:55.667+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table_column` WHERE table_id = '1f2d233e74e9491a8dac707569778c91' ORDER BY sort", "time": "61.99ms", "rows": 9}
+2024-12-20T15:23:55.732+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table_column` WHERE table_id = '1f2d233e74e9491a8dac707569778c91' AND is_pk = '1' ORDER BY `gen_table_column`.`id` LIMIT 1", "time": "64.00ms", "rows": 1}
+2024-12-20T15:23:55.798+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table_column` WHERE table_id = '1f2d233e74e9491a8dac707569778c91' AND is_query = '1' ORDER BY sort", "time": "66.97ms", "rows": 8}
+2024-12-20T15:23:55.857+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table_column` WHERE table_id = '1f2d233e74e9491a8dac707569778c91' AND is_insert = '1' ORDER BY sort", "time": "58.31ms", "rows": 9}
+2024-12-20T15:23:55.928+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table_column` WHERE table_id = '1f2d233e74e9491a8dac707569778c91' AND is_edit = '1' ORDER BY sort", "time": "70.12ms", "rows": 8}
+2024-12-20T15:23:56.006+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table_column` WHERE table_id = '1f2d233e74e9491a8dac707569778c91' AND is_list = '1' ORDER BY sort", "time": "76.55ms", "rows": 8}
+2024-12-20T15:23:56.012+0800	info	Gin request	{"status": 500, "method": "GET", "path": "/api/gen/table/genCode/1f2d233e74e9491a8dac707569778c91", "ip": "127.0.0.1", "latency": 0.9646777}
+2024-12-20T15:25:12.206+0800	info	Shutting down server...
+2024-12-20T15:25:12.206+0800	info	Server exiting
+2024-12-20T15:25:27.247+0800	info	系统启动成功,服务运行在 http://169.254.138.50:8081
+2024-12-20T15:25:30.096+0800	info	Shutting down server...
+2024-12-20T15:25:30.096+0800	info	Server exiting
+2024-12-20T15:25:43.237+0800	info	系统启动成功,服务运行在 http://169.254.138.50:8081
+2024-12-20T15:25:48.877+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table` WHERE id = '1f2d233e74e9491a8dac707569778c91' ORDER BY `gen_table`.`id` LIMIT 1", "time": "57.49ms", "rows": 1}
+2024-12-20T15:25:48.948+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table_column` WHERE table_id = '1f2d233e74e9491a8dac707569778c91' ORDER BY sort", "time": "69.94ms", "rows": 9}
+2024-12-20T15:25:49.023+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table_column` WHERE table_id = '1f2d233e74e9491a8dac707569778c91' AND is_pk = '1' ORDER BY `gen_table_column`.`id` LIMIT 1", "time": "74.81ms", "rows": 1}
+2024-12-20T15:25:49.088+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table_column` WHERE table_id = '1f2d233e74e9491a8dac707569778c91' AND is_query = '1' ORDER BY sort", "time": "64.19ms", "rows": 8}
+2024-12-20T15:25:49.149+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table_column` WHERE table_id = '1f2d233e74e9491a8dac707569778c91' AND is_insert = '1' ORDER BY sort", "time": "59.39ms", "rows": 9}
+2024-12-20T15:25:49.213+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table_column` WHERE table_id = '1f2d233e74e9491a8dac707569778c91' AND is_edit = '1' ORDER BY sort", "time": "62.96ms", "rows": 8}
+2024-12-20T15:25:49.282+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table_column` WHERE table_id = '1f2d233e74e9491a8dac707569778c91' AND is_list = '1' ORDER BY sort", "time": "68.12ms", "rows": 8}
+2024-12-20T15:25:49.349+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table` WHERE id = '1f2d233e74e9491a8dac707569778c91' ORDER BY `gen_table`.`id` LIMIT 1", "time": "65.89ms", "rows": 1}
+2024-12-20T15:25:49.410+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table_column` WHERE table_id = '1f2d233e74e9491a8dac707569778c91' ORDER BY sort", "time": "60.90ms", "rows": 9}
+2024-12-20T15:25:49.489+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table_column` WHERE table_id = '1f2d233e74e9491a8dac707569778c91' AND is_pk = '1' ORDER BY `gen_table_column`.`id` LIMIT 1", "time": "77.31ms", "rows": 1}
+2024-12-20T15:25:49.546+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table_column` WHERE table_id = '1f2d233e74e9491a8dac707569778c91' AND is_query = '1' ORDER BY sort", "time": "57.06ms", "rows": 8}
+2024-12-20T15:25:49.601+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table_column` WHERE table_id = '1f2d233e74e9491a8dac707569778c91' AND is_insert = '1' ORDER BY sort", "time": "54.03ms", "rows": 9}
+2024-12-20T15:25:49.654+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table_column` WHERE table_id = '1f2d233e74e9491a8dac707569778c91' AND is_edit = '1' ORDER BY sort", "time": "52.58ms", "rows": 8}
+2024-12-20T15:25:49.714+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table_column` WHERE table_id = '1f2d233e74e9491a8dac707569778c91' AND is_list = '1' ORDER BY sort", "time": "59.53ms", "rows": 8}
+2024-12-20T15:26:07.839+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/gen/table/genCode/1f2d233e74e9491a8dac707569778c91", "ip": "127.0.0.1", "latency": 19.0200642}
+2024-12-20T15:27:02.007+0800	info	Shutting down server...
+2024-12-20T15:27:02.007+0800	info	Server exiting
+2024-12-20T15:35:25.613+0800	info	系统启动成功,服务运行在 http://169.254.138.50:8081
+2024-12-20T15:36:25.512+0800	info	Shutting down server...
+2024-12-20T15:36:25.512+0800	info	Server exiting
+2024-12-20T15:36:40.471+0800	info	系统启动成功,服务运行在 http://169.254.138.50:8081
+2024-12-20T15:36:43.809+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_user` WHERE id = '1' ORDER BY `sys_user`.`id` LIMIT 1", "time": "62.51ms", "rows": 1}
+2024-12-20T15:36:43.865+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_dept` WHERE id = '103' ORDER BY `sys_dept`.`id` LIMIT 1", "time": "55.85ms", "rows": 1}
+2024-12-20T15:36:43.892+0800	debug	Database Query	{"sql": "SELECT distinct r.id, r.role_name, r.role_key, r.role_sort, r.data_scope, r.menu_check_strictly, r.dept_check_strictly,r.status, r.create_time, r.remark  FROM sys_role r left join sys_user_role ur on ur.role_id = r.id left join sys_user u on u.id = ur.user_id left join sys_dept d on u.dept_id = d.id ORDER BY create_time desc", "time": "26.50ms", "rows": 2}
+2024-12-20T15:36:43.956+0800	debug	Database Query	{"sql": "SELECT distinct r.id, r.role_name, r.role_key, r.role_sort, r.data_scope, r.menu_check_strictly, r.dept_check_strictly,r.status, r.create_time, r.remark  FROM sys_role r left join sys_user_role ur on ur.role_id = r.id WHERE ur.user_id = '1' and r.status = 0", "time": "63.43ms", "rows": 1}
+2024-12-20T15:36:43.957+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/getInfo", "ip": "127.0.0.1", "latency": 0.2103777}
+2024-12-20T15:36:44.030+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_menu` WHERE status = 0 and menu_type in ('M', 'C')", "time": "65.72ms", "rows": 23}
+2024-12-20T15:36:44.032+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/getRouters", "ip": "127.0.0.1", "latency": 0.068797}
+2024-12-20T15:36:44.323+0800	debug	Database Query	{"sql": "SELECT count(*) FROM `gen_table`", "time": "25.89ms", "rows": 1}
+2024-12-20T15:36:44.350+0800	debug	Database Query	{"sql": "SELECT * FROM `gen_table` LIMIT 10", "time": "26.31ms", "rows": 2}
+2024-12-20T15:36:44.351+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/gen/table/page", "ip": "127.0.0.1", "latency": 0.0537054}
+2024-12-20T15:36:47.885+0800	info	Gin request	{"status": 404, "method": "GET", "path": "/api/monitor/operlog/list", "ip": "127.0.0.1", "latency": 0}
+2024-12-20T15:36:47.959+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_dict_data` WHERE dict_type = 'sys_common_status'", "time": "73.80ms", "rows": 2}
+2024-12-20T15:36:47.960+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/sys/dictData/type/sys_common_status", "ip": "127.0.0.1", "latency": 0.0737959}
+2024-12-20T15:36:48.069+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_dict_data` WHERE dict_type = 'sys_oper_type'", "time": "183.25ms", "rows": 10}
+2024-12-20T15:36:48.070+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/sys/dictData/type/sys_oper_type", "ip": "127.0.0.1", "latency": 0.1842795}
+2024-12-20T15:36:49.441+0800	info	Gin request	{"status": 404, "method": "GET", "path": "/api/monitor/logininfor/list", "ip": "127.0.0.1", "latency": 0}
+2024-12-20T15:36:56.313+0800	info	Gin request	{"status": 404, "method": "GET", "path": "/api/monitor/operlog/list", "ip": "127.0.0.1", "latency": 0}
+2024-12-20T15:37:02.647+0800	info	Gin request	{"status": 404, "method": "GET", "path": "/api/monitor/logininfor/list", "ip": "127.0.0.1", "latency": 0}
+2024-12-20T15:37:38.120+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_user` WHERE id = '1' ORDER BY `sys_user`.`id` LIMIT 1", "time": "70.93ms", "rows": 1}
+2024-12-20T15:37:38.202+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_dept` WHERE id = '103' ORDER BY `sys_dept`.`id` LIMIT 1", "time": "79.82ms", "rows": 1}
+2024-12-20T15:37:38.239+0800	debug	Database Query	{"sql": "SELECT distinct r.id, r.role_name, r.role_key, r.role_sort, r.data_scope, r.menu_check_strictly, r.dept_check_strictly,r.status, r.create_time, r.remark  FROM sys_role r left join sys_user_role ur on ur.role_id = r.id left join sys_user u on u.id = ur.user_id left join sys_dept d on u.dept_id = d.id ORDER BY create_time desc", "time": "35.48ms", "rows": 2}
+2024-12-20T15:37:38.312+0800	debug	Database Query	{"sql": "SELECT distinct r.id, r.role_name, r.role_key, r.role_sort, r.data_scope, r.menu_check_strictly, r.dept_check_strictly,r.status, r.create_time, r.remark  FROM sys_role r left join sys_user_role ur on ur.role_id = r.id WHERE ur.user_id = '1' and r.status = 0", "time": "72.83ms", "rows": 1}
+2024-12-20T15:37:38.313+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/getInfo", "ip": "127.0.0.1", "latency": 0.2649537}
+2024-12-20T15:37:38.402+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_menu` WHERE status = 0 and menu_type in ('M', 'C')", "time": "79.36ms", "rows": 23}
+2024-12-20T15:37:38.404+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/getRouters", "ip": "127.0.0.1", "latency": 0.0819099}
+2024-12-20T15:37:38.776+0800	info	Gin request	{"status": 404, "method": "GET", "path": "/api/monitor/logininfor/page", "ip": "127.0.0.1", "latency": 0}
+2024-12-20T15:37:38.856+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_dict_data` WHERE dict_type = 'sys_common_status'", "time": "80.21ms", "rows": 2}
+2024-12-20T15:37:38.857+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/sys/dictData/type/sys_common_status", "ip": "127.0.0.1", "latency": 0.0817216}
+2024-12-20T15:42:59.955+0800	info	Shutting down server...
+2024-12-20T15:42:59.956+0800	info	Server exiting
+2024-12-20T15:43:21.438+0800	info	系统启动成功,服务运行在 http://169.254.138.50:8081
+2024-12-20T15:43:24.319+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_user` WHERE id = '1' ORDER BY `sys_user`.`id` LIMIT 1", "time": "81.98ms", "rows": 1}
+2024-12-20T15:43:24.381+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_dept` WHERE id = '103' ORDER BY `sys_dept`.`id` LIMIT 1", "time": "61.60ms", "rows": 1}
+2024-12-20T15:43:24.421+0800	debug	Database Query	{"sql": "SELECT distinct r.id, r.role_name, r.role_key, r.role_sort, r.data_scope, r.menu_check_strictly, r.dept_check_strictly,r.status, r.create_time, r.remark  FROM sys_role r left join sys_user_role ur on ur.role_id = r.id left join sys_user u on u.id = ur.user_id left join sys_dept d on u.dept_id = d.id ORDER BY create_time desc", "time": "39.18ms", "rows": 2}
+2024-12-20T15:43:24.496+0800	debug	Database Query	{"sql": "SELECT distinct r.id, r.role_name, r.role_key, r.role_sort, r.data_scope, r.menu_check_strictly, r.dept_check_strictly,r.status, r.create_time, r.remark  FROM sys_role r left join sys_user_role ur on ur.role_id = r.id WHERE ur.user_id = '1' and r.status = 0", "time": "73.72ms", "rows": 1}
+2024-12-20T15:43:24.496+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/getInfo", "ip": "127.0.0.1", "latency": 0.2599949}
+2024-12-20T15:43:24.566+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_menu` WHERE status = 0 and menu_type in ('M', 'C')", "time": "63.55ms", "rows": 23}
+2024-12-20T15:43:24.567+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/getRouters", "ip": "127.0.0.1", "latency": 0.0650979}
+2024-12-20T15:43:24.898+0800	info	Gin request	{"status": 404, "method": "GET", "path": "/api/monitor/logininfor/page", "ip": "127.0.0.1", "latency": 0}
+2024-12-20T15:43:24.976+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_dict_data` WHERE dict_type = 'sys_common_status'", "time": "77.97ms", "rows": 2}
+2024-12-20T15:43:24.976+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/sys/dictData/type/sys_common_status", "ip": "127.0.0.1", "latency": 0.0784751}
+2024-12-20T15:45:05.768+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_user` WHERE id = '1' ORDER BY `sys_user`.`id` LIMIT 1", "time": "155.74ms", "rows": 1}
+2024-12-20T15:45:05.830+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_dept` WHERE id = '103' ORDER BY `sys_dept`.`id` LIMIT 1", "time": "60.84ms", "rows": 1}
+2024-12-20T15:45:05.859+0800	debug	Database Query	{"sql": "SELECT distinct r.id, r.role_name, r.role_key, r.role_sort, r.data_scope, r.menu_check_strictly, r.dept_check_strictly,r.status, r.create_time, r.remark  FROM sys_role r left join sys_user_role ur on ur.role_id = r.id left join sys_user u on u.id = ur.user_id left join sys_dept d on u.dept_id = d.id ORDER BY create_time desc", "time": "28.97ms", "rows": 2}
+2024-12-20T15:45:05.920+0800	debug	Database Query	{"sql": "SELECT distinct r.id, r.role_name, r.role_key, r.role_sort, r.data_scope, r.menu_check_strictly, r.dept_check_strictly,r.status, r.create_time, r.remark  FROM sys_role r left join sys_user_role ur on ur.role_id = r.id WHERE ur.user_id = '1' and r.status = 0", "time": "60.61ms", "rows": 1}
+2024-12-20T15:45:05.920+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/getInfo", "ip": "127.0.0.1", "latency": 0.3071672}
+2024-12-20T15:45:05.995+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_menu` WHERE status = 0 and menu_type in ('M', 'C')", "time": "69.48ms", "rows": 23}
+2024-12-20T15:45:05.995+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/getRouters", "ip": "127.0.0.1", "latency": 0.0701552}
+2024-12-20T15:45:06.370+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_dict_data` WHERE dict_type = 'sys_common_status'", "time": "60.16ms", "rows": 2}
+2024-12-20T15:45:06.370+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/sys/dictData/type/sys_common_status", "ip": "127.0.0.1", "latency": 0.0601646}
+2024-12-20T15:45:06.437+0800	debug	Database Query	{"sql": "SELECT count(*) FROM `sys_logininfor`", "time": "127.42ms", "rows": 1}
+2024-12-20T15:45:06.475+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_logininfor` LIMIT 10", "time": "37.30ms", "rows": 0}
+2024-12-20T15:45:06.475+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/sys/monitor/logininfor/page", "ip": "127.0.0.1", "latency": 0.1657224}
+2024-12-20T15:46:38.271+0800	debug	Database Query	{"sql": "SELECT count(*) FROM `sys_logininfor`", "time": "127.52ms", "rows": 1}
+2024-12-20T15:46:38.299+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_logininfor` LIMIT 10", "time": "27.33ms", "rows": 0}
+2024-12-20T15:46:38.299+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/sys/monitor/logininfor/page", "ip": "127.0.0.1", "latency": 0.1548495}
+2024-12-20T15:47:53.186+0800	debug	Database Query	{"sql": "SELECT count(*) FROM `sys_logininfor`", "time": "121.12ms", "rows": 1}
+2024-12-20T15:47:53.213+0800	error	Database Error	{"sql": "SELECT * FROM `sys_logininfor` ORDER BY userName descending  LIMIT 10", "time": "27.09ms", "rows": 1, "error": "Error 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'descending  LIMIT 10' at line 1"}
+2024-12-20T15:47:53.213+0800	debug	Database Query	{"sql": "SELECT * FROM `sys_logininfor` ORDER BY userName descending  LIMIT 10", "time": "27.09ms", "rows": 1, "error": "Error 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'descending  LIMIT 10' at line 1"}
+2024-12-20T15:47:53.213+0800	error	获取分页信息失败!	{"error": "Error 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'descending  LIMIT 10' at line 1"}
+2024-12-20T15:47:53.213+0800	info	Gin request	{"status": 200, "method": "GET", "path": "/api/sys/monitor/logininfor/page", "ip": "127.0.0.1", "latency": 0.1489216}

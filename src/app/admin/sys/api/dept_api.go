@@ -10,7 +10,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
 	"matuto-base/src/app/admin/sys/api/vo"
-	"matuto-base/src/app/admin/sys/service/dept"
+	"matuto-base/src/app/admin/sys/service"
 	"matuto-base/src/common/basic"
 	"matuto-base/src/common/response"
 	"matuto-base/src/global"
@@ -20,7 +20,7 @@ import (
 
 type DeptApi struct {
 	basic.BasicApi
-	deptService dept.DeptService
+	deptService service.DeptService
 }
 
 // Create 创建Dept

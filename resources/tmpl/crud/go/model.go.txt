@@ -17,5 +17,5 @@ type {{.StructName}} struct {
 
 // TableName {{.StructName}} 表名
 func ({{.StructName}}) TableName() string {
-  return "{{.TableName}}"
+  return "{{.Name}}"
 }

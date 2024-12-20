@@ -8,8 +8,8 @@ package api
 import (
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
-	"matuto-base/src/app/admin/sys/service/notice"
-	"matuto-base/src/app/admin/sys/service/notice/view"
+	"matuto-base/src/app/admin/sys/api/vo"
+	"matuto-base/src/app/admin/sys/service"
 	"matuto-base/src/common/basic"
 	response "matuto-base/src/common/response"
 	"matuto-base/src/global"
@@ -19,14 +19,14 @@ import (
 
 type NoticeApi struct {
 	basic.BasicApi
-	noticeService notice.NoticeService
+	noticeService service.NoticeService
 }
 
 // Create 创建Notice
 // @Summary 创建Notice
 // @Router /notice/create [post]
 func (api *NoticeApi) Create(c *gin.Context) {
-	var noticeView view.NoticeCreateView
+	var noticeView vo.NoticeCreateView
 	_ = c.ShouldBindJSON(&noticeView)
 	noticeView.Id = utils.GenUID()
 	noticeView.CreateTime = utils.GetCurTimeStr()
@@ -62,7 +62,7 @@ func (api *NoticeApi) Delete(c *gin.Context) {
 // @Summary 更新Notice
 // @Router /notice/update [put]
 func (api *NoticeApi) Update(c *gin.Context) {
-	var noticeView view.NoticeEditView
+	var noticeView vo.NoticeEditView
 	err := c.ShouldBindJSON(&noticeView)
 	if err != nil {
 		response.FailWithMessage("参数解析错误", c)
@@ -99,7 +99,7 @@ func (api *NoticeApi) Get(c *gin.Context) {
 // @Summary 分页获取Notice列表
 // @Router /notice/page [get]
 func (api *NoticeApi) Page(c *gin.Context) {
-	var pageInfo view.NoticePageView
+	var pageInfo vo.NoticePageView
 	// 绑定查询参数到 pageInfo
 	if err := c.ShouldBindQuery(&pageInfo); err != nil {
 		response.FailWithMessage("参数解析失败!", c)
@@ -117,7 +117,7 @@ func (api *NoticeApi) Page(c *gin.Context) {
 // @Summary 获取Notice列表
 // @Router /notice/list [get]
 func (api *NoticeApi) List(c *gin.Context) {
-	var view view.NoticeQueryView
+	var view vo.NoticeQueryView
 	// 绑定查询参数到 view对象
 	if err := c.ShouldBindQuery(&view); err != nil {
 		response.FailWithMessage("参数解析失败!", c)

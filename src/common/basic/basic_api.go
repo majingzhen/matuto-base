@@ -4,12 +4,13 @@ import (
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
 	"matuto-base/src/app/admin/sys/api/vo"
-	"matuto-base/src/app/admin/sys/service/user"
+	"matuto-base/src/app/admin/sys/service"
+
 	"matuto-base/src/global"
 )
 
 type BasicApi struct {
-	userService user.Service
+	userService service.Service
 }
 
 // GetLoginUser 获取当前登录用户

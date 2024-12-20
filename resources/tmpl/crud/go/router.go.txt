@@ -29,6 +29,6 @@ func (r *{{.StructName}}Router) Init{{.StructName}}Router(Router *gin.RouterGrou
     {
         {{.BusinessName}}RouterWithoutRecord.GET("get/:{{.PKColumn.JsonField}}", r.{{.BusinessName}}Api.Get)   // 根据ID获取{{.StructName}}
         {{.BusinessName}}RouterWithoutRecord.GET("page", r.{{.BusinessName}}Api.Page) // 分页获取{{.StructName}}列表
-        {{.BusinessName}}RouterWithoutRecord.GET("list", r.{{.BusinessName}}Api.List) // 分页获取{{.StructName}}列表
+        {{.BusinessName}}RouterWithoutRecord.GET("list", r.{{.BusinessName}}Api.List) // 获取{{.StructName}}列表
     }
 }

@@ -10,7 +10,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
 	"matuto-base/src/app/admin/sys/api/vo"
-	"matuto-base/src/app/admin/sys/service/role"
+	"matuto-base/src/app/admin/sys/service"
 	"matuto-base/src/common/basic"
 	"matuto-base/src/common/constants"
 	response "matuto-base/src/common/response"
@@ -21,7 +21,7 @@ import (
 
 type RoleApi struct {
 	basic.BasicApi
-	roleService role.RoleService
+	roleService service.RoleService
 }
 
 // Create 创建Role

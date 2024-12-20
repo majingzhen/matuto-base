@@ -10,7 +10,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
 	"matuto-base/src/app/admin/sys/api/vo"
-	"matuto-base/src/app/admin/sys/service/menu"
+	"matuto-base/src/app/admin/sys/service"
 	"matuto-base/src/common/basic"
 	"matuto-base/src/common/response"
 	"matuto-base/src/global"
@@ -19,7 +19,7 @@ import (
 
 type MenuApi struct {
 	basic.BasicApi
-	menuService menu.MenuService
+	menuService service.MenuService
 }
 
 // Create 创建Menu

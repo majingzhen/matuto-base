@@ -1,8 +1,8 @@
 package utils
 
 import (
+	"matuto-base/src/app/admin/gen/api/vo"
 	"matuto-base/src/app/admin/gen/model"
-	"matuto-base/src/app/admin/gen/service/table/view"
 	"matuto-base/src/common/constants"
 	"matuto-base/src/global"
 	"matuto-base/src/utils"
@@ -192,17 +192,16 @@ func GenTemplatePath(tplCategory string) []string {
 		"./resources/tmpl/" + tplCategory + "/go/model.go.txt",
 		"./resources/tmpl/" + tplCategory + "/go/dao.go.txt",
 		"./resources/tmpl/" + tplCategory + "/go/service.go.txt",
-		"./resources/tmpl/" + tplCategory + "/go/convert.go.txt",
-		"./resources/tmpl/" + tplCategory + "/go/view_utils.go.txt",
 		"./resources/tmpl/" + tplCategory + "/go/api.go.txt",
 		"./resources/tmpl/" + tplCategory + "/go/router.go.txt",
+		"./resources/tmpl/" + tplCategory + "/go/view.go.txt",
 		"./resources/tmpl/" + tplCategory + "/js/api.js.txt",
 		"./resources/tmpl/" + tplCategory + "/vue/index.vue.txt",
 	}
 }
 
 // GetDictList 获取字典列表
-func GetDictList(table *view.TableView) []string {
+func GetDictList(table *vo.TableView) []string {
 	dicts := make([]string, 0)
 	if table != nil && table.ColumnList != nil {
 		for _, columnView := range table.ColumnList {

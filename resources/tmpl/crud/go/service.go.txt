@@ -1,65 +1,74 @@
-// Package {{.BusinessName}} 自动生成模板 {{.StructName}}Service
+// Package service 自动生成模板 {{.StructName}}Service
 // @description <TODO description class purpose>
 // @author {{.Author}}
 // @version 1.0.0
 // @create {{.CreateTime}}
-package {{.BusinessName}}
+package service
 
 import (
     "{{.PackageName}}/dao"
-    "{{.PackageName}}/service/{{.BusinessName}}/view"
+    "{{.PackageName}}/model"
+    "{{.PackageName}}/api/vo"
     "matuto-base/src/common"
+    "matuto-base/src/utils/convert"
 )
 
-type Service struct {
-   {{.BusinessName}}Dao dao.{{.StructName}}Dao
-   viewUtils view.{{.StructName}}ViewUtils
+type {{.StructName}}Service struct {
+   {{.StructName}}Dao dao.{{.StructName}}Dao
 }
 
 // Create 创建{{.FunctionName}}记录
 // Author {{.FunctionAuthor}}
-func (s *Service) Create({{.BusinessName}} *view.{{.StructName}}CreateView) error {
-   return s.{{.BusinessName}}Dao.Create({{.BusinessName}})
+func (s *{{.StructName}}Service) Create({{.BusinessName}} *vo.{{.StructName}}CreateView) error {
+    err, {{.BusinessName}}Data := convert.View2Data[vo.{{.StructName}}CreateView, model.{{.StructName}}]({{.BusinessName}})
+    if err != nil {
+        return err
+    }
+    return s.{{.BusinessName}}Dao.Create({{.BusinessName}}Data)
 }
 
 // DeleteByIds 批量删除{{.FunctionName}}记录
 // Author {{.FunctionAuthor}}
-func (s *Service) DeleteByIds(ids []string) error {
-    return s.{{.BusinessName}}Dao.DeleteByIds(ids)
+func (s *{{.StructName}}Service) DeleteByIds(ids []string) error {
+    return s.{{.StructName}}Dao.DeleteByIds(ids)
 }
 
 // Update 更新{{.FunctionName}}记录
 // Author {{.FunctionAuthor}}
-func (s *Service) Update({{.BusinessName}} *view.{{.StructName}}EditView) error {
-    return s.{{.BusinessName}}Dao.Update({{.BusinessName}})
+func (s *{{.StructName}}Service) Update({{.BusinessName}} *vo.{{.StructName}}EditView) error {
+    err, {{.BusinessName}}Data := convert.View2Data[vo.{{.StructName}}EditView, model.{{.StructName}}]({{.BusinessName}})
+    if err != nil {
+        return err
+    }
+    return s.{{.StructName}}Dao.Update({{.BusinessName}}Data)
 }
 
 // Get 根据id获取{{.FunctionName}}记录
 // Author {{.FunctionAuthor}}
-func (s *Service) Get(id string) (error, *view.{{.StructName}}View) {
-    if err, {{.BusinessName}} := s.{{.BusinessName}}Dao.Get(id);err != nil {
+func (s *{{.StructName}}Service) Get(id string) (error, *vo.{{.StructName}}View) {
+    if err, {{.BusinessName}} := s.{{.StructName}}Dao.Get(id);err != nil {
         return err, nil
     } else {
-        return s.viewUtils.Data2View({{.BusinessName}})
+        return convert.Data2View[vo.{{.StructName}}View, model.{{.StructName}}]({{.BusinessName}})
     }
 }
 
 // Page 分页获取{{.FunctionName}}记录
 // Author {{.FunctionAuthor}}
-func (s *Service) Page(pageInfo *view.{{.StructName}}PageView) (error, *common.PageInfo) {
-    if err, res := s.{{.BusinessName}}Dao.Page(pageInfo); err != nil {
+func (s *{{.StructName}}Service) Page(pageInfo *vo.{{.StructName}}PageView) (error, *common.PageInfo) {
+    if err, res := s.{{.StructName}}Dao.Page(pageInfo); err != nil {
         return err, nil
     } else {
-        return s.viewUtils.PageData2ViewList(res)
+        return convert.PageData2ViewList[vo.{{.StructName}}View, model.{{.StructName}}](res)
     }
 }
 
 // List 获取{{.FunctionName}}列表
 // Author {{.FunctionAuthor}}
-func (s *Service) List(v *view.{{.StructName}}QueryView) (error, []*view.{{.StructName}}View) {
-    if err, dataList := s.{{.BusinessName}}Dao.List(v); err != nil {
+func (s *{{.StructName}}Service) List(v *vo.{{.StructName}}QueryView) (error, []*vo.{{.StructName}}View) {
+    if err, dataList := s.{{.StructName}}Dao.List(v); err != nil {
         return err, nil
     } else {
-        return s.viewUtils.Data2ViewList(dataList)
+        return convert.Data2ViewList[vo.{{.StructName}}View, model.{{.StructName}}](dataList)
     }
 }
